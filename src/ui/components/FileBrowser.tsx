@@ -1,13 +1,7 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import dynamic from "next/dynamic"
 import { useRouter } from "next/router"
-import {
-  DriveCategory,
-  FileResponse,
-  ModalState,
-  PaginatedQueryData,
-  QueryParams,
-} from "@/ui/types"
+import { DriveCategory, ModalState, QueryParams } from "@/ui/types"
 import {
   ChonkyActions,
   FileBrowser,
@@ -93,7 +87,6 @@ const MyFileBrowser = () => {
   const positions = useRef<Map<string, StateSnapshot>>(new Map()).current
 
   const [queryEnabled, setqueryEnabled] = useState(false)
-  const { data: sessionData } = useSession()
 
   const {
     value: upload,
@@ -174,78 +167,24 @@ const MyFileBrowser = () => {
 
   const files = useMemo(() => {
     if (data)
-      return data?.pages?.flatMap((page) => {
-        if (type === TELDRIVE_OPTIONS.shared.id) {
-          return page?.results ? getFiles(page?.results, type) : []
-        } else {
-          return page?.results
-            ? getFiles(page?.results, TELDRIVE_OPTIONS.myDrive.id)
-            : []
-        }
-      })
+      return data?.pages?.flatMap((page) =>
+        page?.results ? getFiles(page?.results, type) : []
+      )
   }, [data])
 
-  const queryKey = useMemo(() => {
-    const { key, path } = queryParams
-    const sortOrder = getSortOrder()
-    const queryKey = [key, path, sortOrder]
-    return queryKey
-  }, [queryParams])
-
   const folderChain = useMemo(() => {
-    function createFolderInfo(
-      id: string,
-      name: string,
-      path: string,
-      isDir: boolean,
-      chain: boolean
-    ) {
-      return { id, name, path, isDir, chain }
-    }
-
-    function getFolderChainForMyDrive() {
+    if (type == "my-drive") {
       return Object.entries(chainLinks(path as string[])).map(
-        ([key, value]) => {
-          return createFolderInfo(key, key, value, true, true)
-        }
+        ([key, value]) => ({
+          id: key,
+          name: key,
+          path: value,
+          isDir: true,
+          chain: true,
+        })
       )
     }
-
-    function getFolderChainForShared() {
-      const pathChain = data?.pages[0].results
-        ?.find((res) => res.parentId === path?.[1])
-        ?.pathChain?.map((chain) => {
-          return {
-            id: chain.id,
-            name: chain.path.split("/").pop() || "",
-            path: `${TELDRIVE_OPTIONS.shared.id}${chain.path}`,
-            isDir: true,
-            chain: true,
-          }
-        })
-
-      const sharedOption = sessionData?.userName
-        ? [
-            {
-              id: TELDRIVE_OPTIONS.shared.name,
-              name: TELDRIVE_OPTIONS.shared.name,
-              path: TELDRIVE_OPTIONS.shared.id,
-              isDir: true,
-              chain: true,
-            },
-          ]
-        : []
-
-      return pathChain ? [...sharedOption, ...pathChain] : sharedOption
-    }
-
-    if (type === TELDRIVE_OPTIONS.myDrive.id) {
-      return getFolderChainForMyDrive()
-    } else if (type === TELDRIVE_OPTIONS.shared.id) {
-      return getFolderChainForShared()
-    }
-  }, [path, data])
-
+  }, [path])
   const [modalState, setModalState] = useState<Partial<ModalState>>({
     open: false,
     operation: RenameFile().id,
@@ -290,37 +229,6 @@ const MyFileBrowser = () => {
     }
   }, [router.asPath])
 
-  useEffect(() => {
-    if (modalState.operation === ShareFile().id) {
-      setModalState(
-        (prev) =>
-          ({
-            ...prev,
-            file: {
-              ...prev.file,
-              visibility: data?.pages?.[0]?.results?.find(
-                (res) => res.id === modalState.file?.id
-              )?.visibility,
-              sharedWithUsernames: data?.pages?.[0]?.results?.find(
-                (res) => res.id === modalState.file?.id
-              )?.sharedWithUsernames,
-            },
-          }) as Partial<ModalState>
-      )
-    }
-  }, [data, modalState.open, modalState.file?.id])
-
-  // useEffect(() => {
-  //   if (modalState.operation === "delete_file" && modalState.successful) {
-  //     const path = queryParams.path as string[]
-  //     for (let i = path.length; i > 0; i--) {
-  //       const partialPath = path.slice(0, i)
-  //       const updatedQueryKey = ["files", partialPath, queryKey[2]]
-  //       queryClient.invalidateQueries(updatedQueryKey)
-  //     }
-  //   }
-  // }, [modalState.operation, modalState.successful])
-
   if (error) {
     return <ErrorView error={error as Error} />
   }
@@ -364,7 +272,7 @@ const MyFileBrowser = () => {
             path={path}
           />
         )}
-      {modalState.operation === ShareFile().id && open && (
+      {modalState.operation === "share_file" && open && (
         <ShareModal
           modalState={modalState}
           setModalState={setModalState}

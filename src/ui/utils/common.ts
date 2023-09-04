@@ -1,4 +1,5 @@
-import { File, FileData, Settings } from "@/ui/types"
+import { File, Settings } from "@/ui/types"
+import { FileData} from "@bhunter179/chonky"
 
 import { TELDRIVE_OPTIONS } from "../const"
 
@@ -15,7 +16,6 @@ export const getFiles = (
         name: item.name,
         type: item.type,
         size: item.size ? Number(item.size) : 0,
-        visibility: item.visibility,
         modDate: item.updatedAt,
         path: `${rootDir}${item.path}`,
         isDir: true,
@@ -28,7 +28,6 @@ export const getFiles = (
       type: item.type,
       size: Number(item.size),
       starred: item.starred,
-      visibility: item.visibility,
       modDate: item.updatedAt,
     }
   })

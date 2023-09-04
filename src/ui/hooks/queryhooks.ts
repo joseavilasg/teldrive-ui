@@ -7,10 +7,14 @@ import {
   PaginatedQueryData,
   Params,
   QueryParams,
+  SharedFile,
+  ShareFilePayload,
+  User,
 } from "@/ui/types"
 import {
   useInfiniteQuery,
   useMutation,
+  useQuery,
   useQueryClient,
 } from "@tanstack/react-query"
 
@@ -102,8 +106,6 @@ export const fetchData =
       order,
     }
 
-    params.accessFromPublic = !Boolean(username)
-
     if (type === TELDRIVE_OPTIONS.myDrive.id) {
       params.path = realPath(path)
       params.sort = "name"
@@ -133,7 +135,6 @@ export const fetchData =
       params.path = realPath(path)
       params.sort = "updatedAt"
       params.view = "shared"
-      params.sharedWithUsername = username
     }
 
     if (type === TELDRIVE_OPTIONS.recent.id) {
@@ -167,15 +168,12 @@ export const useCreateFile = (queryParams: Partial<QueryParams>) => {
   return { mutation }
 }
 
-export const useShareFile = (queryParams: Partial<QueryParams>) => {
-  const { key, path } = queryParams
-  const sortOrder = getSortOrder()
-  const queryKey = [key, path, sortOrder]
+export const useShareFile = (fileId: string) => {
+  const queryKey = ["files", "share", fileId]
   const queryClient = useQueryClient()
   const mutation = useMutation({
-    mutationFn: async (data: FilePayload) => {
-      return (await http.post(`/api/files/sharefile/${data.id}`, data.payload))
-        .data
+    mutationFn: async (payload: ShareFilePayload) => {
+      return (await http.post(`/api/files/share/${fileId}`, payload)).data
     },
     onSettled: (data, variables, context) => {
       if (data) {
@@ -184,6 +182,42 @@ export const useShareFile = (queryParams: Partial<QueryParams>) => {
     },
   })
   return { mutation }
+}
+
+export const useShareQuery = (fileId: string) => {
+  const queryKey = ["files", "share", fileId]
+  const { data, isFetching, error, isInitialLoading } = useQuery(
+    queryKey,
+    async () =>
+      (await http.get<SharedFile[]>(`/api/files/share/${fileId}`)).data
+  )
+
+  return {
+    data,
+    isFetching,
+    error,
+    isInitialLoading,
+  }
+}
+
+export const useUsersQuery = (enabled: boolean) => {
+  const queryKey = ["users"]
+  const { data, isFetching, error, refetch, isInitialLoading } = useQuery(
+    queryKey,
+    async () => (await http.get<User[]>(`/api/users`)).data,
+    {
+      cacheTime: Infinity,
+      enabled,
+    }
+  )
+
+  return {
+    data,
+    isFetching,
+    refetch,
+    error,
+    isInitialLoading,
+  }
 }
 
 export const useUpdateFile = (queryParams: Partial<QueryParams>) => {

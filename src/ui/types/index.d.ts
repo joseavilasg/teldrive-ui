@@ -1,4 +1,4 @@
-import { FileData as _FileData } from "@bhunter179/chonky"
+import { FileData } from "@bhunter179/chonky"
 
 import { Media } from "@/api/schemas/file.schema"
 
@@ -7,11 +7,6 @@ import { TELDRIVE_OPTIONS } from "../const"
 export type FileResponse = { results: File[]; nextPageToken?: string }
 
 export type FileVisibility = "public" | "private" | "limited"
-
-export type FileData = _FileData & {
-  visibility?: FileVisibility
-  sharedWithUsernames?: string[]
-}
 
 export type File = {
   name: string
@@ -24,9 +19,6 @@ export type File = {
   updatedAt: string
   userId: string
   parentId: string
-  visibility: FileVisibility
-  sharedWithUsernames?: string[]
-  pathChain?: { path: string; id: string }[]
   id: string
   starred: boolean
 }
@@ -106,3 +98,29 @@ export type PaginatedQueryData<T> = {
 
 export type DriveCategory =
   (typeof TELDRIVE_OPTIONS)[keyof typeof TELDRIVE_OPTIONS]["id"]
+
+export type SharedFile = {
+  fileId: string
+  permission: string
+  sharedWith: number
+  sharedWithUserName: string
+  sharedWithFullName: string
+}
+
+export type User = {
+  userId: number
+  name: string
+  userName: string
+}
+
+export type ShareUserPayload = {
+  userId: number
+  operation: string
+  permission?: string
+}
+
+export type ShareFilePayload = {
+  users: ShareUserPayload[]
+  operation: string
+  permission?:string
+}
