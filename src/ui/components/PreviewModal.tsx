@@ -134,7 +134,7 @@ export default memo(function PreviewModal({
         case preview.audio:
           return (
             <Suspense fallback={<Loader />}>
-              <AudioPreview name={name} mediaUrl={mediaUrl} />
+              <AudioPreview name={name} mediaUrl={mediaUrl} fileId={id} />
             </Suspense>
           )
 

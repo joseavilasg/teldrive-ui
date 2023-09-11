@@ -1,6 +1,5 @@
-import { FileData } from "@bhunter179/chonky"
-
 import { Media } from "@/api/schemas/file.schema"
+import { FileData } from "@bhunter179/chonky"
 
 export type FileResponse = { results: File[]; nextPageToken?: string }
 
@@ -90,4 +89,13 @@ export type Session = {
 export type QueryParams = {
   type: string
   path: string
+}
+
+export type SongMetadata = {
+  title: string
+  artist: string
+  cover: {
+    extension: string
+    type: string
+  }
 }

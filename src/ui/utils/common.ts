@@ -87,6 +87,17 @@ export const getMediaUrl = (
     download ? "?d=1" : ""
   }`
 }
+export const getSongCoverUrl = (
+  apiHost: string,
+  id: string,
+  name: string,
+  download = false
+) => {
+  const host = apiHost ? apiHost : window.location.origin
+  return `${host}/api/files/songCover/${id}/${encodeURIComponent(name)}${
+    download ? "?d=1" : ""
+  }`
+}
 
 export default function textToSvgURL(text: string) {
   const blob = new Blob([text], { type: "image/svg+xml;charset=utf-8" })

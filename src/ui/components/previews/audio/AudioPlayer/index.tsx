@@ -1,13 +1,11 @@
 import { FC } from "react"
-import Box from "@mui/material/Box"
+import { Box, Typography } from "@mui/material"
 import useMediaQuery from "@mui/material/useMediaQuery"
 
-import ArtistName from "./ArtistName"
 import CoverArt from "./ConverArt"
 import MediaControlButtons from "./MediaControlButtons"
 import MediaFunctionButtons from "./MediaFunctionButtons"
 import TimeScaleBar from "./TimeScaleBar"
-import TrackTitle from "./TrackTitle"
 
 interface PlayerProps {
   imageUrl: string
@@ -27,9 +25,25 @@ const AudioPlayer: FC<PlayerProps> = ({ imageUrl, trackTitle, artistName }) => {
       alignItems="center"
     >
       <CoverArt imageUrl={imageUrl} />
-      <Box width={1} px={2}>
-        <TrackTitle title={trackTitle} />
-        <ArtistName artist={artistName} />
+      <Box width={1} p={2}>
+        <Typography
+          variant="h5"
+          component="h1"
+          textAlign="center"
+          mt={1}
+          fontWeight={600}
+        >
+          {trackTitle}
+        </Typography>
+        <Typography
+          variant="h6"
+          component="h2"
+          mb={1}
+          textAlign="center"
+          color="primary"
+        >
+          {artistName}
+        </Typography>
         <TimeScaleBar />
         <MediaControlButtons />
         <MediaFunctionButtons />

@@ -2,14 +2,11 @@ import { FC, useEffect, useState } from "react"
 import { Box, Slider, Stack, Typography } from "@mui/material"
 import { useGlobalAudioPlayer } from "react-use-audio-player"
 
-import useAudioTime from "@/ui/hooks/useAudioTime"
 import { formatDuration } from "@/ui/utils/common"
 
 const TimeScaleBar = () => {
   const { duration, seek, getPosition } = useGlobalAudioPlayer()
   const [position, setPosition] = useState(Math.floor(getPosition()))
-  // const position = useAudioTime()
-  console.log({ position })
 
   useEffect(() => {
     setInterval(() => {

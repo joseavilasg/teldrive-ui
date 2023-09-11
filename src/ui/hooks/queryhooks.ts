@@ -1,9 +1,16 @@
 import { useCallback } from "react"
-import { FilePayload, FileResponse, Params, QueryParams } from "@/ui/types"
+import {
+  FilePayload,
+  FileResponse,
+  Params,
+  QueryParams,
+  SongMetadata,
+} from "@/ui/types"
 import {
   InfiniteData,
   useInfiniteQuery,
   useMutation,
+  useQuery,
   useQueryClient,
 } from "@tanstack/react-query"
 import { useNavigate } from "react-router-dom"
@@ -206,4 +213,19 @@ export const useDeleteFile = (params: QueryParams) => {
     },
   })
   return { mutation }
+}
+
+export const useGetSongMetadata = (fileId: string) => {
+  const queryKey = ["files", "songMetadata", fileId]
+  const { data, error, isLoading } = useQuery<SongMetadata>(queryKey, {
+    queryFn: async () => {
+      return (await http.get(`/api/files/songMetadata/${fileId}`)).data
+    },
+  })
+
+  return {
+    data,
+    error,
+    isLoading,
+  }
 }

@@ -1,24 +1,39 @@
 import { FC, memo, useEffect } from "react"
-import { Box, CircularProgress } from "@mui/material"
-import { useAudioPlayer, useGlobalAudioPlayer } from "react-use-audio-player"
+import { CircularProgress, Paper } from "@mui/material"
+import { useGlobalAudioPlayer } from "react-use-audio-player"
+
+import { useGetSongMetadata } from "@/ui/hooks/queryhooks"
+import useSettings from "@/ui/hooks/useSettings"
+import { getSongCoverUrl } from "@/ui/utils/common"
 
 import AudioPlayer from "./AudioPlayer"
 
-const AudioPreview: FC<{ name: string; mediaUrl: string }> = ({
+const AudioPreview: FC<{ name: string; mediaUrl: string; fileId: string }> = ({
   name,
   mediaUrl,
+  fileId,
 }) => {
   const player = useGlobalAudioPlayer()
+  const { settings } = useSettings()
+
+  const { data, isLoading } = useGetSongMetadata(fileId)
+  const coverUrl = getSongCoverUrl(
+    settings.apiUrl,
+    fileId,
+    `${data?.cover.type}.${data?.cover.extension}`
+  )
 
   useEffect(() => {
-    player.load(mediaUrl, {
-      html5: true,
-      autoplay: true,
-      initialVolume: 0.6,
-    })
-  }, [])
+    if (data) {
+      player.load(mediaUrl, {
+        html5: true,
+        autoplay: true,
+        initialVolume: 0.6,
+      })
+    }
+  }, [data])
 
-  if (!player.isReady) {
+  if (!player.isReady || isLoading) {
     return (
       <CircularProgress
         sx={{
@@ -32,25 +47,24 @@ const AudioPreview: FC<{ name: string; mediaUrl: string }> = ({
   }
 
   return (
-    <Box
+    <Paper
       sx={{
         borderRadius: 2,
-        backgroundColor: "white",
         maxWidth: "90%",
         width: "auto",
         m: "auto",
-        py: 2,
         position: "relative",
         display: "grid",
         placeContent: "center",
       }}
+      elevation={10}
     >
       <AudioPlayer
-        imageUrl="https://cdns-images.dzcdn.net/images/cover/5004d4b0db08b9e1eb8f10601e6772ec/500x500.jpg"
-        artistName="Against the Current"
-        trackTitle={name}
+        imageUrl={coverUrl}
+        artistName={data?.artist || ""}
+        trackTitle={data?.title || ""}
       />
-    </Box>
+    </Paper>
   )
 }
 

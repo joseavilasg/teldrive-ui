@@ -1,12 +1,5 @@
-import { useState } from "react"
-import FavoriteIcon from "@mui/icons-material/Favorite"
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
-import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd"
 import RepeatIcon from "@mui/icons-material/Repeat"
 import RepeatOneIcon from "@mui/icons-material/RepeatOne"
-import ShareIcon from "@mui/icons-material/Share"
-import ShuffleIcon from "@mui/icons-material/Shuffle"
-import VolumeDownIcon from "@mui/icons-material/VolumeDown"
 import VolumeOffIcon from "@mui/icons-material/VolumeOff"
 import VolumeUpIcon from "@mui/icons-material/VolumeUp"
 import { Box, IconButton, Slider, Stack, Typography } from "@mui/material"
@@ -32,22 +25,6 @@ const MediaFunctionButtons = () => {
         <IconButton onClick={() => loop(!looping)}>
           {looping ? <RepeatOneIcon color="primary" /> : <RepeatIcon />}
         </IconButton>
-        {/* <IconButton onClick={() => setShuffle(!shuffle)}>
-					{shuffle ? (
-						<ShuffleIcon color="primary" />
-					) : (
-						<ShuffleIcon />
-					)}
-				</IconButton> */}
-        {/* <IconButton onClick={() => setFavorite(!favorite)}>
-          {favorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-        </IconButton> */}
-        {/* <IconButton>
-					<PlaylistAddIcon />
-				</IconButton> */}
-        {/* <IconButton>
-          <ShareIcon />
-        </IconButton> */}
         <Box width={1} ml={2}>
           <Stack
             spacing={2}
