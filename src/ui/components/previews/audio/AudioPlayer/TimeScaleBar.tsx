@@ -1,5 +1,5 @@
-import { FC, useEffect, useState } from "react"
-import { Box, Slider, Stack, Typography } from "@mui/material"
+import { useEffect, useState } from "react"
+import { Box, Slider, Typography } from "@mui/material"
 import { useGlobalAudioPlayer } from "react-use-audio-player"
 
 import { formatDuration } from "@/ui/utils/common"

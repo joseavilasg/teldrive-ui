@@ -15,17 +15,17 @@ interface PlayerProps {
 
 const AudioPlayer: FC<PlayerProps> = ({ imageUrl, trackTitle, artistName }) => {
   const isM = useMediaQuery("(max-width:900px)")
+  const isSm = useMediaQuery("(max-width:500px)")
 
   return (
     <Box
-      width={1}
-      height={1}
       display="flex"
       flexDirection={isM ? "column" : "row"}
       alignItems="center"
+      justifyContent="center"
     >
       <CoverArt imageUrl={imageUrl} />
-      <Box width={1} p={2}>
+      <Box p={2} minWidth={isSm ? "250px" : "350px"}>
         <Typography
           variant="h5"
           component="h1"

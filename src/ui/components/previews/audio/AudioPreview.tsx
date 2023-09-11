@@ -8,8 +8,7 @@ import { getSongCoverUrl } from "@/ui/utils/common"
 
 import AudioPlayer from "./AudioPlayer"
 
-const AudioPreview: FC<{ name: string; mediaUrl: string; fileId: string }> = ({
-  name,
+const AudioPreview: FC<{ mediaUrl: string; fileId: string }> = ({
   mediaUrl,
   fileId,
 }) => {
@@ -33,7 +32,7 @@ const AudioPreview: FC<{ name: string; mediaUrl: string; fileId: string }> = ({
     }
   }, [data])
 
-  if (!player.isReady || isLoading) {
+  if (!player.isReady || isLoading || !data) {
     return (
       <CircularProgress
         sx={{
@@ -49,20 +48,19 @@ const AudioPreview: FC<{ name: string; mediaUrl: string; fileId: string }> = ({
   return (
     <Paper
       sx={{
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
         borderRadius: 2,
-        maxWidth: "90%",
         width: "auto",
-        m: "auto",
-        position: "relative",
-        display: "grid",
-        placeContent: "center",
       }}
       elevation={10}
     >
       <AudioPlayer
         imageUrl={coverUrl}
-        artistName={data?.artist || ""}
-        trackTitle={data?.title || ""}
+        artistName={data.artist}
+        trackTitle={data.title}
       />
     </Paper>
   )

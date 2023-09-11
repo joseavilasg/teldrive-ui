@@ -1,28 +1,28 @@
 import { FC, useState } from "react"
 import { Box, CircularProgress } from "@mui/material"
-import { useMediaQuery } from "usehooks-ts"
+import useMediaQuery from "@mui/material/useMediaQuery"
 
 interface CoverArtProps {
   imageUrl: string
 }
 
 const CoverArt: FC<CoverArtProps> = ({ imageUrl }) => {
-  const isM = useMediaQuery("(max-width:900px)")
+  const isSm = useMediaQuery("(max-width:500px)")
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
-  console.log({ isLoaded })
+
   const handleImageOnLoad = () => {
     setIsLoaded(true)
   }
 
+  const imageSize = isSm ? "250px" : "350px"
+
   return (
     <Box
       sx={{
-        minWidth: "350px",
-        minHeight: "350px",
-        maxWidth: isM ? "350px" : "500px",
-        maxHeight: isM ? "350px" : "500px",
-        width: 1,
-        height: 1,
+        minWidth: imageSize,
+        minHeight: imageSize,
+        maxWidth: imageSize,
+        maxHeight: imageSize,
         p: 2,
         position: "relative",
       }}
@@ -41,11 +41,10 @@ const CoverArt: FC<CoverArtProps> = ({ imageUrl }) => {
         onLoad={handleImageOnLoad}
         component={"img"}
         src={imageUrl}
-        // alt={name}
+        alt="cover"
         sx={{
           width: 1,
           margin: "auto",
-          borderRadius: 1,
           opacity: isLoaded ? 1 : 0,
           transition: "opacity 300ms ease-in 0ms",
         }}
