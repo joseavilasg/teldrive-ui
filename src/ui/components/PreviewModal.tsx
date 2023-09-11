@@ -38,6 +38,8 @@ import PDFPreview from "./previews/PdfPreview"
 
 const VideoPreview = lazy(() => import("./previews/video/VideoPreview"))
 
+const AudioPreview = lazy(() => import("./previews/audio/AudioPreview"))
+
 const CodePreview = lazy(() => import("./previews/CodePreview"))
 
 const EpubPreview = lazy(() => import("./previews/EpubPreview"))
@@ -126,6 +128,13 @@ export default memo(function PreviewModal({
           return (
             <Suspense fallback={<Loader />}>
               <VideoPreview name={name} mediaUrl={mediaUrl} />
+            </Suspense>
+          )
+
+        case preview.audio:
+          return (
+            <Suspense fallback={<Loader />}>
+              <AudioPreview name={name} mediaUrl={mediaUrl} />
             </Suspense>
           )
 
