@@ -2,10 +2,6 @@ import { FC, memo, useEffect } from "react"
 import { CircularProgress, Paper } from "@mui/material"
 import { useGlobalAudioPlayer } from "react-use-audio-player"
 
-import { useGetSongMetadata } from "@/ui/hooks/queryhooks"
-import useSettings from "@/ui/hooks/useSettings"
-import { getSongCoverUrl } from "@/ui/utils/common"
-
 import AudioPlayer from "./AudioPlayer"
 
 const AudioPreview: FC<{ mediaUrl: string; fileId: string }> = ({
@@ -13,30 +9,16 @@ const AudioPreview: FC<{ mediaUrl: string; fileId: string }> = ({
   fileId,
 }) => {
   const player = useGlobalAudioPlayer()
-  const { settings } = useSettings()
-
-  const { data, isLoading } = useGetSongMetadata(fileId)
 
   useEffect(() => {
-    if (data) {
-      player.load(mediaUrl, {
-        html5: true,
-        autoplay: true,
-        initialVolume: 0.6,
-      })
-    }
-  }, [data])
+    player.load(mediaUrl, {
+      html5: true,
+      autoplay: true,
+      initialVolume: 0.6,
+    })
+  }, [])
 
-  let coverUrl: string | undefined = undefined
-  if (data?.cover) {
-    coverUrl = getSongCoverUrl(
-      settings.apiUrl,
-      fileId,
-      `${data.cover.type}.${data.cover.extension}`
-    )
-  }
-
-  if (!player.isReady || isLoading || !data) {
+  if (!player.isReady) {
     return (
       <CircularProgress
         sx={{
@@ -61,11 +43,7 @@ const AudioPreview: FC<{ mediaUrl: string; fileId: string }> = ({
       }}
       elevation={10}
     >
-      <AudioPlayer
-        imageUrl={coverUrl}
-        artistName={data.artist}
-        trackTitle={data.title}
-      />
+      <AudioPlayer fileId={fileId} />
     </Paper>
   )
 }

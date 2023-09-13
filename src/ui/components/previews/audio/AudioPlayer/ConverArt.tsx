@@ -2,11 +2,7 @@ import { FC, useState } from "react"
 import { Box, CircularProgress } from "@mui/material"
 import useMediaQuery from "@mui/material/useMediaQuery"
 
-interface CoverArtProps {
-  imageUrl: string
-}
-
-const CoverArt: FC<CoverArtProps> = ({ imageUrl }) => {
+const CoverArt: FC<{ imageUrl: string }> = ({ imageUrl }) => {
   const isSm = useMediaQuery("(max-width:500px)")
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
