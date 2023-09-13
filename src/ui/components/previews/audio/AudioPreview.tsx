@@ -16,11 +16,6 @@ const AudioPreview: FC<{ mediaUrl: string; fileId: string }> = ({
   const { settings } = useSettings()
 
   const { data, isLoading } = useGetSongMetadata(fileId)
-  const coverUrl = getSongCoverUrl(
-    settings.apiUrl,
-    fileId,
-    `${data?.cover.type}.${data?.cover.extension}`
-  )
 
   useEffect(() => {
     if (data) {
@@ -31,6 +26,15 @@ const AudioPreview: FC<{ mediaUrl: string; fileId: string }> = ({
       })
     }
   }, [data])
+
+  let coverUrl: string | undefined = undefined
+  if (data?.cover) {
+    coverUrl = getSongCoverUrl(
+      settings.apiUrl,
+      fileId,
+      `${data.cover.type}.${data.cover.extension}`
+    )
+  }
 
   if (!player.isReady || isLoading || !data) {
     return (

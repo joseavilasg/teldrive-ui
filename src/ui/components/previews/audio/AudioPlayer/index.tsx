@@ -8,7 +8,7 @@ import MediaFunctionButtons from "./MediaFunctionButtons"
 import TimeScaleBar from "./TimeScaleBar"
 
 interface PlayerProps {
-  imageUrl: string
+  imageUrl?: string
   trackTitle: string
   artistName: string
 }
@@ -24,7 +24,7 @@ const AudioPlayer: FC<PlayerProps> = ({ imageUrl, trackTitle, artistName }) => {
       alignItems="center"
       justifyContent="center"
     >
-      <CoverArt imageUrl={imageUrl} />
+      {imageUrl && <CoverArt imageUrl={imageUrl} />}
       <Box p={2} minWidth={isSm ? "250px" : "350px"}>
         <Typography
           variant="h5"

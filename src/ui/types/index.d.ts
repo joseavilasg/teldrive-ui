@@ -94,7 +94,7 @@ export type QueryParams = {
 export type SongMetadata = {
   title: string
   artist: string
-  cover: {
+  cover?: {
     extension: string
     type: string
   }
