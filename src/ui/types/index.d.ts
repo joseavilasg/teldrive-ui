@@ -71,7 +71,7 @@ export type AuthMessage = {
 export type Message = {
   status: boolean
   message: string
-  error?:string
+  error?: string
 }
 
 export type Settings = {
@@ -92,7 +92,7 @@ export type QueryParams = {
   path: string
 }
 
-export type SongMetadata = {
+export type AudioMetadata = {
   title: string
   artist: string
   cover?: {

@@ -1,10 +1,10 @@
 import { useCallback } from "react"
 import {
+  AudioMetadata,
   FilePayload,
   FileResponse,
   Params,
   QueryParams,
-  SongMetadata,
 } from "@/ui/types"
 import {
   InfiniteData,
@@ -215,11 +215,11 @@ export const useDeleteFile = (params: QueryParams) => {
   return { mutation }
 }
 
-export const useGetSongMetadata = (fileId: string) => {
-  const queryKey = ["files", "songMetadata", fileId]
-  const { data, error, isLoading } = useQuery<SongMetadata>(queryKey, {
+export const useGetAudioMetadata = (fileId: string) => {
+  const queryKey = ["files", "audioMetadata", fileId]
+  const { data, error, isLoading } = useQuery<AudioMetadata>(queryKey, {
     queryFn: async () => {
-      return (await http.get(`/api/files/songMetadata/${fileId}`)).data
+      return (await http.get(`/api/files/audioMetadata/${fileId}`)).data
     },
   })
 

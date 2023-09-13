@@ -87,14 +87,14 @@ export const getMediaUrl = (
     download ? "?d=1" : ""
   }`
 }
-export const getSongCoverUrl = (
+export const getAudioCoverUrl = (
   apiHost: string,
   id: string,
   name: string,
   download = false
 ) => {
   const host = apiHost ? apiHost : window.location.origin
-  return `${host}/api/files/songCover/${id}/${encodeURIComponent(name)}${
+  return `${host}/api/files/audioCoverArt/${id}/${encodeURIComponent(name)}${
     download ? "?d=1" : ""
   }`
 }

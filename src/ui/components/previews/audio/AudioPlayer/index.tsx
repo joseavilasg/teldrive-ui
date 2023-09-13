@@ -3,9 +3,9 @@ import { Box, Typography } from "@mui/material"
 import Skeleton from "@mui/material/Skeleton"
 import useMediaQuery from "@mui/material/useMediaQuery"
 
-import { useGetSongMetadata } from "@/ui/hooks/queryhooks"
+import { useGetAudioMetadata } from "@/ui/hooks/queryhooks"
 import useSettings from "@/ui/hooks/useSettings"
-import { getSongCoverUrl } from "@/ui/utils/common"
+import { getAudioCoverUrl } from "@/ui/utils/common"
 
 import CoverArt from "./ConverArt"
 import MediaControlButtons from "./MediaControlButtons"
@@ -23,12 +23,12 @@ const AudioPlayer: FC<PlayerProps> = ({ fileId }) => {
   const {
     data = { artist: "Unkown artist", title: "Unkown title" },
     isLoading,
-  } = useGetSongMetadata(fileId)
+  } = useGetAudioMetadata(fileId)
   const { settings } = useSettings()
 
   let coverUrl: string | undefined = undefined
   if (data?.cover) {
-    coverUrl = getSongCoverUrl(
+    coverUrl = getAudioCoverUrl(
       settings.apiUrl,
       fileId,
       `${data.cover.type}.${data.cover.extension}`
