@@ -22,8 +22,17 @@ import { useDevice } from "@/ui/hooks/useDevice"
 import { CustomActions, useFileAction } from "@/ui/hooks/useFileAction"
 import { useSortFilter } from "@/ui/hooks/useSortFilter"
 import Loader from "@/ui/components/Loader"
-import { chainLinks, getFiles, getParams } from "@/ui/utils/common"
+import {
+  chainLinks,
+  getExtension,
+  getFiles,
+  getMediaUrl,
+  getParams,
+} from "@/ui/utils/common"
 
+import { useSession } from "../hooks/useSession"
+import useSettings from "../hooks/useSettings"
+import { getPreviewType } from "../utils/getPreviewType"
 import DeleteDialog from "./DeleteDialog"
 import ErrorView from "./ErrorView"
 import FileModal from "./FileModal"
@@ -170,6 +179,9 @@ const MyFileBrowser = () => {
 
   const defaultView = localStorage.getItem("view") || "list"
 
+  const { settings } = useSettings()
+  const { data: session } = useSession()
+
   return (
     <Root className={classes.root}>
       {isLoading && type !== "search" && <Loader />}
@@ -185,6 +197,16 @@ const MyFileBrowser = () => {
         defaultSortActionId={order.defaultSortActionId}
         defaultSortOrder={order.defaultSortOrder}
         defaultFileViewEntryHeight={type !== "my-drive" ? 60 : undefined}
+        thumbnailGenerator={(file) => {
+          let previewType = file.previewType
+          if (!previewType) {
+            previewType = getPreviewType(getExtension(file.name)) as string
+          }
+          console.log({ previewType })
+          return previewType === "image"
+            ? getMediaUrl(settings.apiUrl, file.id, file.name, session?.hash!)
+            : undefined
+        }}
       >
         <FileNavbar />
 
