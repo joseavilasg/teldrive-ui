@@ -1,5 +1,4 @@
 import { FC, memo, useEffect, useRef } from "react"
-import { Box, useTheme } from "@mui/material"
 import type Artplayer from "artplayer"
 import type ArtOption from "artplayer/types/option"
 import { AspectRatio } from "artplayer/types/player"
@@ -8,12 +7,11 @@ import Player from "./ArtPlayer"
 
 const aspectRatioes = ["default", "4:3", "16:9"]
 
-const VideoPlayer: FC<{
+interface VideoPlayerProps {
   videoName: string
   videoUrl: string
-}> = ({ videoName, videoUrl }) => {
-  const theme = useTheme()
-
+}
+const VideoPlayer = ({ videoName, videoUrl }: VideoPlayerProps) => {
   const artInstance = useRef<Artplayer | null>(null)
 
   const artOptions: ArtOption = {
@@ -39,7 +37,6 @@ const VideoPlayer: FC<{
     playsInline: true,
     autoPlayback: true,
     airplay: true,
-    theme: theme.palette.primary.main,
     lock: true,
     fastForward: true,
     autoOrientation: true,
@@ -82,20 +79,11 @@ const VideoPlayer: FC<{
   )
 }
 
-const VideoPreview: FC<{ name: string; mediaUrl: string }> = ({
-  name,
-  mediaUrl,
-}) => {
-  return (
-    <Box
-      sx={{
-        width: { xs: "100%", md: "70%" },
-        margin: "auto",
-        padding: "1rem",
-      }}
-    >
-      <VideoPlayer videoName={name} videoUrl={mediaUrl} />
-    </Box>
-  )
+interface VideoPreviewProps {
+  name: string
+  assetUrl: string
+}
+const VideoPreview = ({ name, assetUrl }: VideoPreviewProps) => {
+  return <VideoPlayer videoName={name} videoUrl={assetUrl} />
 }
 export default memo(VideoPreview)

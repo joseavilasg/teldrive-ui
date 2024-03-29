@@ -1,70 +1,42 @@
-import { FC } from "react"
-import AddToDriveIcon from "@mui/icons-material/AddToDrive"
-import StarBorder from "@mui/icons-material/StarBorder"
-import WatchLaterIcon from "@mui/icons-material/WatchLater"
-import {
-  Drawer,
-  DrawerProps,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Toolbar,
-  Typography,
-} from "@mui/material"
-import { Link } from "@tanstack/react-router"
+import { Icon } from "@iconify/react"
+import { Button } from "@tw-material/react"
+import { cn } from "@tw-material/theme"
+
+import { ForwardLink } from "@/components/ForwardLink"
 
 export const categories = [
-  { id: "my-drive", name: "My Drive", icon: <AddToDriveIcon /> },
-  { id: "starred", name: "Starred", icon: <StarBorder /> },
-  { id: "recent", name: "recent", icon: <WatchLaterIcon /> },
+  { id: "my-drive", name: "My Drive", icon: "basil:google-drive-outline" },
+  { id: "starred", name: "starred", icon: "mdi:star-outline" },
+  { id: "recent", name: "recent", icon: "mdi:recent" },
+  { id: "storage", name: "storage", icon: "ic:outline-sd-storage" },
 ] as const
 
-const version = JSON.parse(
-  import.meta.env.VITE_VERSION_INFO || '{"version":"dev","commit":"","link":""}'
-)
-
-export const SideNav: FC<DrawerProps> = (props) => {
-  const { ...others } = props
-
+export const SideNav = () => {
   return (
-    <Drawer variant="permanent" {...others}>
-      <Toolbar />
-      <List>
-        {categories.map(({ id, name, icon }) => (
-          <Link key={id} to="/$" params={{ _splat: id }} preload="intent">
-            {({ isActive }) => {
-              return (
-                <ListItem>
-                  <ListItemButton selected={isActive}>
-                    <ListItemIcon>{icon}</ListItemIcon>
-                    <ListItemText>{name}</ListItemText>
-                  </ListItemButton>
-                </ListItem>
-              )
-            }}
-          </Link>
+    <aside className="area-[nav]">
+      <ul className="size-full flex-wrap flex flex-row md:flex-col items-center list-none gap-4 px-3 overflow-auto">
+        {categories.map(({ id, icon }) => (
+          <Button
+            as={ForwardLink}
+            variant="text"
+            key={id}
+            to="/$"
+            isIconOnly
+            params={{ _splat: id }}
+            preload="intent"
+            className={cn(
+              "h-8 w-full max-w-14 rounded-3xl px-0 mx-auto",
+              "text-on-surface-variant",
+              "data-[status=active]:bg-secondary-container data-[status=active]:text-on-secondary-container"
+            )}
+          >
+            <Icon
+              className="size-6 text-inherit pointer-events-none"
+              icon={icon}
+            />
+          </Button>
         ))}
-      </List>
-      <Typography
-        sx={{
-          position: "fixed",
-          bottom: 10,
-          left: 0,
-          padding: 2,
-          cursor: "pointer",
-          textDecoration: "none",
-          color: "inherit",
-        }}
-        component="a"
-        href={version.link ? `${version.link}/commit/${version.commit}` : ""}
-        target="_blank"
-        rel="noopener noreferrer"
-        gutterBottom
-      >
-        Build: {version.version}-{version.commit}
-      </Typography>
-    </Drawer>
+      </ul>
+    </aside>
   )
 }

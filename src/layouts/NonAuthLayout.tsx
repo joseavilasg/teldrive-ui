@@ -1,27 +1,12 @@
-import { Box, Container } from "@mui/material"
 import { Outlet } from "@tanstack/react-router"
-
-import Header from "@/components/Header"
 
 export const NonAuthLayout = () => {
   return (
-    <Box sx={{ position: "fixed", inset: 0, display: "flex" }}>
-      <Box sx={{ flex: 1, display: "flex", flexDirection: "column" }}>
-        <Header auth={false} />
-        <Container
-          maxWidth="xl"
-          sx={{
-            pt: 1,
-            marginTop: 8,
-            height: "calc(100% - 68px)",
-            "@media (max-width: 1024px)": {
-              height: "calc(100% - 124px)",
-            },
-          }}
-        >
-          <Outlet />
-        </Container>
-      </Box>
-    </Box>
+    <div className="grid grid-areas-[header,main] grid-rows-[4rem_1fr] min-h-dvh">
+      <header className="area-[header]"></header>
+      <main className="area-[main] container">
+        <Outlet />
+      </main>
+    </div>
   )
 }

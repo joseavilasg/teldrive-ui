@@ -1,17 +1,16 @@
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { ModalState } from "@/types"
+import { useSuspenseInfiniteQuery } from "@tanstack/react-query"
+import { getRouteApi } from "@tanstack/react-router"
 import {
   ChonkyActions,
   FileBrowser,
   FileContextMenu,
-  FileData,
   FileList,
   FileNavbar,
   FileToolbar,
-} from "@bhunter179/chonky"
-import { styled } from "@mui/material/styles"
-import { useSuspenseInfiniteQuery } from "@tanstack/react-query"
-import { getRouteApi } from "@tanstack/react-router"
+  type FileData,
+} from "@tw-material/file-browser"
 import type {
   StateSnapshot,
   VirtuosoGridHandle,
@@ -19,45 +18,27 @@ import type {
 } from "react-virtuoso"
 import { useBoolean } from "usehooks-ts"
 
-import { useDevice } from "@/hooks/useDevice"
 import { useFileAction } from "@/hooks/useFileAction"
 import { useSession } from "@/hooks/useSession"
 import useSettings from "@/hooks/useSettings"
 import { defaultSortState } from "@/hooks/useSortFilter"
-import Loader from "@/components/Loader"
 import { chainLinks, getMediaUrl } from "@/utils/common"
 import { filesQueryOptions } from "@/utils/queryOptions"
 
-import DeleteDialog from "./dialogs/Delete"
-import ErrorView from "./ErrorView"
-import FileModal from "./modals/FileOperation"
+// import DeleteDialog from "./dialogs/Delete"
+// import ErrorView from "./ErrorView"
+// import FileModal from "./modals/FileOperation"
 import PreviewModal from "./modals/Preview"
-import Upload from "./Uploader"
 
-const PREFIX = "FileBrowser"
+// import Upload from "./Uploader"
 
-const classes = {
-  root: `${PREFIX}-root`,
-  progress: `${PREFIX}-progress`,
+const fileActionGroups = {
+  OpenOptions: {
+    sortOrder: -1,
+    icon: "majesticons:open-line",
+    tooltip: "Open Options",
+  },
 }
-
-const Root = styled(
-  "div",
-  {}
-)(({ theme }) => ({
-  [`&.${classes.root}`]: {
-    height: "100%",
-    width: "100%",
-    margin: "auto",
-  },
-
-  [`& .${classes.progress}`]: {
-    margin: "auto",
-    color: theme.palette.text.primary,
-    height: "30px !important",
-    width: "30px !important",
-  },
-}))
 
 let firstRender = true
 
@@ -74,6 +55,7 @@ const sortMap = {
 const viewMap = {
   list: ChonkyActions.EnableListView.id,
   grid: ChonkyActions.EnableGridView.id,
+  tile: ChonkyActions.EnableTileView.id,
 } as const
 
 const fileRoute = getRouteApi("/_authenticated/$")
@@ -94,8 +76,6 @@ export const DriveFileBrowser = () => {
     setTrue: openFileDialog,
     setFalse: closeFileDialog,
   } = useBoolean(false)
-
-  const { isMobile } = useDevice()
 
   const listRef = useRef<VirtuosoHandle | VirtuosoGridHandle>(null)
 
@@ -156,11 +136,11 @@ export const DriveFileBrowser = () => {
     }
   }, [params.path, params.type])
 
-  if (error) {
-    return <ErrorView error={error as Error} />
-  }
+  // if (error) {
+  //   return <ErrorView error={error as Error} />
+  // }
 
-  const defaultView = localStorage.getItem("view") || "list"
+  const defaultView = "list"
 
   const { settings } = useSettings()
 
@@ -189,25 +169,20 @@ export const DriveFileBrowser = () => {
   )
 
   return (
-    <Root className={classes.root}>
-      {isLoading && params.type !== "search" && <Loader />}
+    <div className="size-full m-auto">
       <FileBrowser
-        files={files as any}
+        files={files}
         folderChain={folderChain}
         onFileAction={chonkyActionHandler()}
         fileActions={actions}
-        disableDragAndDropProvider={isMobile ? true : false}
+        fileActionGroups={fileActionGroups}
         defaultFileViewActionId={viewMap[defaultView as "list" | "grid"]}
-        useStoreProvider={true}
-        useThemeProvider={false}
         defaultSortActionId={sortMap[defaultSortState[params.type].sort]}
         defaultSortOrder={defaultSortState[params.type].order}
-        defaultFileViewEntryHeight={params.type !== "my-drive" ? 60 : undefined}
         thumbnailGenerator={thumbnailGenerator}
       >
         <FileNavbar />
-
-        <FileToolbar hideSearchBar={true} />
+        <FileToolbar />
         <FileList
           hasNextPage={hasNextPage}
           isNextPageLoading={isFetchingNextPage}
@@ -216,7 +191,7 @@ export const DriveFileBrowser = () => {
         />
         <FileContextMenu />
       </FileBrowser>
-      {["rename_file", ChonkyActions.CreateFolder.id].find(
+      {/* {["rename_file", ChonkyActions.CreateFolder.id].find(
         (val) => val === modalState.operation
       ) &&
         open && (
@@ -225,16 +200,15 @@ export const DriveFileBrowser = () => {
             modalState={modalState}
             setModalState={setModalState}
           />
-        )}
+        )} */}
       {modalState.operation === ChonkyActions.OpenFiles.id && open && (
         <PreviewModal
           files={files!}
-          queryKey={queryOptions.queryKey}
           modalState={modalState}
           setModalState={setModalState}
         />
       )}
-      {modalState.operation === "delete_file" && open && (
+      {/* {modalState.operation === "delete_file" && open && (
         <DeleteDialog
           queryKey={queryOptions.queryKey}
           modalState={modalState}
@@ -248,7 +222,7 @@ export const DriveFileBrowser = () => {
           closeFileDialog={closeFileDialog}
           hideUpload={hideUpload}
         />
-      )}
-    </Root>
+      )} */}
+    </div>
   )
 }

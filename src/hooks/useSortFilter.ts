@@ -1,7 +1,10 @@
 import { SortState } from "@/types"
-import { SortOrder } from "@bhunter179/chonky"
 import { useLocalStorage } from "usehooks-ts"
 
+enum SortOrder {
+  ASC = "asc",
+  DESC = "desc",
+}
 export const defaultSortState: SortState = {
   "my-drive": { sort: "name", order: SortOrder.ASC },
   search: { sort: "name", order: SortOrder.ASC },

@@ -1,50 +1,37 @@
-import { FC, memo } from "react"
-import FullscreenIcon from "@mui/icons-material/Fullscreen"
-import FullscreenExitIcon from "@mui/icons-material/FullscreenExit"
-import { Box, IconButton } from "@mui/material"
+import { memo } from "react"
+import { Icon } from "@iconify/react"
+import { Button } from "@tw-material/react"
+import { cn } from "@tw-material/theme"
 import { useToggle } from "usehooks-ts"
 
-const FullScreenIF: FC<{ children: React.ReactNode }> = ({ children }) => {
+const FullScreenIF = ({ children }: { children: React.ReactNode }) => {
   const [fullscreen, toggle] = useToggle(false)
   return (
-    <Box
-      sx={{
-        maxWidth: "70%",
-        width: "100%",
-        margin: "auto",
-        padding: "1rem",
-        position: "relative",
-        height: "90vh",
-      }}
-    >
-      <Box
-        sx={{
-          width: "100%",
-          height: "100%",
-          ...(fullscreen && {
-            position: "fixed",
-            top: 0,
-            left: 0,
-          }),
-        }}
+    <div className="max-w-[70%] w-full mx-auto p-4 relative h-[90vh]">
+      <div
+        className={cn(
+          "size-full",
+          fullscreen ? "fixed inset-0 z-50" : "relative"
+        )}
       >
-        <IconButton
-          sx={{
-            position: "absolute",
-            bottom: "1.2rem",
-            right: "1.2rem",
-            background: "#1F1F1F",
-            zIndex: 102,
-          }}
-          color="inherit"
-          edge="start"
-          onClick={toggle}
+        <Button
+          isIconOnly
+          className="absolute bottom-2 right-5 z-[100]"
+          variant="filled"
+          onPress={toggle}
         >
-          {fullscreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
-        </IconButton>
+          {fullscreen ? (
+            <Icon
+              className="pointer-events-none"
+              icon="ic:round-fullscreen-exit"
+            />
+          ) : (
+            <Icon className="pointer-events-none" icon="ic:round-fullscreen" />
+          )}
+        </Button>
         {children}
-      </Box>
-    </Box>
+      </div>
+    </div>
   )
 }
 

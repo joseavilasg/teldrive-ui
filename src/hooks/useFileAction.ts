@@ -1,5 +1,6 @@
 import { useCallback, useMemo } from "react"
 import { Message, ModalState, QueryParams, SetValue } from "@/types"
+import { useQueryClient } from "@tanstack/react-query"
 import {
   ChonkyActions,
   ChonkyActionUnion,
@@ -8,62 +9,47 @@ import {
   defineFileAction,
   FileHelper,
   MapFileActionsToData,
-} from "@bhunter179/chonky"
-import useMediaQuery from "@mui/material/useMediaQuery"
-import { useQueryClient } from "@tanstack/react-query"
+} from "@tw-material/file-browser"
 
 import { useSession } from "@/hooks/useSession"
-import {
-  getExtension,
-  getMediaUrl,
-  navigateToExternalUrl,
-} from "@/utils/common"
-import { getPreviewType, preview } from "@/utils/getPreviewType"
+import { getMediaUrl, navigateToExternalUrl } from "@/utils/common"
+import { preview } from "@/utils/getPreviewType"
 import http from "@/utils/http"
 import { usePreloadFiles } from "@/utils/queryOptions"
 
 export const CustomActions = (isSm: boolean, type: string) => ({
-  DownloadFile: defineFileAction({
-    id: "download_file",
-    requiresSelection: true,
-    fileFilter: (file) => (file && "isDir" in file ? false : true),
-    button: {
-      name: "Download",
-      contextMenu: true,
-      icon: ChonkyIconName.download,
-    },
-  } as const),
   RenameFile: defineFileAction({
     id: "rename_file",
     requiresSelection: true,
     button: {
       name: "Rename",
       contextMenu: true,
-      icon: ChonkyIconName.rename,
+      toolbar: true,
+      iconOnly: true,
+      icon: "material-symbols:edit-square-outline-rounded",
     },
   } as const),
-  DeleteFile: defineFileAction({
-    id: "delete_file",
+  Preview: defineFileAction({
+    id: "preview",
     requiresSelection: true,
+    fileFilter: (file) => !file?.isDir,
     button: {
-      name: "Delete",
+      name: "Preview",
+      toolbar: true,
+      group: "OpenOptions",
       contextMenu: true,
-      icon: ChonkyIconName.trash,
+      icon: "lets-icons:view-alt-fill",
     },
   } as const),
   OpenInVLCPlayer: defineFileAction({
     id: "open_vlc_player",
     requiresSelection: true,
-    fileFilter: (file) =>
-      file &&
-      getPreviewType(getExtension(file.name)) === "video" &&
-      !("isDir" in file)
-        ? true
-        : false,
+    fileFilter: (file) => file?.previewType === "video",
     button: {
       name: "Open In VLC",
-      contextMenu: true,
-      icon: ChonkyIconName.play,
+      toolbar: true,
+      group: "OpenOptions",
+      icon: "flat-color-icons:vlc",
     },
   } as const),
   CopyDownloadLink: defineFileAction({
@@ -71,53 +57,25 @@ export const CustomActions = (isSm: boolean, type: string) => ({
     requiresSelection: true,
     fileFilter: (file) => (file && "isDir" in file ? false : true),
     button: {
-      name: "Copy Download Link",
+      name: "Copy Link",
       contextMenu: true,
       icon: ChonkyIconName.copy,
     },
   } as const),
-  CreateFolder: defineFileAction({
-    id: "create_folder",
-    button: {
-      name: "Create folder",
-      tooltip: "Create a folder",
-      toolbar: true,
-      group: isSm ? "Actions" : "",
-      icon: ChonkyIconName.folderCreate,
-    },
-    customVisibility: () =>
-      type !== "my-drive"
-        ? CustomVisibilityState.Hidden
-        : CustomVisibilityState.Default,
-  } as const),
-  UploadFiles: defineFileAction({
-    id: "upload_files",
-    button: {
-      name: "Upload files",
-      tooltip: "Upload files",
-      toolbar: true,
-      group: isSm ? "Actions" : "",
-      icon: ChonkyIconName.upload,
-    },
-    customVisibility: () =>
-      type !== "my-drive"
-        ? CustomVisibilityState.Hidden
-        : CustomVisibilityState.Default,
-  } as const),
-  GoToFolder: defineFileAction({
-    id: "go_to_folder",
-    requiresSelection: true,
-    button: {
-      name: "Go to folder",
-      tooltip: "Go to folder",
-      contextMenu: true,
-      icon: ChonkyIconName.folder,
-    },
-    customVisibility: () =>
-      type != "my-drive"
-        ? CustomVisibilityState.Default
-        : CustomVisibilityState.Hidden,
-  } as const),
+  // GoToFolder: defineFileAction({
+  //   id: "go_to_folder",
+  //   requiresSelection: true,
+  //   button: {
+  //     name: "Go to folder",
+  //     tooltip: "Go to folder",
+  //     contextMenu: true,
+  //     icon: ChonkyIconName.folder,
+  //   },
+  //   customVisibility: () =>
+  //     type != "my-drive"
+  //       ? CustomVisibilityState.Default
+  //       : CustomVisibilityState.Hidden,
+  // } as const),
 })
 
 type ChonkyActionFullUnion =
@@ -132,7 +90,7 @@ export const useFileAction = (
 ) => {
   const queryClient = useQueryClient()
 
-  const isSm = useMediaQuery("(max-width:600px)")
+  const isSm = false
 
   const preloadFiles = usePreloadFiles()
 
@@ -172,7 +130,7 @@ export const useFileAction = (
           preloadFiles(data.state.selectedFiles[0].location, "my-drive")
           break
         }
-        case fileActions.DownloadFile.id: {
+        case ChonkyActions.DownloadFiles.id: {
           const { selectedFiles } = data.state
           for (const file of selectedFiles) {
             if (!FileHelper.isDirectory(file)) {
@@ -199,11 +157,11 @@ export const useFileAction = (
           })
           break
         }
-        case fileActions.DeleteFile.id: {
+        case ChonkyActions.DeleteFiles.id: {
           setModalState({
             open: true,
             selectedFiles: data.state.selectedFiles.map((item) => item.id),
-            operation: fileActions.DeleteFile.id,
+            operation: ChonkyActions.DeleteFiles.id,
           })
           break
         }
@@ -236,16 +194,17 @@ export const useFileAction = (
           break
         }
         case ChonkyActions.MoveFiles.id: {
-          const { files, destination } = data.payload
-          let res = await http.post<Message>("/api/files/move", {
-            files: files.map((file) => file.id),
-            destination: destination.path || "/",
-          })
-          if (res.status === 200) {
-            queryClient.invalidateQueries({
-              queryKey: ["files"],
-            })
-          }
+          const { files, target } = data.payload
+          console.log(data.payload)
+          // let res = await http.post<Message>("/api/files/move", {
+          //   files: files.map((file) => file?.id),
+          //   destination: target.path || "/",
+          // })
+          // if (res.status === 200) {
+          //   queryClient.invalidateQueries({
+          //     queryKey: ["files"],
+          //   })
+          // }
           break
         }
         case ChonkyActions.EnableGridView.id: {

@@ -1,49 +1,38 @@
-import { FC, memo, useState } from "react"
-import { Box, CircularProgress } from "@mui/material"
+import { memo, useState } from "react"
+import { Icon } from "@iconify/react"
+import { cn } from "@tw-material/theme"
 
-const ImagePreview: FC<{ name: string; mediaUrl: string }> = ({
-  name,
-  mediaUrl,
-}) => {
+interface ImagePreviewProps {
+  name: string
+  assetUrl: string
+}
+
+const ImagePreview = ({ name, assetUrl }: ImagePreviewProps) => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
+
   const handleImageOnLoad = () => {
     setIsLoaded(true)
   }
 
   return (
-    <Box
-      sx={{
-        maxWidth: "64rem",
-        maxHeight: "calc(100vh - 4rem)",
-        margin: "auto",
-        padding: "1rem",
-        position: "relative",
-      }}
-    >
+    <div className="max-w-[64rem] max-h-[calc(100vh-4rem)] m-auto p-4 relative">
       {!isLoaded && (
-        <CircularProgress
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
+        <Icon
+          className=" size-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          icon="svg-spinners:tadpole"
         />
       )}
-      <Box
+
+      <img
         onLoad={handleImageOnLoad}
-        component={"img"}
-        src={mediaUrl}
+        className={cn(
+          "max-w-full opacity-0 transition-opacity duration-300 ease-in-out",
+          isLoaded && "opacity-100"
+        )}
+        src={assetUrl}
         alt={name}
-        sx={{
-          maxWidth: "100%",
-          maxHeight: "100%",
-          opacity: isLoaded ? 1 : 0,
-          transition: "opacity 300ms ease",
-          objectFit: "contain",
-        }}
       />
-    </Box>
+    </div>
   )
 }
 

@@ -1,14 +1,15 @@
-import { FC, memo } from "react"
+import { memo } from "react"
+import Editor from "@monaco-editor/react"
+
 import useFileContent from "@/hooks/useFileContent"
 import { getLanguageByFileName } from "@/utils/getPreviewType"
-import Editor from "@monaco-editor/react"
-import { Box } from "@mui/material"
 
-const CodePreview: FC<{ name: string; mediaUrl: string }> = ({
-  name,
-  mediaUrl,
-}) => {
-  const { response: content, error, validating } = useFileContent(mediaUrl)
+interface CodePreviewProps {
+  name: string
+  assetUrl: string
+}
+const CodePreview = ({ name, assetUrl }: CodePreviewProps) => {
+  const { response: content, error, validating } = useFileContent(assetUrl)
 
   return (
     <>
