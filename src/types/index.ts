@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react"
-import { FileData, SortOrder } from "@bhunter179/chonky"
+import type { FileData, SortOrder } from "@tw-material/file-browser"
 
 export type FileResponse = { results: SingleFile[]; nextPageToken?: string }
 

@@ -1,4 +1,5 @@
 import { Tags } from "@/types"
+import type { FileData } from "@tw-material/file-browser"
 import { create } from "zustand"
 
 import parseAudioMetadata from "./tagparser"
@@ -21,8 +22,6 @@ const defaultState = {
   },
 }
 
-type AudioMetadata = typeof defaultState.metadata
-
 type PlayerState = typeof defaultState & {
   actions: {
     seek: (value: number) => void
@@ -34,7 +33,6 @@ type PlayerState = typeof defaultState & {
     setEnded: () => void
     setAudioRef: (ref: AudioRef) => void
     loadAudio: (url: string, name: string) => void
-    setMetadata: (metadata: AudioMetadata) => void
   }
 }
 
@@ -61,7 +59,6 @@ export const useAudioStore = create<PlayerState>((set, get) => ({
         set({ ...state, isPlaying: true, isEnded: false, metadata })
       }
     },
-    setMetadata: (metadata) => set((state) => ({ ...state, metadata })),
     seek: (value) =>
       set((state) => {
         const audio = state.audio
@@ -109,9 +106,44 @@ export const useAudioStore = create<PlayerState>((set, get) => ({
         return state
       }),
     setDuration: (value) => set((state) => ({ ...state, duration: value })),
-    setEnded: () => set((state) => ({ ...state, ended: true })),
+    setEnded: () => set((state) => ({ ...state, isEnded: true })),
     setAudioRef: (ref: AudioRef) => set({ audio: ref }),
   },
 }))
 
 export const audioActions = (state: PlayerState) => state.actions
+
+type ModalState = {
+  open: boolean
+  operation: string
+  type: string
+  currentFile: FileData
+  selectedFiles?: string[]
+  name?: string
+  actions: {
+    setOperation: (operation: string) => void
+    setOpen: (open: boolean) => void
+    setCurrentFile: (currentFile: FileData) => void
+    setSelectedFiles: (selectedFiles: string[]) => void
+    set: (payload: Partial<ModalState>) => void
+  }
+}
+
+export const useModalStore = create<ModalState>((set) => ({
+  open: false,
+  operation: "",
+  type: "",
+  selectedFiles: [],
+  name: "",
+  currentFile: {} as FileData,
+  actions: {
+    setOperation: (operation: string) =>
+      set((state) => ({ ...state, operation })),
+    setOpen: (open: boolean) => set((state) => ({ ...state, open })),
+    setCurrentFile: (currentFile: FileData) =>
+      set((state) => ({ ...state, currentFile })),
+    setSelectedFiles: (selectedFiles: string[]) =>
+      set((state) => ({ ...state, selectedFiles })),
+    set: (payload) => set((state) => ({ ...state, ...payload })),
+  },
+}))

@@ -18,7 +18,7 @@ const ImagePreview = ({ name, assetUrl }: ImagePreviewProps) => {
     <div className="max-w-[64rem] max-h-[calc(100vh-4rem)] m-auto p-4 relative">
       {!isLoaded && (
         <Icon
-          className=" size-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          className="size-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
           icon="svg-spinners:tadpole"
         />
       )}

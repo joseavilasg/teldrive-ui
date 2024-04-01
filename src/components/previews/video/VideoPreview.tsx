@@ -8,15 +8,15 @@ import Player from "./ArtPlayer"
 const aspectRatioes = ["default", "4:3", "16:9"]
 
 interface VideoPlayerProps {
-  videoName: string
-  videoUrl: string
+  name: string
+  assetUrl: string
 }
-const VideoPlayer = ({ videoName, videoUrl }: VideoPlayerProps) => {
+const VideoPlayer = ({ name, assetUrl }: VideoPlayerProps) => {
   const artInstance = useRef<Artplayer | null>(null)
 
   const artOptions: ArtOption = {
     container: "",
-    title: videoName,
+    title: name,
     volume: 0.6,
     muted: false,
     autoplay: true,
@@ -49,9 +49,9 @@ const VideoPlayer = ({ videoName, videoUrl }: VideoPlayerProps) => {
   }
 
   useEffect(() => {
-    if (artInstance.current && videoUrl) {
-      artInstance.current.switchUrl(videoUrl)
-      artInstance.current.title = videoName
+    if (artInstance.current && assetUrl) {
+      artInstance.current.switchUrl(assetUrl)
+      artInstance.current.title = name
     }
     return () => {
       if (artInstance.current) {
@@ -60,7 +60,7 @@ const VideoPlayer = ({ videoName, videoUrl }: VideoPlayerProps) => {
         artInstance.current.video.load()
       }
     }
-  }, [videoName, videoUrl])
+  }, [name, assetUrl])
 
   return (
     <Player
@@ -79,11 +79,4 @@ const VideoPlayer = ({ videoName, videoUrl }: VideoPlayerProps) => {
   )
 }
 
-interface VideoPreviewProps {
-  name: string
-  assetUrl: string
-}
-const VideoPreview = ({ name, assetUrl }: VideoPreviewProps) => {
-  return <VideoPlayer videoName={name} videoUrl={assetUrl} />
-}
-export default memo(VideoPreview)
+export default memo(VideoPlayer)

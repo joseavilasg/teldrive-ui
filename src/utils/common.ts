@@ -3,21 +3,6 @@ import { BrowseView } from "@/types"
 export const navigateToExternalUrl = (url: string, shouldOpenNewTab = true) =>
   shouldOpenNewTab ? window.open(url, "_blank") : (window.location.href = url)
 
-export const isMobileDevice = () => {
-  const toMatch = [
-    /Android/i,
-    /webOS/i,
-    /iPhone/i,
-    /iPad/i,
-    /iPod/i,
-    /BlackBerry/i,
-    /Windows Phone/i,
-  ]
-  return toMatch.some(function (toMatchItem) {
-    return navigator.userAgent.match(toMatchItem)
-  })
-}
-
 export const chainLinks = (path: string) => {
   const paths = path?.split("/").slice(1)
   const obj: Record<string, string> = {}

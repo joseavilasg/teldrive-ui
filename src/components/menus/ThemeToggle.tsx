@@ -17,7 +17,6 @@ export function ThemeToggle() {
       classNames={{
         content: "min-w-36",
       }}
-      showArrow
     >
       <DropdownTrigger>
         <Button className="text-inherit" variant="text" isIconOnly>
@@ -32,10 +31,23 @@ export function ThemeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownTrigger>
-      <DropdownMenu>
-        <DropdownItem onPress={() => setTheme("light")}>Light</DropdownItem>
-        <DropdownItem onPress={() => setTheme("dark")}>Dark</DropdownItem>
-        <DropdownItem onPress={() => setTheme("system")}>System</DropdownItem>
+      <DropdownMenu
+        className="bg-surface-container-low"
+        itemClasses={{
+          title: "text-medium",
+          startIcon: "text-on-surface",
+          endIcon: "text-on-surface",
+        }}
+      >
+        <DropdownItem key="light" onPress={() => setTheme("light")}>
+          Light
+        </DropdownItem>
+        <DropdownItem key="dark" onPress={() => setTheme("dark")}>
+          Dark
+        </DropdownItem>
+        <DropdownItem key="system" onPress={() => setTheme("system")}>
+          System
+        </DropdownItem>
       </DropdownMenu>
     </Dropdown>
   )

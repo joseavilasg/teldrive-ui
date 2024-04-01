@@ -29,9 +29,6 @@ export default {
           '"Noto Color Emoji"',
         ],
       },
-      screens: {
-        xs: "475px",
-      },
     },
     container: {
       center: true,

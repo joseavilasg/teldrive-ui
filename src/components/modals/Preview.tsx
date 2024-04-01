@@ -1,6 +1,6 @@
-import { lazy, memo, Suspense, useCallback, useState } from "react"
-import type { ModalState, SetValue } from "@/types"
+import { lazy, memo, Suspense, useCallback } from "react"
 import { Icon } from "@iconify/react"
+import { useQuery } from "@tanstack/react-query"
 import {
   ChonkyIcon,
   ColorsLight,
@@ -9,16 +9,16 @@ import {
 } from "@tw-material/file-browser"
 import { Box, Button, cn, Modal, ModalContent } from "@tw-material/react"
 
-import { useSession } from "@/hooks/useSession"
 import Loader from "@/components/Loader"
 import AudioPreview from "@/components/previews/audio/AudioPreview"
-//import AudioPreview from "@/components/previews/audio/AudioPreview"
 import DocPreview from "@/components/previews/DocPreview"
 import FullScreenIFrame from "@/components/previews/FullScreenIFrame"
 import ImagePreview from "@/components/previews/ImagePreview"
 import PDFPreview from "@/components/previews/PdfPreview"
 import { getMediaUrl } from "@/utils/common"
 import { preview } from "@/utils/getPreviewType"
+import { sessionQueryOptions } from "@/utils/queryOptions"
+import { useModalStore } from "@/utils/store"
 
 const VideoPreview = lazy(
   () => import("@/components/previews/video/VideoPreview")
@@ -28,11 +28,6 @@ const CodePreview = lazy(() => import("@/components/previews/CodePreview"))
 
 const EpubPreview = lazy(() => import("@/components/previews/EpubPreview"))
 
-type PreviewModalProps = {
-  files: FileData[]
-  modalState: Partial<ModalState>
-  setModalState: SetValue<ModalState>
-}
 const findNext = (files: FileData[], fileId: string, previewType: string) => {
   let index = -1,
     firstPreviewIndex = -1
@@ -57,6 +52,7 @@ const findNext = (files: FileData[], fileId: string, previewType: string) => {
       return files[firstPreviewIndex]
     }
   }
+  return 0
 }
 
 const findPrev = (files: FileData[], fileId: string, previewType: string) => {
@@ -81,6 +77,7 @@ const findPrev = (files: FileData[], fileId: string, previewType: string) => {
       return files[lastPreviewIndex]
     }
   }
+  return 0
 }
 
 interface ControlButtonProps {
@@ -114,16 +111,16 @@ const ControlButton = ({ type, onPress }: ControlButtonProps) => {
   )
 }
 
-export default memo(function PreviewModal({
-  files,
-  modalState,
-  setModalState,
-}: PreviewModalProps) {
-  const { data: session } = useSession()
+export default memo(function PreviewModal({ files }: { files: FileData[] }) {
+  const { data: session } = useQuery(sessionQueryOptions)
 
-  const [previewFile, setPreviewFile] = useState(modalState.currentFile!)
+  const modalActions = useModalStore((state) => state.actions)
 
-  const { id, name, previewType, starred } = previewFile
+  const previewFile = useModalStore((state) => state.currentFile)
+
+  const modalOpen = useModalStore((state) => state.open)
+
+  const { id, name, previewType } = previewFile
 
   const { icon, colorCode } = useIconData({ id, name, isDir: false })
 
@@ -131,7 +128,7 @@ export default memo(function PreviewModal({
     (previewType = "all") => {
       if (files) {
         const nextItem = findNext(files, id, previewType)
-        if (nextItem) setPreviewFile(nextItem)
+        if (nextItem) modalActions.setCurrentFile(nextItem)
       }
     },
     [id, files]
@@ -141,15 +138,13 @@ export default memo(function PreviewModal({
     (previewType = "all") => {
       if (files) {
         const prevItem = findPrev(files, id, previewType)
-        if (prevItem) setPreviewFile(prevItem)
+        if (prevItem) modalActions.setCurrentFile(prevItem)
       }
     },
     [id, files]
   )
 
-  const handleClose = useCallback(() => {
-    setModalState((prev) => ({ ...prev, open: false }))
-  }, [])
+  const handleClose = useCallback(() => modalActions.setOpen(false), [])
 
   const assetUrl = getMediaUrl(id, name, session?.hash!)
 
@@ -218,7 +213,7 @@ export default memo(function PreviewModal({
   return (
     <Modal
       aria-labelledby="preview-modal"
-      isOpen={modalState.open as boolean}
+      isOpen={modalOpen}
       size="5xl"
       classNames={{
         wrapper: "overflow-hidden",
@@ -253,10 +248,9 @@ export default memo(function PreviewModal({
                 </h6>
               </div>
             </div>
-
             <ControlButton type="prev" onPress={() => prevItem()} />
             <ControlButton type="next" onPress={() => nextItem()} />
-            {renderPreview()}
+            <div className="px-8 size-full">{renderPreview()}</div>
           </>
         )}
       </ModalContent>

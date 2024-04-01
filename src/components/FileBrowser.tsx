@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { ModalState } from "@/types"
-import { useSuspenseInfiniteQuery } from "@tanstack/react-query"
+import { useCallback, useEffect, useMemo, useRef } from "react"
+import { useQuery, useSuspenseInfiniteQuery } from "@tanstack/react-query"
 import { getRouteApi } from "@tanstack/react-router"
 import {
   ChonkyActions,
@@ -16,21 +15,18 @@ import type {
   VirtuosoGridHandle,
   VirtuosoHandle,
 } from "react-virtuoso"
-import { useBoolean } from "usehooks-ts"
+import useBreakpoint from "use-breakpoint"
+import { useLocalStorage } from "usehooks-ts"
 
-import { useFileAction } from "@/hooks/useFileAction"
-import { useSession } from "@/hooks/useSession"
+import { fileActions, useFileAction } from "@/hooks/useFileAction"
 import useSettings from "@/hooks/useSettings"
 import { defaultSortState } from "@/hooks/useSortFilter"
 import { chainLinks, getMediaUrl } from "@/utils/common"
-import { filesQueryOptions } from "@/utils/queryOptions"
+import { filesQueryOptions, sessionQueryOptions } from "@/utils/queryOptions"
+import { useModalStore } from "@/utils/store"
 
-// import DeleteDialog from "./dialogs/Delete"
-// import ErrorView from "./ErrorView"
-// import FileModal from "./modals/FileOperation"
+import { FileOperationModal } from "./modals/FileOperation"
 import PreviewModal from "./modals/Preview"
-
-// import Upload from "./Uploader"
 
 const fileActionGroups = {
   OpenOptions: {
@@ -60,26 +56,32 @@ const viewMap = {
 
 const fileRoute = getRouteApi("/_authenticated/$")
 
+const BREAKPOINTS = { xs: 0, sm: 476, md: 576, lg: 992 }
+
+const modalFileActions = [
+  ChonkyActions.RenameFile.id,
+  ChonkyActions.CreateFolder.id,
+  ChonkyActions.DeleteFiles.id,
+]
+
 export const DriveFileBrowser = () => {
   const positions = useRef<Map<string, StateSnapshot>>(new Map()).current
 
   const { queryParams: params } = fileRoute.useRouteContext()
 
-  const {
-    value: upload,
-    setTrue: showUpload,
-    setFalse: hideUpload,
-  } = useBoolean(false)
-
-  const {
-    value: fileDialogOpened,
-    setTrue: openFileDialog,
-    setFalse: closeFileDialog,
-  } = useBoolean(false)
-
   const listRef = useRef<VirtuosoHandle | VirtuosoGridHandle>(null)
 
   const queryOptions = filesQueryOptions(params)
+
+  const [view, setView] = useLocalStorage("view", "list")
+
+  const viewRef = useRef(viewMap[view] ?? ChonkyActions.EnableListView.id)
+
+  const modalOpen = useModalStore((state) => state.open)
+
+  const modalOperation = useModalStore((state) => state.operation)
+
+  const { breakpoint } = useBreakpoint(BREAKPOINTS)
 
   const {
     data: files,
@@ -89,6 +91,8 @@ export const DriveFileBrowser = () => {
     isFetchingNextPage,
     isLoading,
   } = useSuspenseInfiniteQuery(queryOptions)
+
+  const { chonkyActionHandler } = useFileAction(params, setView)
 
   const folderChain = useMemo(() => {
     if (params.type === "my-drive") {
@@ -100,20 +104,9 @@ export const DriveFileBrowser = () => {
         chain: true,
       }))
     }
+
+    return []
   }, [params.path, params.type])
-
-  const [modalState, setModalState] = useState<ModalState>({
-    open: false,
-  })
-
-  const { fileActions, chonkyActionHandler } = useFileAction(
-    params,
-    setModalState,
-    showUpload,
-    openFileDialog
-  )
-
-  const { open } = modalState
 
   useEffect(() => {
     if (firstRender) {
@@ -136,15 +129,9 @@ export const DriveFileBrowser = () => {
     }
   }, [params.path, params.type])
 
-  // if (error) {
-  //   return <ErrorView error={error as Error} />
-  // }
-
-  const defaultView = "list"
-
   const { settings } = useSettings()
 
-  const { data: session } = useSession()
+  const { data: session } = useQuery(sessionQueryOptions)
 
   const thumbnailGenerator = useCallback(
     (file: FileData) => {
@@ -156,16 +143,10 @@ export const DriveFileBrowser = () => {
           ? `${settings.resizerHost}/${url.host}${url.pathname}${url.search}`
           : mediaUrl
       }
+
+      return undefined
     },
     [settings.resizerHost]
-  )
-
-  const actions = useMemo(
-    () =>
-      Object.keys(fileActions).map(
-        (x) => fileActions[x as keyof typeof fileActions]
-      ),
-    [params.path, params.type]
   )
 
   return (
@@ -174,15 +155,16 @@ export const DriveFileBrowser = () => {
         files={files}
         folderChain={folderChain}
         onFileAction={chonkyActionHandler()}
-        fileActions={actions}
+        fileActions={fileActions}
         fileActionGroups={fileActionGroups}
-        defaultFileViewActionId={viewMap[defaultView as "list" | "grid"]}
+        defaultFileViewActionId={viewRef.current}
         defaultSortActionId={sortMap[defaultSortState[params.type].sort]}
         defaultSortOrder={defaultSortState[params.type].order}
         thumbnailGenerator={thumbnailGenerator}
+        breakpoint={breakpoint}
       >
-        <FileNavbar />
-        <FileToolbar />
+        {params.type === "my-drive" && <FileNavbar breakpoint={breakpoint} />}
+        <FileToolbar className={params.type !== "my-drive" ? "pt-2" : ""} />
         <FileList
           hasNextPage={hasNextPage}
           isNextPageLoading={isFetchingNextPage}
@@ -191,38 +173,14 @@ export const DriveFileBrowser = () => {
         />
         <FileContextMenu />
       </FileBrowser>
-      {/* {["rename_file", ChonkyActions.CreateFolder.id].find(
-        (val) => val === modalState.operation
-      ) &&
-        open && (
-          <FileModal
-            queryKey={queryOptions.queryKey}
-            modalState={modalState}
-            setModalState={setModalState}
-          />
-        )} */}
-      {modalState.operation === ChonkyActions.OpenFiles.id && open && (
-        <PreviewModal
-          files={files!}
-          modalState={modalState}
-          setModalState={setModalState}
-        />
+
+      {modalFileActions.find((val) => val === modalOperation) && modalOpen && (
+        <FileOperationModal queryKey={queryOptions.queryKey} />
       )}
-      {/* {modalState.operation === "delete_file" && open && (
-        <DeleteDialog
-          queryKey={queryOptions.queryKey}
-          modalState={modalState}
-          setModalState={setModalState}
-        />
+
+      {modalOperation === ChonkyActions.OpenFiles.id && modalOpen && (
+        <PreviewModal files={files!} />
       )}
-      {upload && (
-        <Upload
-          queryKey={queryOptions.queryKey}
-          fileDialogOpened={fileDialogOpened}
-          closeFileDialog={closeFileDialog}
-          hideUpload={hideUpload}
-        />
-      )} */}
     </div>
   )
 }

@@ -1,34 +1,22 @@
-import { useCallback, useMemo } from "react"
-import { Message, ModalState, QueryParams, SetValue } from "@/types"
-import { useQueryClient } from "@tanstack/react-query"
+import { useCallback } from "react"
+import type { QueryParams, SetValue } from "@/types"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 import {
   ChonkyActions,
   ChonkyActionUnion,
   ChonkyIconName,
-  CustomVisibilityState,
   defineFileAction,
   FileHelper,
   MapFileActionsToData,
+  type FileData,
 } from "@tw-material/file-browser"
 
-import { useSession } from "@/hooks/useSession"
 import { getMediaUrl, navigateToExternalUrl } from "@/utils/common"
-import { preview } from "@/utils/getPreviewType"
 import http from "@/utils/http"
-import { usePreloadFiles } from "@/utils/queryOptions"
+import { sessionQueryOptions, usePreloadFiles } from "@/utils/queryOptions"
+import { useModalStore } from "@/utils/store"
 
-export const CustomActions = (isSm: boolean, type: string) => ({
-  RenameFile: defineFileAction({
-    id: "rename_file",
-    requiresSelection: true,
-    button: {
-      name: "Rename",
-      contextMenu: true,
-      toolbar: true,
-      iconOnly: true,
-      icon: "material-symbols:edit-square-outline-rounded",
-    },
-  } as const),
+const CustomActions = {
   Preview: defineFileAction({
     id: "preview",
     requiresSelection: true,
@@ -62,46 +50,23 @@ export const CustomActions = (isSm: boolean, type: string) => ({
       icon: ChonkyIconName.copy,
     },
   } as const),
-  // GoToFolder: defineFileAction({
-  //   id: "go_to_folder",
-  //   requiresSelection: true,
-  //   button: {
-  //     name: "Go to folder",
-  //     tooltip: "Go to folder",
-  //     contextMenu: true,
-  //     icon: ChonkyIconName.folder,
-  //   },
-  //   customVisibility: () =>
-  //     type != "my-drive"
-  //       ? CustomVisibilityState.Default
-  //       : CustomVisibilityState.Hidden,
-  // } as const),
-})
+}
 
 type ChonkyActionFullUnion =
-  | ReturnType<typeof CustomActions>[keyof ReturnType<typeof CustomActions>]
+  | (typeof CustomActions)[keyof typeof CustomActions]
   | ChonkyActionUnion
 
 export const useFileAction = (
   params: QueryParams,
-  setModalState: SetValue<ModalState>,
-  openUpload: () => void,
-  openFileDialog: () => void
+  setView: SetValue<string>
 ) => {
   const queryClient = useQueryClient()
 
-  const isSm = false
-
   const preloadFiles = usePreloadFiles()
 
-  const { data: session } = useSession()
+  const { data: session } = useQuery(sessionQueryOptions)
 
-  const { type } = params
-
-  const fileActions = useMemo(
-    () => CustomActions(isSm, params.type),
-    [isSm, type]
-  )
+  const actions = useModalStore((state) => state.actions)
 
   const chonkyActionHandler = useCallback(() => {
     return async (data: MapFileActionsToData<ChonkyActionFullUnion>) => {
@@ -113,21 +78,14 @@ export const useFileAction = (
 
           if (fileToOpen && FileHelper.isDirectory(fileToOpen)) {
             preloadFiles(fileToOpen.path, "my-drive")
+          } else if (fileToOpen && FileHelper.isOpenable(fileToOpen)) {
+            actions.set({
+              open: true,
+              currentFile: fileToOpen,
+              operation: ChonkyActions.OpenFiles.id,
+            })
           }
-          if (fileToOpen && fileToOpen.type === "file") {
-            const previewType = fileToOpen.previewType as string
-            if (!FileHelper.isDirectory(fileToOpen) && previewType in preview) {
-              setModalState({
-                open: true,
-                currentFile: fileToOpen,
-                operation: ChonkyActions.OpenFiles.id,
-              })
-            }
-          }
-          break
-        }
-        case fileActions.GoToFolder.id: {
-          preloadFiles(data.state.selectedFiles[0].location, "my-drive")
+
           break
         }
         case ChonkyActions.DownloadFiles.id: {
@@ -141,7 +99,7 @@ export const useFileAction = (
           }
           break
         }
-        case fileActions.OpenInVLCPlayer.id: {
+        case CustomActions.OpenInVLCPlayer.id: {
           const { selectedFiles } = data.state
           const fileToOpen = selectedFiles[0]
           const { id, name } = fileToOpen
@@ -149,16 +107,16 @@ export const useFileAction = (
           navigateToExternalUrl(url, false)
           break
         }
-        case fileActions.RenameFile.id: {
-          setModalState({
+        case ChonkyActions.RenameFile.id: {
+          actions.set({
             open: true,
             currentFile: data.state.selectedFiles[0],
-            operation: fileActions.RenameFile.id,
+            operation: ChonkyActions.RenameFile.id,
           })
           break
         }
         case ChonkyActions.DeleteFiles.id: {
-          setModalState({
+          actions.set({
             open: true,
             selectedFiles: data.state.selectedFiles.map((item) => item.id),
             operation: ChonkyActions.DeleteFiles.id,
@@ -166,18 +124,14 @@ export const useFileAction = (
           break
         }
         case ChonkyActions.CreateFolder.id: {
-          setModalState({
+          actions.set({
             open: true,
             operation: ChonkyActions.CreateFolder.id,
+            currentFile: {} as FileData,
           })
           break
         }
-        case ChonkyActions.UploadFiles.id: {
-          openUpload()
-          openFileDialog()
-          break
-        }
-        case fileActions.CopyDownloadLink.id: {
+        case CustomActions.CopyDownloadLink.id: {
           const selections = data.state.selectedFilesForAction
           let clipboardText = ""
           selections.forEach((element) => {
@@ -195,32 +149,33 @@ export const useFileAction = (
         }
         case ChonkyActions.MoveFiles.id: {
           const { files, target } = data.payload
-          console.log(data.payload)
-          // let res = await http.post<Message>("/api/files/move", {
-          //   files: files.map((file) => file?.id),
-          //   destination: target.path || "/",
-          // })
-          // if (res.status === 200) {
-          //   queryClient.invalidateQueries({
-          //     queryKey: ["files"],
-          //   })
-          // }
-          break
-        }
-        case ChonkyActions.EnableGridView.id: {
-          localStorage.setItem("view", "grid")
+          const res = await http.post("/api/files/move", {
+            files: files.map((file) => file?.id),
+            destination: target.path || "/",
+          })
+          if (res.status === 200) {
+            queryClient.invalidateQueries({
+              queryKey: ["files"],
+            })
+          }
           break
         }
 
-        case ChonkyActions.EnableListView.id: {
-          localStorage.setItem("view", "list")
+        case ChonkyActions.EnableListView.id:
+        case ChonkyActions.EnableGridView.id:
+        case ChonkyActions.EnableTileView.id: {
+          setView(data.id.split("_")[1])
           break
         }
         default:
           break
       }
     }
-  }, [type])
+  }, [params.type])
 
-  return { fileActions, chonkyActionHandler }
+  return { chonkyActionHandler }
 }
+
+export const fileActions = Object.keys(CustomActions).map(
+  (t) => CustomActions[t as keyof typeof CustomActions]
+)

@@ -27,7 +27,8 @@ export const SideNav = () => {
             className={cn(
               "h-8 w-full max-w-14 rounded-3xl px-0 mx-auto",
               "text-on-surface-variant",
-              "data-[status=active]:bg-secondary-container data-[status=active]:text-on-secondary-container"
+              "data-[status=active]:bg-secondary-container data-[status=active]:text-on-secondary-container",
+              "[&>svg]:data-[status=active]:scale-110 [&>svg]:transition-transform"
             )}
           >
             <Icon

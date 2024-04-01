@@ -7,7 +7,6 @@ import {
   Session,
   SingleFile,
 } from "@/types"
-import type { FileData } from "@bhunter179/chonky"
 import {
   InfiniteData,
   infiniteQueryOptions,
@@ -16,12 +15,13 @@ import {
   useQueryClient,
 } from "@tanstack/react-query"
 import { NavigateOptions, useRouter } from "@tanstack/react-router"
+import type { FileData } from "@tw-material/file-browser"
 
 import { defaultSortState } from "@/hooks/useSortFilter"
 import { useProgress } from "@/components/TopProgress"
 
 import { getExtension } from "./common"
-import { getPreviewType } from "./getPreviewType"
+import { getPreviewType, preview } from "./getPreviewType"
 import http from "./http"
 
 const mapFilesToChonky = (files: SingleFile[]): FileData[] => {
@@ -39,6 +39,9 @@ const mapFilesToChonky = (files: SingleFile[]): FileData[] => {
         isDir: true,
       }
 
+    const previewType = getPreviewType(getExtension(item.name), {
+      video: item.mimeType.includes("video"),
+    })
     return {
       id: item.id,
       name: item.name,
@@ -46,9 +49,8 @@ const mapFilesToChonky = (files: SingleFile[]): FileData[] => {
       mimeType: item.mimeType,
       location: item.parentPath,
       size: item.size ? Number(item.size) : 0,
-      previewType: getPreviewType(getExtension(item.name), {
-        video: item.mimeType.includes("video"),
-      }),
+      previewType,
+      openable: preview[previewType!] ? true : false,
       starred: item.starred,
       modDate: item.updatedAt,
     }
@@ -114,7 +116,7 @@ export const usePreloadFiles = () => {
 
 async function fetchSession() {
   const res = await http.get<Session>("/api/auth/session")
-  const contentType = res.headers["content-type"]
+  const contentType = res.headers.get("content-type")
   if (contentType && contentType.includes("application/json")) {
     return res.data
   } else {

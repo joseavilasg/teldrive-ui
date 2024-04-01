@@ -1,4 +1,6 @@
+import { signOut } from "@hono/auth-js/react"
 import { Icon } from "@iconify/react"
+import { useQuery } from "@tanstack/react-query"
 import {
   Avatar,
   Dropdown,
@@ -7,10 +9,10 @@ import {
   DropdownTrigger,
 } from "@tw-material/react"
 
-import { useSession } from "@/hooks/useSession"
+import { sessionQueryOptions } from "@/utils/queryOptions"
 
-export function ProfileSettings() {
-  const { data: session } = useSession()
+export function ProfileDropDown() {
+  const { data: session } = useQuery(sessionQueryOptions)
   return (
     <Dropdown
       classNames={{
@@ -25,29 +27,28 @@ export function ProfileSettings() {
           src={`/api/users/profile?photo=1&hash=${session?.hash}`}
         />
       </DropdownTrigger>
-      <DropdownMenu>
+      <DropdownMenu
+        className="bg-surface-container-low"
+        itemClasses={{
+          base: "bg-surface-container-low",
+          title: "text-medium",
+          startIcon: "text-on-surface",
+          endIcon: "text-on-surface",
+        }}
+      >
         <DropdownItem key="profile" className="pointer-events-none">
           <p className="font-semibold">{session?.userName}</p>
         </DropdownItem>
         <DropdownItem
           key="settings"
-          endContent={
-            <Icon
-              className="size-6 pointer-events-none"
-              icon="ic:outline-settings"
-            />
-          }
+          endIcon={<Icon className="size-6" icon="ic:outline-settings" />}
         >
           Settings
         </DropdownItem>
         <DropdownItem
           key="logout"
-          endContent={
-            <Icon
-              className="size-6 pointer-events-none"
-              icon="ic:baseline-logout"
-            />
-          }
+          endIcon={<Icon className="size-6" icon="ic:baseline-logout" />}
+          onPress={() => signOut({ callbackUrl: "/login" })}
         >
           Logout
         </DropdownItem>

@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useRef, useState } from "react"
-import { Icon } from "@iconify/react/dist/iconify.js"
+import { Icon } from "@iconify/react"
 import { Button, Slider } from "@tw-material/react"
 import { useEventListener, useInterval } from "usehooks-ts"
 import { useShallow } from "zustand/react/shallow"
@@ -255,7 +255,7 @@ export const AudioPlayer = memo(({ nextItem, prevItem }: PlayerProps) => {
       className="flex flex-col relative overflow-hidden height-auto outline-none 
       bg-surface max-w-80 md:max-w-[39rem] rounded-large p-3 m-auto"
     >
-      <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 justify-center">
+      <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 justify-center text-xs text-on-surface">
         <AudioCover />
         <div className="flex flex-col col-span-6 md:col-span-7">
           <AudioInfo />
