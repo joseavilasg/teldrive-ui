@@ -1,5 +1,4 @@
 import { memo, useEffect, useState } from "react"
-import { Icon } from "@iconify/react"
 import {
   Button,
   Popover,
@@ -7,6 +6,7 @@ import {
   PopoverTrigger,
 } from "@tw-material/react"
 import { genThemeConfig } from "@tw-material/theme/config"
+import IconIcOutlineColorLens from "~icons/ic/outline-color-lens"
 import { HexColorPicker } from "react-colorful"
 
 import { useIsFirstRender } from "@/hooks/useFirstRender"
@@ -49,10 +49,7 @@ export const ColorPicker = memo(() => {
     <Popover>
       <PopoverTrigger>
         <Button className="text-inherit" variant="text" isIconOnly>
-          <Icon
-            icon="ic:outline-color-lens"
-            className="pointer-events-none size-6"
-          />
+          <IconIcOutlineColorLens className="pointer-events-none size-6" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="flex flex-col gap-2 p-2.5">

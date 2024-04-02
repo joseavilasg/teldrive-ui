@@ -1,6 +1,5 @@
 import { lazy, memo, Suspense, useCallback } from "react"
 import provider from "@/providers"
-import { Icon } from "@iconify/react"
 import { useQuery } from "@tanstack/react-query"
 import {
   ChonkyIcon,
@@ -9,6 +8,9 @@ import {
   useIconData,
 } from "@tw-material/file-browser"
 import { Box, Button, cn, Modal, ModalContent } from "@tw-material/react"
+import IconIcRoundArrowBack from "~icons/ic/round-arrow-back"
+import IconIcRoundNavigateBefore from "~icons/ic/round-navigate-before"
+import IconIcRoundNavigateNext from "~icons/ic/round-navigate-next"
 
 import Loader from "@/components/Loader"
 import AudioPreview from "@/components/previews/audio/AudioPreview"
@@ -99,13 +101,11 @@ const ControlButton = ({ type, onPress }: ControlButtonProps) => {
         variant="text"
         onPress={onPress}
       >
-        <Icon
-          icon={
-            type === "next"
-              ? "ic:round-navigate-next"
-              : "ic:round-navigate-before"
-          }
-        />
+        {type === "next" ? (
+          <IconIcRoundNavigateNext />
+        ) : (
+          <IconIcRoundNavigateBefore />
+        )}
       </Button>
     </Box>
   )
@@ -232,7 +232,7 @@ export default memo(function PreviewModal({ files }: { files: FileData[] }) {
                   className="data-[hover=true]:bg-zinc-300/hover dark:data-[hover=true]:bg-zinc-500/hover text-inherit"
                   onPress={handleClose}
                 >
-                  <Icon className="size-6" icon="ic:round-arrow-back" />
+                  <IconIcRoundArrowBack className="size-6" />
                 </Button>
                 <ChonkyIcon
                   icon={icon}

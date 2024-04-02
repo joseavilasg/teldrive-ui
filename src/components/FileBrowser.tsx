@@ -26,14 +26,6 @@ import { useModalStore } from "@/utils/store"
 import { FileOperationModal } from "./modals/FileOperation"
 import PreviewModal from "./modals/Preview"
 
-const fileActionGroups = {
-  OpenOptions: {
-    sortOrder: -1,
-    icon: "majesticons:open-line",
-    tooltip: "Open Options",
-  },
-}
-
 let firstRender = true
 
 function isVirtuosoList(value: any): value is VirtuosoHandle {
@@ -149,7 +141,6 @@ export const DriveFileBrowser = memo(() => {
         folderChain={folderChain}
         onFileAction={chonkyActionHandler()}
         fileActions={fileActions}
-        fileActionGroups={fileActionGroups}
         defaultFileViewActionId={viewRef.current}
         defaultSortActionId={sortMap[defaultSortState[params.type].sort]}
         defaultSortOrder={defaultSortState[params.type].order}

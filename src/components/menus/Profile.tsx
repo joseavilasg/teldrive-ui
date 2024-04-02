@@ -1,5 +1,4 @@
 import provider from "@/providers"
-import { Icon } from "@iconify/react"
 import { useQuery } from "@tanstack/react-query"
 import {
   Avatar,
@@ -8,6 +7,8 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@tw-material/react"
+import IconBaselineLogout from "~icons/ic/baseline-logout"
+import IconOutlineSettings from "~icons/ic/outline-settings"
 
 import { sessionQueryOptions } from "@/utils/queryOptions"
 
@@ -42,13 +43,13 @@ export function ProfileDropDown() {
         </DropdownItem>
         <DropdownItem
           key="settings"
-          endIcon={<Icon className="size-6" icon="ic:outline-settings" />}
+          endIcon={<IconOutlineSettings className="size-6" />}
         >
           Settings
         </DropdownItem>
         <DropdownItem
           key="logout"
-          endIcon={<Icon className="size-6" icon="ic:baseline-logout" />}
+          endIcon={<IconBaselineLogout className="size-6" />}
           onPress={() => provider.signOut({ callbackUrl: "/login" })}
         >
           Logout

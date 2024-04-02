@@ -1,7 +1,7 @@
 import { useCallback } from "react"
 import provider from "@/providers"
 import type { QueryParams, SetValue } from "@/types"
-import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { useQueryClient } from "@tanstack/react-query"
 import {
   ChonkyActions,
   ChonkyActionUnion,
@@ -11,10 +11,12 @@ import {
   MapFileActionsToData,
   type FileData,
 } from "@tw-material/file-browser"
+import IconFlatColorIconsVlc from "~icons/flat-color-icons/vlc"
+import IconLetsIconsViewAltFill from "~icons/lets-icons/view-alt-fill"
 
 import { navigateToExternalUrl } from "@/utils/common"
 import http from "@/utils/http"
-import { sessionQueryOptions, usePreloadFiles } from "@/utils/queryOptions"
+import { usePreloadFiles } from "@/utils/queryOptions"
 import { useModalStore } from "@/utils/store"
 
 const CustomActions = {
@@ -27,7 +29,7 @@ const CustomActions = {
       toolbar: true,
       group: "OpenOptions",
       contextMenu: true,
-      icon: "lets-icons:view-alt-fill",
+      icon: IconLetsIconsViewAltFill,
     },
   } as const),
   OpenInVLCPlayer: defineFileAction({
@@ -38,7 +40,7 @@ const CustomActions = {
       name: "Open In VLC",
       toolbar: true,
       group: "OpenOptions",
-      icon: "flat-color-icons:vlc",
+      icon: IconFlatColorIconsVlc,
     },
   } as const),
   CopyDownloadLink: defineFileAction({
@@ -64,8 +66,6 @@ export const useFileAction = (
   const queryClient = useQueryClient()
 
   const preloadFiles = usePreloadFiles()
-
-  const { data: session } = useQuery(sessionQueryOptions)
 
   const actions = useModalStore((state) => state.actions)
 

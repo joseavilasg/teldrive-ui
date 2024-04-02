@@ -1,3 +1,5 @@
+import IconLucideGithub from "~icons/lucide/github"
+
 import {
   Login,
   mediaUrl,
@@ -18,7 +20,7 @@ const providers = {
     signOut,
     profileName,
     heading: import.meta.env.VITE_DRIVE_TITLE || "Drive",
-    headerIcon: "lucide:github",
+    headerIcon: IconLucideGithub,
   },
 }
 

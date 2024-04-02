@@ -1,7 +1,8 @@
 import { memo } from "react"
-import { Icon } from "@iconify/react"
 import { Button } from "@tw-material/react"
 import { cn } from "@tw-material/theme"
+import IconIcRoundFullscreen from "~icons/ic/round-fullscreen"
+import IconIcRoundFullscreenExit from "~icons/ic/round-fullscreen-exit"
 import { useToggle } from "usehooks-ts"
 
 interface WideScreenProps {
@@ -24,12 +25,9 @@ export const WideScreen = memo(({ children }: WideScreenProps) => {
           onPress={toggle}
         >
           {fullscreen ? (
-            <Icon
-              className="pointer-events-none"
-              icon="ic:round-fullscreen-exit"
-            />
+            <IconIcRoundFullscreenExit className="pointer-events-none" />
           ) : (
-            <Icon className="pointer-events-none" icon="ic:round-fullscreen" />
+            <IconIcRoundFullscreen className="pointer-events-none" />
           )}
         </Button>
         {children}

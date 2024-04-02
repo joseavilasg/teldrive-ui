@@ -1,4 +1,3 @@
-import { Icon } from "@iconify/react"
 import {
   Button,
   Dropdown,
@@ -6,6 +5,8 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@tw-material/react"
+import IconPhSun from "~icons/ph/sun"
+import IconRiMoonClearLine from "~icons/ri/moon-clear-line"
 
 import { useTheme } from "@/components/ThemeProvider"
 
@@ -20,14 +21,8 @@ export function ThemeToggle() {
     >
       <DropdownTrigger>
         <Button className="text-inherit" variant="text" isIconOnly>
-          <Icon
-            icon="ph:sun"
-            className="pointer-events-none size-6 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
-          />
-          <Icon
-            icon="ri:moon-clear-line"
-            className="pointer-events-none absolute size-6 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
-          />
+          <IconPhSun className="pointer-events-none size-6 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <IconRiMoonClearLine className="pointer-events-none absolute size-6 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownTrigger>

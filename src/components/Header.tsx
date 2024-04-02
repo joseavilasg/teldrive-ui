@@ -7,9 +7,9 @@ import {
   useState,
 } from "react"
 import provider from "@/providers"
-import { Icon } from "@iconify/react"
 import { Link, useRouterState } from "@tanstack/react-router"
 import { Input } from "@tw-material/react"
+import IconBiSearch from "~icons/bi/search"
 import debounce from "lodash.debounce"
 
 import usePrevious from "@/hooks/usePrevious"
@@ -72,7 +72,7 @@ const SearchBar = memo(() => {
         inputWrapper: "rounded-full group-data-[focus=true]:bg-surface",
         input: "px-2",
       }}
-      startContent={<Icon icon="bi:search" className="size-6" />}
+      startContent={<IconBiSearch className="size-6" />}
     ></Input>
   )
 })
@@ -82,7 +82,7 @@ export default memo(function Header({ auth }: { auth: boolean }) {
     <header className="flex items-center area-[header] px-4">
       <div className="flex-1 flex gap-2 items-center">
         <Link to="/" className="flex gap-2 items-center cursor-pointer">
-          <Icon className="size-6 text-inherit " icon={provider.headerIcon} />
+          <provider.headerIcon className="size-6 text-inherit" />
           <p className="text-headline-small">{provider.heading}</p>
         </Link>
       </div>

@@ -5,6 +5,7 @@ import { TanStackRouterVite } from "@tanstack/router-vite-plugin"
 import react from "@vitejs/plugin-react"
 import AdmZip from "adm-zip"
 import axios from "feaxios"
+import Icons from "unplugin-icons/vite"
 import { defineConfig, loadEnv, Plugin } from "vite"
 import tsconfigPaths from "vite-tsconfig-paths"
 
@@ -39,6 +40,10 @@ export default defineConfig(({ mode }) => {
       react(),
       tsconfigPaths(),
       PdfJsPlugin(),
+      Icons({
+        compiler: "jsx",
+        jsx: "react",
+      }),
       faviconsPlugin({
         icons: {
           favicons: {

@@ -1,16 +1,19 @@
 import { memo } from "react"
-import { Icon } from "@iconify/react"
 import { Button } from "@tw-material/react"
 import { cn } from "@tw-material/theme"
+import IconBasilGoogleDriveOutline from "~icons/basil/google-drive-outline"
+import IconIcOutlineSdStorage from "~icons/ic/outline-sd-storage"
+import IconMdiRecent from "~icons/mdi/recent"
+import IconMdiStarOutline from "~icons/mdi/star-outline"
 
 import { ForwardLink } from "@/components/ForwardLink"
 import { usePreloadFiles } from "@/utils/queryOptions"
 
 export const categories = [
-  { id: "my-drive", name: "My Drive", icon: "basil:google-drive-outline" },
-  { id: "starred", name: "starred", icon: "mdi:star-outline" },
-  { id: "recent", name: "recent", icon: "mdi:recent" },
-  { id: "storage", name: "storage", icon: "ic:outline-sd-storage" },
+  { id: "my-drive", name: "My Drive", icon: IconBasilGoogleDriveOutline },
+  { id: "starred", name: "Starred", icon: IconMdiStarOutline },
+  { id: "recent", name: "Recent", icon: IconMdiRecent },
+  { id: "storage", name: "Storage", icon: IconIcOutlineSdStorage },
 ] as const
 
 export const SideNav = memo(() => {
@@ -18,7 +21,7 @@ export const SideNav = memo(() => {
   return (
     <aside className="area-[nav]">
       <ul className="size-full flex-wrap flex flex-row md:flex-col items-center list-none gap-4 px-3 overflow-auto">
-        {categories.map(({ id, icon }) => (
+        {categories.map(({ id, icon: Icon }) => (
           <Button
             as={ForwardLink}
             variant="text"
@@ -35,10 +38,7 @@ export const SideNav = memo(() => {
               "[&>svg]:data-[status=active]:scale-110 [&>svg]:transition-transform"
             )}
           >
-            <Icon
-              className="size-6 text-inherit pointer-events-none"
-              icon={icon}
-            />
+            <Icon className="size-6 text-inherit pointer-events-none" />
           </Button>
         ))}
       </ul>

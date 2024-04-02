@@ -1,6 +1,14 @@
-import { memo, useCallback, useEffect, useRef, useState } from "react"
-import { Icon } from "@iconify/react"
+import { memo, useCallback, useEffect, useRef } from "react"
 import { Button, Slider } from "@tw-material/react"
+import IconPauseCircle from "~icons/ic/round-pause-circle"
+import IconPlayCircle from "~icons/ic/round-play-circle"
+import IconVolume1 from "~icons/lucide/volume-1"
+import IconVolume2 from "~icons/lucide/volume-2"
+import IconVolumeX from "~icons/lucide/volume-x"
+import IconRepeat2Fill from "~icons/ri/repeat-2-fill"
+import IconRepeatOneFill from "~icons/ri/repeat-one-fill"
+import IconSkipNextBold from "~icons/solar/skip-next-bold"
+import IconSkipPreviousBold from "~icons/solar/skip-previous-bold"
 import { useEventListener, useInterval } from "usehooks-ts"
 import { useShallow } from "zustand/react/shallow"
 
@@ -15,9 +23,9 @@ interface PlayerProps {
 type SliderValue = number | number[]
 
 const getVolumeIcon = (volume: number, muted: boolean) => {
-  if (volume === 0 || muted) return "lucide:volume-x"
-  if (volume < 0.5) return "lucide:volume-1"
-  return "lucide:volume-2"
+  if (volume === 0 || muted) return <IconVolumeX />
+  if (volume < 0.5) return <IconVolume1 />
+  return <IconVolume2 />
 }
 const AudioCover = memo(() => {
   const metadata = useAudioStore((state) => state.metadata)
@@ -176,7 +184,7 @@ const TopControls = memo(({ nextItem, prevItem }: TopControlsProps) => {
         variant="text"
         onPress={handlePrev}
       >
-        <Icon icon="solar:skip-previous-bold" />
+        <IconSkipPreviousBold />
       </Button>
       <Button
         variant="text"
@@ -185,9 +193,9 @@ const TopControls = memo(({ nextItem, prevItem }: TopControlsProps) => {
         onPress={actions.togglePlay}
       >
         {isPlaying ? (
-          <Icon className="!size-12" icon="ic:round-pause-circle" />
+          <IconPauseCircle className="!size-12" />
         ) : (
-          <Icon className="!size-12" icon="ic:round-play-circle" />
+          <IconPlayCircle className="!size-12" />
         )}
       </Button>
       <Button
@@ -196,7 +204,7 @@ const TopControls = memo(({ nextItem, prevItem }: TopControlsProps) => {
         variant="text"
         onPress={handleNext}
       >
-        <Icon icon="solar:skip-next-bold" />
+        <IconSkipNextBold />
       </Button>
     </div>
   )
@@ -220,11 +228,7 @@ const BottomControls = memo(() => {
         variant="text"
         onPress={actions.toggleLooping}
       >
-        {looping ? (
-          <Icon icon="ri:repeat-one-fill" />
-        ) : (
-          <Icon icon="ri:repeat-2-fill" />
-        )}
+        {looping ? <IconRepeatOneFill /> : <IconRepeat2Fill />}
       </Button>
       <Button
         isIconOnly
@@ -232,7 +236,7 @@ const BottomControls = memo(() => {
         variant="text"
         onPress={actions.toggleMute}
       >
-        <Icon icon={getVolumeIcon(volume, muted)} />
+        {getVolumeIcon(volume, muted)}
       </Button>
       <VolumeSlider />
     </div>

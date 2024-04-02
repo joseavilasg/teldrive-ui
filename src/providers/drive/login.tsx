@@ -1,8 +1,8 @@
 import { memo, useCallback } from "react"
 import provider from "@/providers"
-import { Icon } from "@iconify/react"
 import { useSearch } from "@tanstack/react-router"
 import { Button } from "@tw-material/react"
+import IconGithub from "~icons/mdi/github"
 
 export const Login = memo(() => {
   const params = useSearch({ from: "/_auth/login" })
@@ -17,7 +17,7 @@ export const Login = memo(() => {
         onPress={handleLogin}
         variant="filledTonal"
         className="w-[80%] text-inherit"
-        startIcon={<Icon icon="mdi:github" />}
+        startIcon={<IconGithub />}
       >
         Sign In
       </Button>
