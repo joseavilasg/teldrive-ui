@@ -43,7 +43,7 @@ const VideoPlayer = ({ name, assetUrl }: VideoPlayerProps) => {
     moreVideoAttr: {
       // @ts-ignore
       "webkit-playsinline": true,
-      crossOrigin: "use-credentials",
+      crossOrigin: "anonymous",
       playsInline: true,
     },
   }

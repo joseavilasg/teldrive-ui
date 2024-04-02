@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect } from "react"
 import { useLocalStorage } from "usehooks-ts"
 
+import { useIsFirstRender } from "@/hooks/useFirstRender"
+
 type Theme = "dark" | "light" | "system"
 
 type ThemeProviderProps = {
@@ -10,14 +12,29 @@ type ThemeProviderProps = {
 }
 
 type ThemeProviderState = {
+  colorScheme: ColorScheme
   theme: Theme
   setTheme: (theme: Theme) => void
+  setColorScheme: (colorScheme: ColorScheme) => void
+}
+
+const defaultColorScheme: ColorScheme = {
+  color: "#8B4E4B",
 }
 
 const initialState: ThemeProviderState = {
+  colorScheme: defaultColorScheme,
   theme: "system",
   setTheme: () => null,
+  setColorScheme: () => null,
 }
+
+type ColorScheme = {
+  color: string
+  cssVars?: Record<string, string>
+}
+
+const sheet = new CSSStyleSheet()
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 
@@ -27,6 +44,12 @@ export function ThemeProvider({
   storageKey = "theme",
   ...props
 }: ThemeProviderProps) {
+  const firstRender = useIsFirstRender()
+  const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>(
+    "colorScheme",
+    defaultColorScheme
+  )
+
   const [theme, setTheme] = useLocalStorage<Theme>(storageKey, defaultTheme)
 
   useEffect(() => {
@@ -47,9 +70,20 @@ export function ThemeProvider({
     root.classList.add(theme)
   }, [theme])
 
+  useEffect(() => {
+    if (colorScheme.cssVars && firstRender) {
+      for (const key in colorScheme.cssVars)
+        sheet.insertRule(`${key}{${colorScheme.cssVars[key]}}`)
+
+      document.adoptedStyleSheets = [sheet]
+    }
+  }, [colorScheme.color, firstRender])
+
   const value = {
     theme,
     setTheme,
+    colorScheme,
+    setColorScheme,
   }
 
   return (

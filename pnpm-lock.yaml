@@ -7,14 +7,11 @@ settings:
 overrides:
   react: ^18.2.0
   react-dom: ^18.2.0
-  '@tw-material/system': ^1.1.0
-  '@tw-material/theme': ^1.1.5
-  '@tw-material/react': ^1.1.8
 
 dependencies:
   '@hono/auth-js':
     specifier: ^1.0.3
-    version: 1.0.3(@auth/core@0.28.2)(hono@4.1.7)(react@18.2.0)
+    version: 1.0.3(@auth/core@0.28.2)(hono@4.2.0)(react@18.2.0)
   '@monaco-editor/react':
     specifier: ^4.6.0
     version: 4.6.0(monaco-editor@0.47.0)(react-dom@18.2.0)(react@18.2.0)
@@ -22,29 +19,32 @@ dependencies:
     specifier: ^5.28.9
     version: 5.28.9(react@18.2.0)
   '@tanstack/react-router':
-    specifier: ^1.26.3
-    version: 1.26.3(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^1.26.4
+    version: 1.26.4(react-dom@18.2.0)(react@18.2.0)
   '@tw-material/file-browser':
     specifier: link:C:/Users/divya/Documents/Github/react-chonky/packages/chonky
     version: link:../react-chonky/packages/chonky
   '@tw-material/framer-transitions':
     specifier: ^1.1.0
-    version: 1.1.0(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+    version: 1.1.0(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
   '@tw-material/react':
-    specifier: ^1.1.8
-    version: 1.1.11(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+    specifier: ^1.1.12
+    version: 1.1.12(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
   '@tw-material/system':
     specifier: ^1.1.0
-    version: 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
+    version: 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
   '@tw-material/theme':
-    specifier: ^1.1.5
-    version: 1.1.5(tailwindcss@3.4.3)
+    specifier: ^1.1.6
+    version: 1.1.6(tailwindcss@3.4.3)
   artplayer:
     specifier: ^5.1.1
     version: 5.1.1
   clsx:
     specifier: ^2.1.0
     version: 2.1.0
+  colord:
+    specifier: ^2.9.3
+    version: 2.9.3
   epubjs:
     specifier: ^0.3.93
     version: 0.3.93
@@ -874,7 +874,7 @@ packages:
       typescript: 5.4.3
     dev: false
 
-  /@hono/auth-js@1.0.3(@auth/core@0.28.2)(hono@4.1.7)(react@18.2.0):
+  /@hono/auth-js@1.0.3(@auth/core@0.28.2)(hono@4.2.0)(react@18.2.0):
     resolution: {integrity: sha512-g4U6oRbsTRnEm7wc5v9VgbCzBr11ef+bFYs7KgWsXt3TfRCGAPuVFaS+q6uFNJsGSBmX56U8nhLPi46gg/zmRQ==}
     engines: {node: '>=18.4.0'}
     peerDependencies:
@@ -883,7 +883,7 @@ packages:
       react: ^18.2.0
     dependencies:
       '@auth/core': 0.28.2
-      hono: 4.1.7
+      hono: 4.2.0
       react: 18.2.0
     dev: false
 
@@ -1853,8 +1853,8 @@ packages:
       '@tanstack/query-core': 5.28.9
       react: 18.2.0
 
-  /@tanstack/react-router@1.26.3(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-6iYZMMzW9y1V1CUssf5tPI84u9BJ8Ja3SKPNdTKJpNbgxygfdhts1yZm4Ev+4ZVr8CX0woy48SOJV9EoHMU8qA==}
+  /@tanstack/react-router@1.26.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-XMzulbVf4q6cVJ2vey1+SGlJFVxpWsguq1crbB2tajzxHlMmWq2Wpjalcgy4Qja9KFLQuiN4qfMQqxfykDjznQ==}
     engines: {node: '>=12'}
     peerDependencies:
       react: ^18.2.0
@@ -1917,7 +1917,7 @@ packages:
     resolution: {integrity: sha512-GnolmC8Fr4mvsHE1fGQmR3Nm0eBO3KnZjDU0a+P3TeQNM/dDscFGxtA7p31NplQNW3KwBw4t1RVFmz0VeKLxcw==}
     dev: false
 
-  /@tw-material/aria-utils@1.1.0(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
+  /@tw-material/aria-utils@1.1.0(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
     resolution: {integrity: sha512-ZBYCBa/W2cqPrdNRrtCeAb5xvC2VZSpmTwT5aDqE7Fqwj7afV01mHE7IKoR5ojVCVt15NhFxT7vZEBB/DsLEkQ==}
     peerDependencies:
       react: ^18.2.0
@@ -1929,7 +1929,7 @@ packages:
       '@react-types/shared': 3.22.1(react@18.2.0)
       '@tw-material/react-utils': 1.1.0(react@18.2.0)
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
@@ -1937,11 +1937,11 @@ packages:
       - tailwind-variants
     dev: false
 
-  /@tw-material/avatar@1.0.0(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0):
+  /@tw-material/avatar@1.0.0(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-/PqOt0big27bljqBom6lNqaX0qn2aeXb+wC1cHygdREUoucUBN94tG8gOCn4qWxrI5vzG8+y2jqP4UNOcsVrDQ==}
     peerDependencies:
-      '@tw-material/system': ^1.1.0
-      '@tw-material/theme': ^1.1.5
+      '@tw-material/system': '>=1'
+      '@tw-material/theme': '>=1'
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
@@ -1951,8 +1951,8 @@ packages:
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@tw-material/react-utils': 1.1.0(react@18.2.0)
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/theme': 1.1.5(tailwindcss@3.4.3)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/theme': 1.1.6(tailwindcss@3.4.3)
       clsx: 2.1.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -1961,7 +1961,7 @@ packages:
   /@tw-material/box@1.1.0(@tw-material/system@1.1.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-nUKwIcuzWG1YOIaxJfDGZOv9CbyA2IckcoINOjZjhMi+D8jQvFOEFP9yjL8eSHErFeUjVdKH4QYDuTE0rQzxfw==}
     peerDependencies:
-      '@tw-material/system': ^1.1.0
+      '@tw-material/system': '>=1'
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
@@ -1969,16 +1969,16 @@ packages:
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@tw-material/react-utils': 1.1.0(react@18.2.0)
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@tw-material/breadcrumbs@1.1.0(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0):
+  /@tw-material/breadcrumbs@1.1.0(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-mfui4NQ+qgfmYFxcUzKXhvduYPyqTuE6YroDsjpmwsUgGH1dJBkCU6ROdjhQDBOye0gxtrXJ1CAiDwmJkRTYzQ==}
     peerDependencies:
-      '@tw-material/system': ^1.1.0
-      '@tw-material/theme': ^1.1.5
+      '@tw-material/system': '>=1'
+      '@tw-material/theme': '>=1'
       framer-motion: '>=4.0.0'
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -1994,18 +1994,18 @@ packages:
       '@react-types/shared': 3.22.1(react@18.2.0)
       '@tw-material/react-utils': 1.1.0(react@18.2.0)
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/theme': 1.1.5(tailwindcss@3.4.3)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/theme': 1.1.6(tailwindcss@3.4.3)
       clsx: 2.1.0
       framer-motion: 11.0.24(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@tw-material/button@1.1.6(@tw-material/system@1.1.0)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3):
-    resolution: {integrity: sha512-LrmcbvE9NX6XaLHeuvUAOGOvtZWGNYt4tzv/ZXQ2FJOeCcayadzroqw8eN5V4UBlIR9k2eudxNNqBSnNotLEbg==}
+  /@tw-material/button@1.1.7(@tw-material/system@1.1.0)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3):
+    resolution: {integrity: sha512-muJ5DsDqGr833LW5AeQL3PzR8cC+u2GQ0nU0zIHBWs38uNXi3I8D6BHLTSECVxCUgHfJ+T9+paiA9dBxKl0TYg==}
     peerDependencies:
-      '@tw-material/system': ^1.1.0
+      '@tw-material/system': '>=1'
       framer-motion: '>=4.0.0'
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -2017,11 +2017,11 @@ packages:
       '@react-types/button': 3.9.2(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
       '@tw-material/react-utils': 1.1.0(react@18.2.0)
-      '@tw-material/ripple': 1.1.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)
+      '@tw-material/ripple': 1.1.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/spinner': 1.0.0(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/theme': 1.1.5(tailwindcss@3.4.3)
+      '@tw-material/spinner': 1.0.0(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/theme': 1.1.6(tailwindcss@3.4.3)
       clsx: 2.1.0
       framer-motion: 11.0.24(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
@@ -2031,29 +2031,29 @@ packages:
       - tailwindcss
     dev: false
 
-  /@tw-material/divider@1.0.0(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
+  /@tw-material/divider@1.0.0(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
     resolution: {integrity: sha512-OYbZz/HvxXAsxHODHj/0p64/vNWhQz2ruDQCL0cCgFp9ppEZivD330mVz84s8SeH8Y2UYZyxMhLTq+j7qo7ing==}
     peerDependencies:
-      '@tw-material/theme': ^1.1.5
+      '@tw-material/theme': '>=1'
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
       '@react-types/shared': 3.22.1(react@18.2.0)
       '@tw-material/react-utils': 1.1.0(react@18.2.0)
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/theme': 1.1.5(tailwindcss@3.4.3)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/theme': 1.1.6(tailwindcss@3.4.3)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
       - tailwind-variants
     dev: false
 
-  /@tw-material/dropdown@1.1.8(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3):
-    resolution: {integrity: sha512-kys2eqbmpSxhzkO2tE7FdvSYRYeptc48Bkp/YQUYHSKOctOJkHRIYobG+1moj2l9eqUZ9OUzf5J3L6pTGAdszw==}
+  /@tw-material/dropdown@1.1.9(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3):
+    resolution: {integrity: sha512-NsjMSLMmATShaFduV7tguaf6thN9n6b9PbVNSvpvXUod8738E5DY2I7DNA7c8jA4as/cVWY3HoAvdv5hyglQEA==}
     peerDependencies:
-      '@tw-material/system': ^1.1.0
-      '@tw-material/theme': ^1.1.5
+      '@tw-material/system': '>=1'
+      '@tw-material/theme': '>=1'
       framer-motion: '>=4.0.0'
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -2068,12 +2068,12 @@ packages:
       '@react-types/button': 3.9.2(react@18.2.0)
       '@react-types/menu': 3.9.7(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
-      '@tw-material/menu': 1.1.7(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/popover': 1.1.6(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+      '@tw-material/menu': 1.1.8(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+      '@tw-material/popover': 1.1.7(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
       '@tw-material/react-utils': 1.1.0(react@18.2.0)
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/theme': 1.1.5(tailwindcss@3.4.3)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/theme': 1.1.6(tailwindcss@3.4.3)
       clsx: 2.1.0
       framer-motion: 11.0.24(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
@@ -2084,7 +2084,7 @@ packages:
       - tailwindcss
     dev: false
 
-  /@tw-material/framer-transitions@1.1.0(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
+  /@tw-material/framer-transitions@1.1.0(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
     resolution: {integrity: sha512-bew/z+ewgtazebcMpTTPnl9sBtOP0V1vS8HbYDAX77fZM1Zj8ftD7fFY3oHq4QoC24a4I6/x/1C7o89DrvFTug==}
     peerDependencies:
       framer-motion: '>=4.0.0'
@@ -2092,7 +2092,7 @@ packages:
       react-dom: ^18.2.0
     dependencies:
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
       framer-motion: 11.0.24(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2101,11 +2101,11 @@ packages:
       - tailwind-variants
     dev: false
 
-  /@tw-material/input@1.0.2(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0):
+  /@tw-material/input@1.0.2(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-+1JRplVzJRqIZKFlxDxnaztIqs7BsFNqszYiROA5IPl6iyagZCTEXnBlcZNgs0WhgPWeSAJDLbv8rlNPb1B7hQ==}
     peerDependencies:
-      '@tw-material/system': ^1.1.0
-      '@tw-material/theme': ^1.1.5
+      '@tw-material/system': '>=1'
+      '@tw-material/theme': '>=1'
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
@@ -2119,8 +2119,8 @@ packages:
       '@react-types/textfield': 3.9.1(react@18.2.0)
       '@tw-material/react-utils': 1.1.0(react@18.2.0)
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/theme': 1.1.5(tailwindcss@3.4.3)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/theme': 1.1.6(tailwindcss@3.4.3)
       clsx: 2.1.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2129,11 +2129,11 @@ packages:
       - '@types/react'
     dev: false
 
-  /@tw-material/listbox@1.0.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
+  /@tw-material/listbox@1.0.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
     resolution: {integrity: sha512-DpNBB1SJV2/PwPbjgnkGujD4Y3LhB/+QBsz3+eog3pGZ/5uBl8Wrt/0uavrlvJ4uTTCLzeRY1R36ny7LJLxQng==}
     peerDependencies:
-      '@tw-material/system': ^1.1.0
-      '@tw-material/theme': ^1.1.5
+      '@tw-material/system': '>=1'
+      '@tw-material/theme': '>=1'
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
@@ -2145,12 +2145,12 @@ packages:
       '@react-stately/list': 3.10.3(react@18.2.0)
       '@react-types/menu': 3.9.7(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
-      '@tw-material/aria-utils': 1.1.0(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/divider': 1.0.0(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/aria-utils': 1.1.0(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/divider': 1.0.0(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
       '@tw-material/react-utils': 1.1.0(react@18.2.0)
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/theme': 1.1.5(tailwindcss@3.4.3)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/theme': 1.1.6(tailwindcss@3.4.3)
       clsx: 2.1.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2158,11 +2158,11 @@ packages:
       - tailwind-variants
     dev: false
 
-  /@tw-material/menu@1.1.7(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3):
-    resolution: {integrity: sha512-fOUCEPFCQkhMKBlss0fdsELGiBJ5axQYeMgzhOB66/ldCEct135CTsKlWX5xjg80kBr/2u0kGuGSpyczzxc/KA==}
+  /@tw-material/menu@1.1.8(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3):
+    resolution: {integrity: sha512-1AxNQd4Bl+RWF2A6Ms3C9VM69oeIeBQeDCVp/cXNjR/DhB75SkGV2gBwfBpliyNxgNe9QFXBO2fiqFaDJqfiWw==}
     peerDependencies:
-      '@tw-material/system': ^1.1.0
-      '@tw-material/theme': ^1.1.5
+      '@tw-material/system': '>=1'
+      '@tw-material/theme': '>=1'
       framer-motion: '>=4.0.0'
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -2181,13 +2181,13 @@ packages:
       '@react-types/menu': 3.9.7(react@18.2.0)
       '@react-types/overlays': 3.8.5(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
-      '@tw-material/aria-utils': 1.1.0(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/button': 1.1.6(@tw-material/system@1.1.0)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/framer-transitions': 1.1.0(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/aria-utils': 1.1.0(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/button': 1.1.7(@tw-material/system@1.1.0)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+      '@tw-material/framer-transitions': 1.1.0(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
       '@tw-material/react-utils': 1.1.0(react@18.2.0)
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/theme': 1.1.5(tailwindcss@3.4.3)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/theme': 1.1.6(tailwindcss@3.4.3)
       clsx: 2.1.0
       framer-motion: 11.0.24(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
@@ -2199,11 +2199,11 @@ packages:
       - tailwindcss
     dev: false
 
-  /@tw-material/modal@1.1.3(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
+  /@tw-material/modal@1.1.3(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
     resolution: {integrity: sha512-YHJIOPiZnnXdwyXniXge1Jp0KSzd6RZe/CJ14oger7j7PeUYyJLqr1YUSfc0nFM95aDdv4yuafwyB8bDP6rlNg==}
     peerDependencies:
-      '@tw-material/system': ^1.1.0
-      '@tw-material/theme': ^1.1.5
+      '@tw-material/system': '>=1'
+      '@tw-material/theme': '>=1'
       framer-motion: '>=4.0.0'
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -2222,12 +2222,12 @@ packages:
       '@react-types/button': 3.9.2(react@18.2.0)
       '@react-types/overlays': 3.8.5(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
-      '@tw-material/aria-utils': 1.1.0(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/framer-transitions': 1.1.0(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/aria-utils': 1.1.0(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/framer-transitions': 1.1.0(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
       '@tw-material/react-utils': 1.1.0(react@18.2.0)
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/theme': 1.1.5(tailwindcss@3.4.3)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/theme': 1.1.6(tailwindcss@3.4.3)
       clsx: 2.1.0
       framer-motion: 11.0.24(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
@@ -2238,11 +2238,11 @@ packages:
       - tailwind-variants
     dev: false
 
-  /@tw-material/popover@1.1.6(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3):
-    resolution: {integrity: sha512-7c/TndSJVQ/sg+wt+BW9Vh5TCV01NNOxXJEXTtLBZS4riGyFEwIdVST3/fn+VulMMKkx9ZxlBPy6QjERMni4Sw==}
+  /@tw-material/popover@1.1.7(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3):
+    resolution: {integrity: sha512-Wld7CNw6/ZB2V8l+AvwFkf/BS+UaChpkcugh+Oyamf+eAr2Xi4OgNRFrwfxTfLAgJK2KKQ7tqFyyoVDV6e3IGA==}
     peerDependencies:
-      '@tw-material/system': ^1.1.0
-      '@tw-material/theme': ^1.1.5
+      '@tw-material/system': '>=1'
+      '@tw-material/theme': '>=1'
       framer-motion: '>=4.0.0'
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -2258,13 +2258,13 @@ packages:
       '@react-types/button': 3.9.2(react@18.2.0)
       '@react-types/overlays': 3.8.5(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
-      '@tw-material/aria-utils': 1.1.0(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/button': 1.1.6(@tw-material/system@1.1.0)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/framer-transitions': 1.1.0(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/aria-utils': 1.1.0(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/button': 1.1.7(@tw-material/system@1.1.0)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+      '@tw-material/framer-transitions': 1.1.0(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
       '@tw-material/react-utils': 1.1.0(react@18.2.0)
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/theme': 1.1.5(tailwindcss@3.4.3)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/theme': 1.1.6(tailwindcss@3.4.3)
       clsx: 2.1.0
       framer-motion: 11.0.24(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
@@ -2285,31 +2285,31 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@tw-material/react@1.1.11(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3):
-    resolution: {integrity: sha512-AaiaeZg9bjxUciZUCJVOkNrbW6IHsgsHJBFsWqHzgHuW2DC4oqVon7v6WuyB1Y/pJ4xK6Q8dcnolDLEIX9l65g==}
+  /@tw-material/react@1.1.12(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3):
+    resolution: {integrity: sha512-bB7NQnFLMmJ5IJ+vD/t3SeUfSmnUu9qZryjBvwjd79tlRiKvWpHpiAJZkkFBgNwPoMBiOgjCnnRaHAYVDAnPsQ==}
     peerDependencies:
       framer-motion: '>=4.0.0'
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@tw-material/avatar': 1.0.0(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)
+      '@tw-material/avatar': 1.0.0(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0)
       '@tw-material/box': 1.1.0(@tw-material/system@1.1.0)(react-dom@18.2.0)(react@18.2.0)
-      '@tw-material/breadcrumbs': 1.1.0(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)
-      '@tw-material/button': 1.1.6(@tw-material/system@1.1.0)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/divider': 1.0.0(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/dropdown': 1.1.8(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/input': 1.0.2(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0)
-      '@tw-material/listbox': 1.0.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/menu': 1.1.7(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/modal': 1.1.3(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/popover': 1.1.6(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/ripple': 1.1.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)
-      '@tw-material/select': 1.0.4(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/slider': 1.0.4(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/spinner': 1.0.0(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/theme': 1.1.5(tailwindcss@3.4.3)
-      '@tw-material/tooltip': 1.0.4(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/breadcrumbs': 1.1.0(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)
+      '@tw-material/button': 1.1.7(@tw-material/system@1.1.0)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+      '@tw-material/divider': 1.0.0(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/dropdown': 1.1.9(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+      '@tw-material/input': 1.0.2(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0)
+      '@tw-material/listbox': 1.0.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/menu': 1.1.8(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+      '@tw-material/modal': 1.1.3(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/popover': 1.1.7(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+      '@tw-material/ripple': 1.1.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)
+      '@tw-material/select': 1.0.5(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+      '@tw-material/slider': 1.0.5(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/spinner': 1.0.0(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/theme': 1.1.6(tailwindcss@3.4.3)
+      '@tw-material/tooltip': 1.0.5(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
       framer-motion: 11.0.24(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2319,29 +2319,29 @@ packages:
       - tailwindcss
     dev: false
 
-  /@tw-material/ripple@1.1.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0):
+  /@tw-material/ripple@1.1.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-IDDYz1jaaapSs54+QKpdYRqMLiH2DO9GfXDzLl/mPYcvH6assATCD4Tpe8gDLk3uZRWTvrymCLS+FpyZTIbyvg==}
     peerDependencies:
-      '@tw-material/system': ^1.1.0
-      '@tw-material/theme': ^1.1.5
+      '@tw-material/system': '>=1'
+      '@tw-material/theme': '>=1'
       framer-motion: '>=4.0.0'
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
       '@tw-material/react-utils': 1.1.0(react@18.2.0)
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/theme': 1.1.5(tailwindcss@3.4.3)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/theme': 1.1.6(tailwindcss@3.4.3)
       framer-motion: 11.0.24(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@tw-material/select@1.0.4(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3):
-    resolution: {integrity: sha512-3AIKq5dpXCDTS62LsFFJLdXA2lptTeYcPhassT3Y/j7NM/s8ZMS4u8koQyevGuI8yVevQEN2Em2B/qXcJH+u5Q==}
+  /@tw-material/select@1.0.5(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3):
+    resolution: {integrity: sha512-7hfy6JSgbhH1vf65dSZ5JkIcRB0yu3egNhoERlLWgYRr+zgdwhHDN6Ktt6gQTx+1uzqXlMo+yrBoRROcaRiWbw==}
     peerDependencies:
-      '@tw-material/system': ^1.1.0
-      '@tw-material/theme': ^1.1.5
+      '@tw-material/system': '>=1'
+      '@tw-material/theme': '>=1'
       framer-motion: '>=4.0.0'
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -2356,14 +2356,14 @@ packages:
       '@react-stately/list': 3.10.3(react@18.2.0)
       '@react-types/menu': 3.9.7(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
-      '@tw-material/aria-utils': 1.1.0(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/listbox': 1.0.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/popover': 1.1.6(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+      '@tw-material/aria-utils': 1.1.0(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/listbox': 1.0.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/popover': 1.1.7(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
       '@tw-material/react-utils': 1.1.0(react@18.2.0)
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/spinner': 1.0.0(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/theme': 1.1.5(tailwindcss@3.4.3)
+      '@tw-material/spinner': 1.0.0(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/theme': 1.1.6(tailwindcss@3.4.3)
       '@tw-material/use-aria-multiselect': 1.0.0(react-dom@18.2.0)(react@18.2.0)
       clsx: 2.1.0
       framer-motion: 11.0.24(react-dom@18.2.0)(react@18.2.0)
@@ -2383,11 +2383,11 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@tw-material/slider@1.0.4(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
-    resolution: {integrity: sha512-SqmulncCA1g1W0yNFQz8/6SxSpwY0jzdOY8OXdxomVc6ErAMwow35DhB7Z/J9KSidJ/X60aqzk0wUuOr4M+dNw==}
+  /@tw-material/slider@1.0.5(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
+    resolution: {integrity: sha512-iY/2ffHy+hd+eENmOh/rZDV6PfkUJTy69jTGyWx10HE30kWeaRS0581YN5lQqDimmZhAmUtKDkamnUc664WcyA==}
     peerDependencies:
-      '@tw-material/system': ^1.1.0
-      '@tw-material/theme': ^1.1.5
+      '@tw-material/system': '>=1'
+      '@tw-material/theme': '>=1'
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
@@ -2402,11 +2402,11 @@ packages:
       '@react-types/button': 3.9.2(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
       '@tw-material/react-utils': 1.1.0(react@18.2.0)
-      '@tw-material/ripple': 1.1.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)
+      '@tw-material/ripple': 1.1.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/theme': 1.1.5(tailwindcss@3.4.3)
-      '@tw-material/tooltip': 1.0.4(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/theme': 1.1.6(tailwindcss@3.4.3)
+      '@tw-material/tooltip': 1.0.5(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
       clsx: 2.1.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2415,17 +2415,17 @@ packages:
       - tailwind-variants
     dev: false
 
-  /@tw-material/spinner@1.0.0(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
+  /@tw-material/spinner@1.0.0(@tw-material/theme@1.1.6)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
     resolution: {integrity: sha512-lCriF1BRCzKGg1iWJY9SfeSeFAPwVSAkamWJh5qPKlF0dwRBYl01ZrXkEda2ADVYh4ewJXsSylQc3kid32BfPg==}
     peerDependencies:
-      '@tw-material/theme': ^1.1.5
+      '@tw-material/theme': '>=1'
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
       '@tw-material/react-utils': 1.1.0(react@18.2.0)
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/theme': 1.1.5(tailwindcss@3.4.3)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/theme': 1.1.6(tailwindcss@3.4.3)
       clsx: 2.1.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2433,20 +2433,20 @@ packages:
       - tailwind-variants
     dev: false
 
-  /@tw-material/system@1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1):
+  /@tw-material/system@1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1):
     resolution: {integrity: sha512-e+6EsHjhWvg3DZc1N+F1wV1mtcncjMST3doUecg0kETMG+smdULo8zBR4nElFv6WZTKxa5+AOm6cBksbm31MSQ==}
     peerDependencies:
-      '@tw-material/theme': ^1.1.5
+      '@tw-material/theme': '>=1'
       react: ^18.2.0
       tailwind-variants: '>=0'
     dependencies:
-      '@tw-material/theme': 1.1.5(tailwindcss@3.4.3)
+      '@tw-material/theme': 1.1.6(tailwindcss@3.4.3)
       react: 18.2.0
       tailwind-variants: 0.2.1(tailwindcss@3.4.3)
     dev: false
 
-  /@tw-material/theme@1.1.5(tailwindcss@3.4.3):
-    resolution: {integrity: sha512-dfZ389DkaZRHzQYPLImzN/nvYVZVNLQnxDJC1cMmFMxVWJzpY0X6HNV2s/IeNF+XC8Ab/siunNogh+BbRsJBBw==}
+  /@tw-material/theme@1.1.6(tailwindcss@3.4.3):
+    resolution: {integrity: sha512-X/9uxGIfP6Su2JycWhJ+0Ft2iq1svd4QQoolqHFoYqAKb72aThiQjoCf3+5Yefiof6E/lkQoXJmjHkETPm6A7g==}
     peerDependencies:
       tailwindcss: '*'
     dependencies:
@@ -2458,11 +2458,11 @@ packages:
       tw-colors: 3.3.1(tailwindcss@3.4.3)
     dev: false
 
-  /@tw-material/tooltip@1.0.4(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
-    resolution: {integrity: sha512-NJcFUaAhsuuDpKN2xHj0girToKTWI6Oa8EFlR8K4BhopXRFK7nHNdqZnhx6BlsG9AITh1vAnBOO00Vcx4UE9LA==}
+  /@tw-material/tooltip@1.0.5(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
+    resolution: {integrity: sha512-8Jbvu7X7fL10nyIlgfVle6ATWD7KERNNw3/eiyCtYLSoRqganmnVPiWbcR7JfCXd+yND2YzOiC7wcnauUwn/Xg==}
     peerDependencies:
-      '@tw-material/system': ^1.1.0
-      '@tw-material/theme': ^1.1.5
+      '@tw-material/system': '>=1'
+      '@tw-material/theme': '>=1'
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
@@ -2475,12 +2475,12 @@ packages:
       '@react-stately/tooltip': 3.4.7(react@18.2.0)
       '@react-types/button': 3.9.2(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
-      '@tw-material/framer-transitions': 1.1.0(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/framer-transitions': 1.1.0(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
       '@tw-material/react-utils': 1.1.0(react@18.2.0)
-      '@tw-material/ripple': 1.1.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)
+      '@tw-material/ripple': 1.1.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)
       '@tw-material/shared-utils': 1.1.0(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/theme': 1.1.5(tailwindcss@3.4.3)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.6)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/theme': 1.1.6(tailwindcss@3.4.3)
       clsx: 2.1.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2842,7 +2842,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001603
+      caniuse-lite: 1.0.30001605
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -2898,7 +2898,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001603
+      caniuse-lite: 1.0.30001605
       electron-to-chromium: 1.4.723
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
@@ -2928,8 +2928,8 @@ packages:
     resolution: {integrity: sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==}
     engines: {node: '>= 6'}
 
-  /caniuse-lite@1.0.30001603:
-    resolution: {integrity: sha512-iL2iSS0eDILMb9n5yKQoTBim9jMZ0Yrk8g0N9K7UzYyWnfIKzXBZD5ngpM37ZcL/cv0Mli8XtVMRYMQAfFpi5Q==}
+  /caniuse-lite@1.0.30001605:
+    resolution: {integrity: sha512-nXwGlFWo34uliI9z3n6Qc0wZaf7zaZWA1CPZ169La5mV3I/gem7bst0vr5XQH5TJXZIMfDeZyOrZnSlVzKxxHQ==}
     dev: true
 
   /chalk@2.4.2:
@@ -3000,6 +3000,10 @@ packages:
     dependencies:
       color-convert: 2.0.1
       color-string: 1.9.1
+    dev: false
+
+  /colord@2.9.3:
+    resolution: {integrity: sha512-jeC1axXpnb0/2nn/Y1LPuLdgXBLH7aDcHu4KEKfqw3CUhX7ZpfBSlPKyqXE6btIgEzfWtrX3/tyBCaCvXvMkOw==}
     dev: false
 
   /commander@2.20.3:
@@ -3970,8 +3974,8 @@ packages:
       react-is: 16.13.1
     dev: false
 
-  /hono@4.1.7:
-    resolution: {integrity: sha512-Qa9/OM64d3we/COpxpJNT8p2IEvXbvRzp2eX4wf48eDvqoU3pBrnbY6zAF2rK878GxkkfCo6yipZXNsPiTrBMQ==}
+  /hono@4.2.0:
+    resolution: {integrity: sha512-4A9WSwQW1V1Bby07Ida1FZwvYceSkByd8uoxvcmYSPaEWIZqutn/s5jE3CJOci8Jt//vb9VDn+5B3xobIzvA6A==}
     engines: {node: '>=16.0.0'}
     dev: false
 

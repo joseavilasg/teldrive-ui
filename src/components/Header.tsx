@@ -14,6 +14,7 @@ import debounce from "lodash.debounce"
 import usePrevious from "@/hooks/usePrevious"
 import { usePreloadFiles } from "@/utils/queryOptions"
 
+import { ColorPicker } from "./menus/ColorPicker"
 import { ProfileDropDown } from "./menus/Profile"
 import { ThemeToggle } from "./menus/ThemeToggle"
 
@@ -86,6 +87,7 @@ export default memo(function Header({ auth }: { auth: boolean }) {
       </div>
       <div className="flex-1 flex justify-end items-center gap-4">
         {auth && <SearchBar />}
+        <ColorPicker />
         <ThemeToggle />
         {auth && <ProfileDropDown />}
       </div>

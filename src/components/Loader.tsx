@@ -11,5 +11,12 @@ export default function Loader() {
     }
   }, [])
 
-  return <LoadingBar className="!bg-primary" ref={ref} waitingTime={200} />
+  return (
+    <LoadingBar
+      className="!bg-primary"
+      ref={ref}
+      shadow={false}
+      waitingTime={200}
+    />
+  )
 }

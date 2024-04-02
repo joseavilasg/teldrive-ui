@@ -23,7 +23,7 @@ export function ProfileDropDown() {
         <Avatar
           as="button"
           size="sm"
-          className="outline-none"
+          className="outline-none shrink-0"
           src={`/api/users/profile?photo=1&hash=${session?.hash}`}
         />
       </DropdownTrigger>
