@@ -44,6 +44,7 @@ export default {
     material3({
       sourceColor: "#8B4E4B",
       customColors: [],
+      defaultTheme: "light",
     }),
   ],
 } satisfies Config

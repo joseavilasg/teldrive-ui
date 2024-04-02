@@ -1,10 +1,11 @@
 import { existsSync } from "fs"
 import { resolve } from "path"
+import { faviconsPlugin } from "@darkobits/vite-plugin-favicons"
 import { TanStackRouterVite } from "@tanstack/router-vite-plugin"
 import react from "@vitejs/plugin-react"
 import AdmZip from "adm-zip"
 import axios from "feaxios"
-import { defineConfig, Plugin } from "vite"
+import { defineConfig, loadEnv, Plugin } from "vite"
 import tsconfigPaths from "vite-tsconfig-paths"
 
 function PdfJsPlugin(): Plugin {
@@ -31,8 +32,21 @@ function PdfJsPlugin(): Plugin {
 }
 
 export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd())
   return {
-    plugins: [TanStackRouterVite(), react(), tsconfigPaths(), PdfJsPlugin()],
+    plugins: [
+      TanStackRouterVite(),
+      react(),
+      tsconfigPaths(),
+      PdfJsPlugin(),
+      faviconsPlugin({
+        icons: {
+          favicons: {
+            source: `./logos/${env.VITE_DRIVE_PROVIDER}.svg`,
+          },
+        },
+      }),
+    ],
     esbuild: {
       drop: mode === "production" ? ["console", "debugger"] : [],
     },
