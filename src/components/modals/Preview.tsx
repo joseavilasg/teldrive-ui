@@ -13,18 +13,18 @@ import { Box, Button, cn, Modal, ModalContent } from "@tw-material/react"
 import Loader from "@/components/Loader"
 import AudioPreview from "@/components/previews/audio/AudioPreview"
 import DocPreview from "@/components/previews/DocPreview"
-import FullScreenIFrame from "@/components/previews/FullScreenIFrame"
 import ImagePreview from "@/components/previews/ImagePreview"
 import PDFPreview from "@/components/previews/PdfPreview"
+import { WideScreen } from "@/components/previews/WideScreen"
 import { preview } from "@/utils/getPreviewType"
 import { sessionQueryOptions } from "@/utils/queryOptions"
 import { useModalStore } from "@/utils/store"
 
+import CodePreview from "../previews/CodePreview"
+
 const VideoPreview = lazy(
   () => import("@/components/previews/video/VideoPreview")
 )
-
-const CodePreview = lazy(() => import("@/components/previews/CodePreview"))
 
 const EpubPreview = lazy(() => import("@/components/previews/EpubPreview"))
 
@@ -160,25 +160,23 @@ export default memo(function PreviewModal({ files }: { files: FileData[] }) {
 
         case preview.pdf:
           return (
-            <FullScreenIFrame>
+            <WideScreen>
               <PDFPreview assetUrl={assetUrl} />
-            </FullScreenIFrame>
+            </WideScreen>
           )
 
         case preview.office:
           return (
-            <FullScreenIFrame>
+            <WideScreen>
               <DocPreview assetUrl={assetUrl} />
-            </FullScreenIFrame>
+            </WideScreen>
           )
 
         case preview.code:
           return (
-            <Suspense fallback={<Loader />}>
-              <FullScreenIFrame>
-                <CodePreview name={name} assetUrl={assetUrl} />
-              </FullScreenIFrame>
-            </Suspense>
+            <WideScreen>
+              <CodePreview name={name} assetUrl={assetUrl} />
+            </WideScreen>
           )
 
         case preview.image:
@@ -187,9 +185,9 @@ export default memo(function PreviewModal({ files }: { files: FileData[] }) {
         case preview.epub:
           return (
             <Suspense fallback={<Loader />}>
-              <FullScreenIFrame>
+              <WideScreen>
                 <EpubPreview assetUrl={assetUrl} />
-              </FullScreenIFrame>
+              </WideScreen>
             </Suspense>
           )
 

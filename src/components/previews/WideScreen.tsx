@@ -4,7 +4,10 @@ import { Button } from "@tw-material/react"
 import { cn } from "@tw-material/theme"
 import { useToggle } from "usehooks-ts"
 
-const FullScreenIF = ({ children }: { children: React.ReactNode }) => {
+interface WideScreenProps {
+  children: React.ReactNode
+}
+export const WideScreen = memo(({ children }: WideScreenProps) => {
   const [fullscreen, toggle] = useToggle(false)
   return (
     <div className="max-w-[70%] w-full mx-auto p-4 relative h-[90vh]">
@@ -33,6 +36,4 @@ const FullScreenIF = ({ children }: { children: React.ReactNode }) => {
       </div>
     </div>
   )
-}
-
-export default memo(FullScreenIF)
+})

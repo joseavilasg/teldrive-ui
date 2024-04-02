@@ -32,6 +32,7 @@ export function ThemeToggle() {
         </Button>
       </DropdownTrigger>
       <DropdownMenu
+        aria-label="Theme Menu"
         className="bg-surface-container-low"
         itemClasses={{
           title: "text-medium",

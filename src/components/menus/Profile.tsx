@@ -28,6 +28,7 @@ export function ProfileDropDown() {
         />
       </DropdownTrigger>
       <DropdownMenu
+        aria-label="Profile Menu"
         className="bg-surface-container-low"
         itemClasses={{
           base: "bg-surface-container-low",
