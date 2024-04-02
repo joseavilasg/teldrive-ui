@@ -22,8 +22,8 @@ dependencies:
     specifier: ^1.26.4
     version: 1.26.4(react-dom@18.2.0)(react@18.2.0)
   '@tw-material/file-browser':
-    specifier: ^1.0.4
-    version: 1.0.4(@tw-material/react@1.1.12)(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.74)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(redux@5.0.1)(typescript@5.4.3)(unplugin-icons@0.18.5)
+    specifier: ^1.0.6
+    version: 1.0.6(@svgr/core@8.1.0)(@tw-material/react@1.1.12)(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.74)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(redux@5.0.1)(typescript@5.4.3)
   '@tw-material/framer-transitions':
     specifier: ^1.1.0
     version: 1.1.0(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
@@ -123,8 +123,8 @@ devDependencies:
     specifier: ^2.3.5
     version: 2.3.5
   '@types/node':
-    specifier: 20.12.2
-    version: 20.12.2
+    specifier: 20.12.3
+    version: 20.12.3
   '@types/react':
     specifier: 18.2.74
     version: 18.2.74
@@ -193,7 +193,7 @@ devDependencies:
     version: 0.18.5(@svgr/core@8.1.0)
   vite:
     specifier: ^5.2.7
-    version: 5.2.7(@types/node@20.12.2)(terser@5.30.2)
+    version: 5.2.7(@types/node@20.12.3)(terser@5.30.2)
   vite-plugin-eslint:
     specifier: ^1.8.1
     version: 1.8.1(eslint@8.57.0)(vite@5.2.7)
@@ -631,7 +631,7 @@ packages:
       parse5: 7.1.2
       ssri: 10.0.5
       ts-essentials: 9.4.1(typescript@5.4.3)
-      vite: 5.2.7(@types/node@20.12.2)(terser@5.30.2)
+      vite: 5.2.7(@types/node@20.12.3)(terser@5.30.2)
     transitivePeerDependencies:
       - typescript
     dev: true
@@ -2558,8 +2558,8 @@ packages:
       - tailwindcss
     dev: false
 
-  /@tw-material/file-browser@1.0.4(@tw-material/react@1.1.12)(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.74)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(redux@5.0.1)(typescript@5.4.3)(unplugin-icons@0.18.5):
-    resolution: {integrity: sha512-D9XUort7LKxjvi1p/SKVnw2yQ+X7+2xSXUlUnTcez9+aJ9OduGxMMK58g7XMOGvrkX5j3o4a/t+HxBS9dBIRZw==}
+  /@tw-material/file-browser@1.0.6(@svgr/core@8.1.0)(@tw-material/react@1.1.12)(@tw-material/system@1.1.0)(@tw-material/theme@1.1.6)(@types/react@18.2.74)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(redux@5.0.1)(typescript@5.4.3):
+    resolution: {integrity: sha512-nXKNcGWO1NNc3xGXRF0cpPoj015xCJ43X3hZg0nEWJXkddKFAvXO0f2IVOVuMjrSQdIu0S/h3ZkuC+1B8YKTzw==}
     engines: {node: '>=18'}
     peerDependencies:
       '@tw-material/react': '>=1'
@@ -2568,7 +2568,6 @@ packages:
       framer-motion: '>=10'
       react: ^18.2.0
       react-dom: ^18.2.0
-      unplugin-icons: '>=0.18'
     dependencies:
       '@floating-ui/react': 0.26.10(react-dom@18.2.0)(react@18.2.0)
       '@nextui-org/use-safe-layout-effect': 2.0.4(react@18.2.0)
@@ -2602,10 +2601,16 @@ packages:
       tsdef: 0.0.14
       unplugin-icons: 0.18.5(@svgr/core@8.1.0)
     transitivePeerDependencies:
+      - '@svgr/core'
+      - '@svgx/core'
       - '@types/react'
+      - '@vue/compiler-sfc'
       - react-native
       - redux
+      - supports-color
       - typescript
+      - vue-template-compiler
+      - vue-template-es2015-compiler
     dev: false
 
   /@tw-material/framer-transitions@1.1.0(@tw-material/theme@1.1.6)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
@@ -3039,7 +3044,7 @@ packages:
   /@types/adm-zip@0.5.5:
     resolution: {integrity: sha512-YCGstVMjc4LTY5uK9/obvxBya93axZOVOyf2GSUulADzmLhYE45u2nAssCs/fWBs1Ifq5Vat75JTPwd5XZoPJw==}
     dependencies:
-      '@types/node': 20.12.2
+      '@types/node': 20.12.3
     dev: true
 
   /@types/babel__core@7.20.5:
@@ -3074,7 +3079,7 @@ packages:
   /@types/clean-css@4.2.11:
     resolution: {integrity: sha512-Y8n81lQVTAfP2TOdtJJEsCoYl1AnOkqDqMvXb9/7pfgZZ7r8YrEyurrAvAoAjHOGXKRybay+5CsExqIH6liccw==}
     dependencies:
-      '@types/node': 20.12.2
+      '@types/node': 20.12.3
       source-map: 0.6.1
     dev: true
 
@@ -3129,8 +3134,8 @@ packages:
     resolution: {integrity: sha512-/i42wjYNgE6wf0j2bcTX6kuowmdL/6PE4IVitMpm2eYKBUuYCprdcWVK+xEF0gcV6ufMCRhtxmReGfc6hIK7Jw==}
     dev: true
 
-  /@types/node@20.12.2:
-    resolution: {integrity: sha512-zQ0NYO87hyN6Xrclcqp7f8ZbXNbRfoGWNcMvHTPQp9UUrwI0mI7XBz+cu7/W6/VClYo2g63B0cjull/srU7LgQ==}
+  /@types/node@20.12.3:
+    resolution: {integrity: sha512-sD+ia2ubTeWrOu+YMF+MTAB7E+O7qsMqAbMfW7DG3K1URwhZ5hN1pLlRVGbf4wDFzSfikL05M17EyorS86jShw==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -3169,7 +3174,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.24.1(@babel/core@7.24.3)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.0
-      vite: 5.2.7(@types/node@20.12.2)(terser@5.30.2)
+      vite: 5.2.7(@types/node@20.12.3)(terser@5.30.2)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6990,7 +6995,7 @@ packages:
       '@types/eslint': 8.56.7
       eslint: 8.57.0
       rollup: 2.79.1
-      vite: 5.2.7(@types/node@20.12.2)(terser@5.30.2)
+      vite: 5.2.7(@types/node@20.12.3)(terser@5.30.2)
     dev: true
 
   /vite-tsconfig-paths@4.3.2(typescript@5.4.3)(vite@5.2.7):
@@ -7004,13 +7009,13 @@ packages:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 3.0.3(typescript@5.4.3)
-      vite: 5.2.7(@types/node@20.12.2)(terser@5.30.2)
+      vite: 5.2.7(@types/node@20.12.3)(terser@5.30.2)
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: true
 
-  /vite@5.2.7(@types/node@20.12.2)(terser@5.30.2):
+  /vite@5.2.7(@types/node@20.12.3)(terser@5.30.2):
     resolution: {integrity: sha512-k14PWOKLI6pMaSzAuGtT+Cf0YmIx12z9YGon39onaJNy8DLBfBJrzg9FQEmkAM5lpHBZs9wksWAsyF/HkpEwJA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -7038,7 +7043,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.12.2
+      '@types/node': 20.12.3
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.13.2
