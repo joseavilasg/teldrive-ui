@@ -13,11 +13,7 @@ export const Route = createFileRoute("/_authenticated/$")({
     }
     return { queryParams: { type, path } }
   },
-  loader: async ({ context: { queryClient, queryParams }, preload }) => {
-    if (preload) {
-      await queryClient.prefetchInfiniteQuery(filesQueryOptions(queryParams))
-      return
-    }
+  loader: async ({ context: { queryClient, queryParams } }) => {
     queryClient.fetchInfiniteQuery(filesQueryOptions(queryParams))
   },
 })

@@ -10,6 +10,7 @@ import {
   ModalFooter,
   ModalHeader,
 } from "@tw-material/react"
+import clsx from "clsx"
 import { useShallow } from "zustand/react/shallow"
 
 import {
@@ -65,10 +66,14 @@ const RenameDialog = memo(({ queryKey, handleClose }: RenameDialogProps) => {
         ></Input>
       </ModalBody>
       <ModalFooter>
-        <Button variant="text" onPress={handleClose}>
+        <Button className="font-normal" variant="text" onPress={handleClose}>
           Close
         </Button>
-        <Button variant="filledTonal" onPress={onRename}>
+        <Button
+          className="font-normal"
+          variant="filledTonal"
+          onPress={onRename}
+        >
           Rename
         </Button>
       </ModalFooter>
@@ -119,10 +124,14 @@ const FolderCreateDialog = memo(
           ></Input>
         </ModalBody>
         <ModalFooter>
-          <Button variant="text" onPress={handleClose}>
+          <Button className="font-normal" variant="text" onPress={handleClose}>
             Close
           </Button>
-          <Button variant="filledTonal" onPress={onCreate}>
+          <Button
+            className="font-normal"
+            variant="filledTonal"
+            onPress={onCreate}
+          >
             Create
           </Button>
         </ModalFooter>
@@ -157,14 +166,14 @@ const DeleteDialog = memo(({ handleClose, queryKey }: DeleteDialogProps) => {
         </h1>
       </ModalBody>
       <ModalFooter>
-        <Button variant="text" onPress={handleClose}>
+        <Button className="font-normal" variant="text" onPress={handleClose}>
           No
         </Button>
         <Button
           variant="filledTonal"
           isLoading={isLoading}
           classNames={{
-            base: isLoading && "pointer-events-none",
+            base: clsx("font-normal", isLoading && "pointer-events-none"),
           }}
           onPress={onDelete}
         >

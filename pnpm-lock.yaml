@@ -32,7 +32,7 @@ dependencies:
     version: 1.1.0(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
   '@tw-material/react':
     specifier: ^1.1.8
-    version: 1.1.10(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+    version: 1.1.11(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
   '@tw-material/system':
     specifier: ^1.1.0
     version: 1.1.0(@tw-material/theme@1.1.5)(react@18.2.0)(tailwind-variants@0.2.1)
@@ -42,6 +42,9 @@ dependencies:
   artplayer:
     specifier: ^5.1.1
     version: 5.1.1
+  clsx:
+    specifier: ^2.1.0
+    version: 2.1.0
   epubjs:
     specifier: ^0.3.93
     version: 0.3.93
@@ -888,7 +891,7 @@ packages:
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
     dependencies:
-      '@humanwhocodes/object-schema': 2.0.2
+      '@humanwhocodes/object-schema': 2.0.3
       debug: 4.3.4
       minimatch: 3.1.2
     transitivePeerDependencies:
@@ -900,8 +903,8 @@ packages:
     engines: {node: '>=12.22'}
     dev: true
 
-  /@humanwhocodes/object-schema@2.0.2:
-    resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
+  /@humanwhocodes/object-schema@2.0.3:
+    resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     dev: true
 
   /@ianvs/prettier-plugin-sort-imports@4.2.1(prettier@3.2.5):
@@ -2046,8 +2049,8 @@ packages:
       - tailwind-variants
     dev: false
 
-  /@tw-material/dropdown@1.1.7(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3):
-    resolution: {integrity: sha512-e/tl09g8vLKwRnkRACW8MpvJyky8j3QECdzMreDz6mv3YpXs+MD58ePSiNg3nBNhZlKgvp/n8moKNw0fUQ4jkg==}
+  /@tw-material/dropdown@1.1.8(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3):
+    resolution: {integrity: sha512-kys2eqbmpSxhzkO2tE7FdvSYRYeptc48Bkp/YQUYHSKOctOJkHRIYobG+1moj2l9eqUZ9OUzf5J3L6pTGAdszw==}
     peerDependencies:
       '@tw-material/system': ^1.1.0
       '@tw-material/theme': ^1.1.5
@@ -2282,8 +2285,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@tw-material/react@1.1.10(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3):
-    resolution: {integrity: sha512-g9T7F8nrfn8X6UjJptroUDpVLGS0hNOlNt2YYtH97ugTiOCtMXJYjiKBA58dcAwIrUAZgZQN6qElS828Tm6j8g==}
+  /@tw-material/react@1.1.11(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3):
+    resolution: {integrity: sha512-AaiaeZg9bjxUciZUCJVOkNrbW6IHsgsHJBFsWqHzgHuW2DC4oqVon7v6WuyB1Y/pJ4xK6Q8dcnolDLEIX9l65g==}
     peerDependencies:
       framer-motion: '>=4.0.0'
       react: ^18.2.0
@@ -2294,7 +2297,7 @@ packages:
       '@tw-material/breadcrumbs': 1.1.0(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)
       '@tw-material/button': 1.1.6(@tw-material/system@1.1.0)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
       '@tw-material/divider': 1.0.0(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/dropdown': 1.1.7(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+      '@tw-material/dropdown': 1.1.8(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
       '@tw-material/input': 1.0.2(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0)
       '@tw-material/listbox': 1.0.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
       '@tw-material/menu': 1.1.7(@tw-material/system@1.1.0)(@tw-material/theme@1.1.5)(@types/react@18.2.73)(framer-motion@11.0.24)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
@@ -2896,7 +2899,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001603
-      electron-to-chromium: 1.4.722
+      electron-to-chromium: 1.4.723
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
     dev: true
@@ -3161,8 +3164,8 @@ packages:
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  /electron-to-chromium@1.4.722:
-    resolution: {integrity: sha512-5nLE0TWFFpZ80Crhtp4pIp8LXCztjYX41yUcV6b+bKR2PqzjskTMOOlBi1VjBHlvHwS+4gar7kNKOrsbsewEZQ==}
+  /electron-to-chromium@1.4.723:
+    resolution: {integrity: sha512-rxFVtrMGMFROr4qqU6n95rUi9IlfIm+lIAt+hOToy/9r6CDv0XiEcQdC3VP71y1pE5CFTzKV0RvxOGYCPWWHPw==}
     dev: true
 
   /emoji-regex@8.0.0:

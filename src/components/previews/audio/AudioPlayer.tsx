@@ -39,7 +39,10 @@ const AudioInfo = memo(() => {
   return (
     <div className="flex justify-between items-start">
       <div className="flex flex-col gap-0 min-w-0">
-        <h3 title={metadata.title} className="font-semibold truncate">
+        <h3
+          title={metadata.title}
+          className="text-small font-semibold truncate"
+        >
           {metadata.title}
         </h3>
         <h1 title={metadata.artist} className="text-large font-medium mt-2">

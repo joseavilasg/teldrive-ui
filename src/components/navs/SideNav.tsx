@@ -1,8 +1,10 @@
+import { memo } from "react"
 import { Icon } from "@iconify/react"
 import { Button } from "@tw-material/react"
 import { cn } from "@tw-material/theme"
 
 import { ForwardLink } from "@/components/ForwardLink"
+import { usePreloadFiles } from "@/utils/queryOptions"
 
 export const categories = [
   { id: "my-drive", name: "My Drive", icon: "basil:google-drive-outline" },
@@ -11,7 +13,8 @@ export const categories = [
   { id: "storage", name: "storage", icon: "ic:outline-sd-storage" },
 ] as const
 
-export const SideNav = () => {
+export const SideNav = memo(() => {
+  const preloadFiles = usePreloadFiles()
   return (
     <aside className="area-[nav]">
       <ul className="size-full flex-wrap flex flex-row md:flex-col items-center list-none gap-4 px-3 overflow-auto">
@@ -19,11 +22,12 @@ export const SideNav = () => {
           <Button
             as={ForwardLink}
             variant="text"
+            onClick={(e) => e.preventDefault()}
+            onPress={() => preloadFiles("", id as any)}
             key={id}
             to="/$"
             isIconOnly
             params={{ _splat: id }}
-            preload="intent"
             className={cn(
               "h-8 w-full max-w-14 rounded-3xl px-0 mx-auto",
               "text-on-surface-variant",
@@ -40,4 +44,4 @@ export const SideNav = () => {
       </ul>
     </aside>
   )
-}
+})

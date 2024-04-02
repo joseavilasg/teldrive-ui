@@ -1,9 +1,10 @@
+import { memo } from "react"
 import { Outlet } from "@tanstack/react-router"
 
 import Header from "@/components/Header"
 import { SideNav } from "@/components/navs/SideNav"
 
-export const AuthLayout = () => {
+export const AuthLayout = memo(() => {
   return (
     <div
       className="grid md:grid-areas-[header_header,nav_main] md:grid-cols-[5rem_1fr] md:grid-rows-[4rem_1fr] grid-cols-[1fr] 
@@ -16,4 +17,4 @@ export const AuthLayout = () => {
       </main>
     </div>
   )
-}
+})

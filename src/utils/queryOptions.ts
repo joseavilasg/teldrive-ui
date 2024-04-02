@@ -84,10 +84,10 @@ export const usePreloadFiles = () => {
   const { startProgress, stopProgress } = useProgress()
 
   const preloadFiles = useCallback(
-    async (path: string, type?: BrowseView, showProgress = true) => {
+    async (path: string, type: BrowseView, showProgress = true) => {
       const newParams = {
         path,
-        type: type,
+        type,
       }
       const queryKey = ["files", newParams]
       const queryState = queryClient.getQueryState(queryKey)
@@ -101,8 +101,10 @@ export const usePreloadFiles = () => {
       if (!queryState?.data) {
         try {
           if (showProgress) startProgress()
-          await router.preloadRoute(nextRoute)
+          await queryClient.fetchInfiniteQuery(filesQueryOptions(newParams))
           router.navigate(nextRoute)
+        } catch (e) {
+          throw e
         } finally {
           if (showProgress) stopProgress()
         }

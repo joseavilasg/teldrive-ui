@@ -1,6 +1,6 @@
 import "./globals.css"
 
-import * as React from "react"
+import { StrictMode } from "react"
 import { QueryClientProvider } from "@tanstack/react-query"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import { createRouter, RouterProvider } from "@tanstack/react-router"
@@ -19,7 +19,6 @@ const router = createRouter({
   context: {
     queryClient,
   },
-  defaultPreloadDelay: 300,
   defaultPreload: "intent",
   defaultPreloadStaleTime: 0,
 })
@@ -35,15 +34,17 @@ const rootElement = document.getElementById("root")!
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
-    <QueryClientProvider client={queryClient}>
-      <ProgressProvider>
-        <ThemeProvider>
-          <Toaster position="bottom-right" />
-          <RouterProvider router={router} />
-        </ThemeProvider>
-        <TailwindIndicator />
-      </ProgressProvider>
-      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
-    </QueryClientProvider>
+    <StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <ProgressProvider>
+          <ThemeProvider>
+            <Toaster position="bottom-right" />
+            <RouterProvider router={router} />
+          </ThemeProvider>
+          <TailwindIndicator />
+        </ProgressProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+    </StrictMode>
   )
 }

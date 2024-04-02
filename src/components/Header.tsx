@@ -1,4 +1,11 @@
-import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react"
+import {
+  ChangeEvent,
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react"
 import { Icon } from "@iconify/react"
 import { Link, useRouterState } from "@tanstack/react-router"
 import { Input } from "@tw-material/react"
@@ -12,7 +19,7 @@ import { ThemeToggle } from "./menus/ThemeToggle"
 
 const cleanSearchInput = (input: string) => input.trim().replace(/\s+/g, " ")
 
-const SearchBar = () => {
+const SearchBar = memo(() => {
   const [pathname] = useRouterState({ select: (s) => [s.location.pathname] })
 
   const [type, search] = useMemo(() => {
@@ -53,7 +60,9 @@ const SearchBar = () => {
       placeholder="Search..."
       enterKeyHint="search"
       autoComplete="off"
+      isClearable
       aria-label="search"
+      onClear={() => setQuery("")}
       value={query}
       onChange={updateQuery}
       classNames={{
@@ -61,12 +70,12 @@ const SearchBar = () => {
         inputWrapper: "rounded-full group-data-[focus=true]:bg-surface",
         input: "px-2",
       }}
-      endContent={<Icon icon="bi:search" className="size-6" />}
+      startContent={<Icon icon="bi:search" className="size-6" />}
     ></Input>
   )
-}
+})
 
-export default function Header({ auth }: { auth: boolean }) {
+export default memo(function Header({ auth }: { auth: boolean }) {
   return (
     <header className="flex items-center area-[header] px-4">
       <div className="flex-1 flex gap-2 items-center">
@@ -82,4 +91,4 @@ export default function Header({ auth }: { auth: boolean }) {
       </div>
     </header>
   )
-}
+})

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef } from "react"
+import { memo, useCallback, useEffect, useMemo, useRef } from "react"
 import { useQuery, useSuspenseInfiniteQuery } from "@tanstack/react-query"
 import { getRouteApi } from "@tanstack/react-router"
 import {
@@ -64,7 +64,7 @@ const modalFileActions = [
   ChonkyActions.DeleteFiles.id,
 ]
 
-export const DriveFileBrowser = () => {
+export const DriveFileBrowser = memo(() => {
   const positions = useRef<Map<string, StateSnapshot>>(new Map()).current
 
   const { queryParams: params } = fileRoute.useRouteContext()
@@ -75,7 +75,7 @@ export const DriveFileBrowser = () => {
 
   const [view, setView] = useLocalStorage("view", "list")
 
-  const viewRef = useRef(viewMap[view] ?? ChonkyActions.EnableListView.id)
+  const viewRef = useRef(viewMap[view])
 
   const modalOpen = useModalStore((state) => state.open)
 
@@ -85,7 +85,6 @@ export const DriveFileBrowser = () => {
 
   const {
     data: files,
-    error,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
@@ -183,4 +182,4 @@ export const DriveFileBrowser = () => {
       )}
     </div>
   )
-}
+})
