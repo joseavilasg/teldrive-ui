@@ -38,7 +38,7 @@ export function ProfileDropDown() {
         }}
       >
         <DropdownItem key="profile" className="pointer-events-none">
-          <p className="font-semibold">{session?.userName}</p>
+          <p className="font-semibold">{provider.profileName(session)}</p>
         </DropdownItem>
         <DropdownItem
           key="settings"

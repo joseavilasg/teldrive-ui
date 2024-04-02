@@ -1,4 +1,11 @@
-import { Login, mediaUrl, profileUrl, signIn, signOut } from "./drive"
+import {
+  Login,
+  mediaUrl,
+  profileName,
+  profileUrl,
+  signIn,
+  signOut,
+} from "./drive"
 
 type Providers = keyof typeof providers
 
@@ -9,6 +16,7 @@ const providers = {
     profileUrl,
     signIn,
     signOut,
+    profileName,
     heading: import.meta.env.VITE_DRIVE_TITLE || "Drive",
     headerIcon: "lucide:github",
   },

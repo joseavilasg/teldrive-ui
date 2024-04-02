@@ -17,3 +17,5 @@ export const mediaUrl = (id: string, name: string, download = false) => {
 }
 
 export const profileUrl = (session: DriveSession) => session.user?.image || ""
+
+export const profileName = (session: DriveSession) => session.user?.name || ""
