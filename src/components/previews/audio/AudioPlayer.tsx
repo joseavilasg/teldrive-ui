@@ -45,7 +45,10 @@ const AudioInfo = memo(() => {
         >
           {metadata.title}
         </h3>
-        <h1 title={metadata.artist} className="text-large font-medium mt-2">
+        <h1
+          title={metadata.artist}
+          className="text-large font-medium mt-2 truncate"
+        >
           {metadata.artist}
         </h1>
       </div>
@@ -54,13 +57,15 @@ const AudioInfo = memo(() => {
 })
 
 const AudioDurationSlider = memo(() => {
-  const duration = useAudioStore((state) => state.duration)
-
-  const actions = useAudioStore(audioActions)
-
-  const audio = useAudioStore((state) => state.audio)
-
-  const [position, setPosition] = useState(0)
+  const { audio, duration, seekPosition, actions, delay } = useAudioStore(
+    useShallow((state) => ({
+      audio: state.audio,
+      duration: state.duration,
+      seekPosition: state.seekPosition,
+      actions: state.actions,
+      delay: state.delay,
+    }))
+  )
 
   const sliderRef = useRef<HTMLDivElement>(null)
 
@@ -70,21 +75,21 @@ const AudioDurationSlider = memo(() => {
   )
 
   const onPositionChange = useCallback(
-    (value: SliderValue) => setPosition(value as number),
+    (value: SliderValue) => actions.setSeekPosition(value as number),
     []
   )
 
   useInterval(() => {
-    if (sliderRef.current) {
+    if (sliderRef.current && delay > 0) {
       const isDragging = (
         sliderRef?.current.firstElementChild?.firstElementChild
           ?.lastElementChild as HTMLDivElement
       ).dataset?.dragging
       if (isDragging !== "true") {
-        setPosition(Math.floor(audio?.currentTime!))
+        actions.setSeekPosition(Math.floor(audio?.currentTime!))
       }
     }
-  }, 1000)
+  }, delay)
 
   return (
     <>
@@ -92,8 +97,8 @@ const AudioDurationSlider = memo(() => {
         ref={sliderRef}
         size="sm"
         aria-label="progress"
-        value={position}
-        maxValue={audio?.duration}
+        value={seekPosition}
+        maxValue={duration}
         minValue={0}
         step={1}
         disableThumbScale
@@ -106,7 +111,7 @@ const AudioDurationSlider = memo(() => {
         }}
       />
       <div className="flex justify-between">
-        <p className="text-small">{formatDuration(position)}</p>
+        <p className="text-small">{formatDuration(seekPosition)}</p>
         <p className="text-small ">{formatDuration(duration)}</p>
       </div>
     </>
@@ -146,8 +151,22 @@ interface TopControlsProps {
 }
 
 const TopControls = memo(({ nextItem, prevItem }: TopControlsProps) => {
-  const actions = useAudioStore(audioActions)
-  const isPlaying = useAudioStore((state) => state.isPlaying)
+  const { isPlaying, actions } = useAudioStore(
+    useShallow((state) => ({
+      isPlaying: state.isPlaying,
+      actions: state.actions,
+    }))
+  )
+
+  const handleNext = useCallback(() => {
+    nextItem("audio")
+    actions.set({ seekPosition: 0, delay: 0 })
+  }, [nextItem])
+
+  const handlePrev = useCallback(() => {
+    prevItem("audio")
+    actions.set({ seekPosition: 0, delay: 0 })
+  }, [prevItem])
 
   return (
     <div className="flex w-full items-center justify-center gap-3">
@@ -155,7 +174,7 @@ const TopControls = memo(({ nextItem, prevItem }: TopControlsProps) => {
         isIconOnly
         className="text-inherit"
         variant="text"
-        onPress={() => prevItem("audio")}
+        onPress={handlePrev}
       >
         <Icon icon="solar:skip-previous-bold" />
       </Button>
@@ -175,7 +194,7 @@ const TopControls = memo(({ nextItem, prevItem }: TopControlsProps) => {
         isIconOnly
         className="text-inherit"
         variant="text"
-        onPress={() => nextItem("audio")}
+        onPress={handleNext}
       >
         <Icon icon="solar:skip-next-bold" />
       </Button>
@@ -237,11 +256,18 @@ export const AudioPlayer = memo(({ nextItem, prevItem }: PlayerProps) => {
     audio
   )
 
-  useEventListener("ended", actions.setEnded, audio)
+  useEventListener(
+    "ended",
+    () => {
+      actions.set({ seekPosition: 0, delay: 0, isEnded: true })
+    },
+    audio
+  )
 
   useEffect(() => {
     return () => {
       if (audio.current) {
+        actions.reset()
         audio.current.pause()
         audio.current.src = ""
         audio.current.load()

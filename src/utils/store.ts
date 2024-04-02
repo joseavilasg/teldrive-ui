@@ -15,6 +15,8 @@ const defaultState = {
   isMuted: false,
   volume: 1,
   isEnded: false,
+  seekPosition: 0,
+  delay: 0,
   metadata: {
     artist: "Unkown artist",
     title: "Unkown title",
@@ -33,6 +35,9 @@ type PlayerState = typeof defaultState & {
     setEnded: () => void
     setAudioRef: (ref: AudioRef) => void
     loadAudio: (url: string, name: string) => void
+    setSeekPosition: (value: number) => void
+    set: (payload: Partial<PlayerState>) => void
+    reset: () => void
   }
 }
 
@@ -55,8 +60,13 @@ export const useAudioStore = create<PlayerState>((set, get) => ({
         audio.src = url
         audio.autoplay = true
         audio.load()
-        audio.play()
-        set({ ...state, isPlaying: true, isEnded: false, metadata })
+        set({
+          ...state,
+          isPlaying: true,
+          isEnded: false,
+          metadata,
+          delay: 1000,
+        })
       }
     },
     seek: (value) =>
@@ -68,6 +78,11 @@ export const useAudioStore = create<PlayerState>((set, get) => ({
         }
         return state
       }),
+    setSeekPosition: (value) => {
+      set((state) => {
+        return { ...state, seekPosition: value }
+      })
+    },
     setVolume: (value) =>
       set((state) => {
         const audio = state.audio
@@ -108,6 +123,8 @@ export const useAudioStore = create<PlayerState>((set, get) => ({
     setDuration: (value) => set((state) => ({ ...state, duration: value })),
     setEnded: () => set((state) => ({ ...state, isEnded: true })),
     setAudioRef: (ref: AudioRef) => set({ audio: ref }),
+    set: (payload) => set((state) => ({ ...state, ...payload })),
+    reset: () => set(() => ({ ...defaultState })),
   },
 }))
 
