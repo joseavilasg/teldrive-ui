@@ -1,4 +1,5 @@
 import { useCallback } from "react"
+import provider from "@/providers"
 import type { QueryParams, SetValue } from "@/types"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import {
@@ -11,7 +12,7 @@ import {
   type FileData,
 } from "@tw-material/file-browser"
 
-import { getMediaUrl, navigateToExternalUrl } from "@/utils/common"
+import { navigateToExternalUrl } from "@/utils/common"
 import http from "@/utils/http"
 import { sessionQueryOptions, usePreloadFiles } from "@/utils/queryOptions"
 import { useModalStore } from "@/utils/store"
@@ -93,7 +94,7 @@ export const useFileAction = (
           for (const file of selectedFiles) {
             if (!FileHelper.isDirectory(file)) {
               const { id, name } = file
-              const url = getMediaUrl(id, name, session?.hash!, true)
+              const url = provider.mediaUrl(id, name, true)
               navigateToExternalUrl(url, false)
             }
           }
@@ -103,7 +104,7 @@ export const useFileAction = (
           const { selectedFiles } = data.state
           const fileToOpen = selectedFiles[0]
           const { id, name } = fileToOpen
-          const url = `vlc://${getMediaUrl(id, name, session?.hash!)}`
+          const url = `vlc://${provider.mediaUrl(id, name)}`
           navigateToExternalUrl(url, false)
           break
         }
@@ -137,11 +138,7 @@ export const useFileAction = (
           selections.forEach((element) => {
             if (!FileHelper.isDirectory(element)) {
               const { id, name } = element
-              clipboardText = `${clipboardText}${getMediaUrl(
-                id,
-                name,
-                session?.hash!
-              )}\n`
+              clipboardText = `${clipboardText}${provider.mediaUrl(id, name)}\n`
             }
           })
           navigator.clipboard.writeText(clipboardText)

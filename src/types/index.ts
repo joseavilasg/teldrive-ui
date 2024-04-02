@@ -19,29 +19,6 @@ export type SingleFile = {
   parentPath?: string
 }
 
-export type ModalState = {
-  open: boolean
-  operation?: string
-  type?: string
-  currentFile?: FileData
-  selectedFiles?: string[]
-  name?: string
-  successful?: boolean
-}
-
-export type Params = {
-  nextPageToken: string
-  perPage: number
-  order: string
-  path: string
-  search: string
-  sort: string
-  starred: boolean
-  type: string
-  op: string
-  view: string
-}
-
 export type FilePayload = {
   id?: string
   payload?: Record<string, any>
@@ -79,11 +56,21 @@ export type Settings = {
   bots?: string
 }
 
-export type Session = {
+export type TeldriveSession = {
   name: string
   userName: string
   isPremium: boolean
   hash: string
+  expires: string
+}
+
+export interface DriveSession {
+  user?: {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+  }
   expires: string
 }
 

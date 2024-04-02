@@ -44,7 +44,7 @@ const AuthenticatedSplatRoute = AuthenticatedSplatImport.update({
 const AuthLoginRoute = AuthLoginImport.update({
   path: '/login',
   getParentRoute: () => AuthRoute,
-} as any).lazy(() => import('./routes/_auth.login.lazy').then((d) => d.Route))
+} as any)
 
 // Populate the FileRoutesByPath interface
 

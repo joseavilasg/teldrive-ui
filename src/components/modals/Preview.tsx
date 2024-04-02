@@ -1,4 +1,5 @@
 import { lazy, memo, Suspense, useCallback } from "react"
+import provider from "@/providers"
 import { Icon } from "@iconify/react"
 import { useQuery } from "@tanstack/react-query"
 import {
@@ -15,7 +16,6 @@ import DocPreview from "@/components/previews/DocPreview"
 import FullScreenIFrame from "@/components/previews/FullScreenIFrame"
 import ImagePreview from "@/components/previews/ImagePreview"
 import PDFPreview from "@/components/previews/PdfPreview"
-import { getMediaUrl } from "@/utils/common"
 import { preview } from "@/utils/getPreviewType"
 import { sessionQueryOptions } from "@/utils/queryOptions"
 import { useModalStore } from "@/utils/store"
@@ -146,7 +146,7 @@ export default memo(function PreviewModal({ files }: { files: FileData[] }) {
 
   const handleClose = useCallback(() => modalActions.setOpen(false), [])
 
-  const assetUrl = getMediaUrl(id, name, session?.hash!)
+  const assetUrl = provider.mediaUrl(id, name)
 
   const renderPreview = useCallback(() => {
     if (previewType) {

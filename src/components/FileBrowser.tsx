@@ -1,5 +1,5 @@
-import { memo, useCallback, useEffect, useMemo, useRef } from "react"
-import { useQuery, useSuspenseInfiniteQuery } from "@tanstack/react-query"
+import { memo, useEffect, useMemo, useRef } from "react"
+import { useSuspenseInfiniteQuery } from "@tanstack/react-query"
 import { getRouteApi } from "@tanstack/react-router"
 import {
   ChonkyActions,
@@ -8,7 +8,6 @@ import {
   FileList,
   FileNavbar,
   FileToolbar,
-  type FileData,
 } from "@tw-material/file-browser"
 import type {
   StateSnapshot,
@@ -19,10 +18,9 @@ import useBreakpoint from "use-breakpoint"
 import { useLocalStorage } from "usehooks-ts"
 
 import { fileActions, useFileAction } from "@/hooks/useFileAction"
-import useSettings from "@/hooks/useSettings"
 import { defaultSortState } from "@/hooks/useSortFilter"
-import { chainLinks, getMediaUrl } from "@/utils/common"
-import { filesQueryOptions, sessionQueryOptions } from "@/utils/queryOptions"
+import { chainLinks } from "@/utils/common"
+import { filesQueryOptions } from "@/utils/queryOptions"
 import { useModalStore } from "@/utils/store"
 
 import { FileOperationModal } from "./modals/FileOperation"
@@ -128,25 +126,21 @@ export const DriveFileBrowser = memo(() => {
     }
   }, [params.path, params.type])
 
-  const { settings } = useSettings()
+  // const thumbnailGenerator = useCallback(
+  //   (file: FileData) => {
+  //     if (file.previewType === "image") {
+  //       const mediaUrl = provider.mediaUrl(file.id, file.name)
+  //       const url = new URL(mediaUrl)
+  //       url.searchParams.set("w", "360")
+  //       return settings.resizerHost
+  //         ? `${settings.resizerHost}/${url.host}${url.pathname}${url.search}`
+  //         : mediaUrl
+  //     }
 
-  const { data: session } = useQuery(sessionQueryOptions)
-
-  const thumbnailGenerator = useCallback(
-    (file: FileData) => {
-      if (file.previewType === "image") {
-        const mediaUrl = getMediaUrl(file.id, file.name, session?.hash!)
-        const url = new URL(mediaUrl)
-        url.searchParams.set("w", "360")
-        return settings.resizerHost
-          ? `${settings.resizerHost}/${url.host}${url.pathname}${url.search}`
-          : mediaUrl
-      }
-
-      return undefined
-    },
-    [settings.resizerHost]
-  )
+  //     return undefined
+  //   },
+  //   [settings.resizerHost]
+  // )
 
   return (
     <div className="size-full m-auto">
@@ -159,7 +153,6 @@ export const DriveFileBrowser = memo(() => {
         defaultFileViewActionId={viewRef.current}
         defaultSortActionId={sortMap[defaultSortState[params.type].sort]}
         defaultSortOrder={defaultSortState[params.type].order}
-        thumbnailGenerator={thumbnailGenerator}
         breakpoint={breakpoint}
       >
         {params.type === "my-drive" && <FileNavbar breakpoint={breakpoint} />}

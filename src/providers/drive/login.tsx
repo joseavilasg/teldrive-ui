@@ -1,14 +1,14 @@
 import { memo, useCallback } from "react"
-import { signIn } from "@hono/auth-js/react"
+import provider from "@/providers"
 import { Icon } from "@iconify/react"
-import { createFileRoute, useSearch } from "@tanstack/react-router"
+import { useSearch } from "@tanstack/react-router"
 import { Button } from "@tw-material/react"
 
-export const Logincomponent = memo(() => {
+export const Login = memo(() => {
   const params = useSearch({ from: "/_auth/login" })
 
   const handleLogin = useCallback(() => {
-    signIn("github", { callbackUrl: params.redirect ?? "/" })
+    provider.signIn("github", { callbackUrl: params.redirect ?? "/" })
   }, [params.redirect])
 
   return (
@@ -23,8 +23,4 @@ export const Logincomponent = memo(() => {
       </Button>
     </div>
   )
-})
-
-export const Route = createFileRoute("/_auth/login")({
-  component: Logincomponent,
 })

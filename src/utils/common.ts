@@ -31,38 +31,6 @@ export function getExtension(fileName: string) {
 export const zeroPad = (num: number | string, places: number) =>
   String(num).padStart(places, "0")
 
-export const getSortOrder = () =>
-  JSON.parse(localStorage.getItem("sortOrder") as string) || "desc"
-
-export const getMediaUrl = (
-  id: string,
-  name: string,
-  hash: string,
-  download = false
-) => {
-  const host = window.location.origin
-  return `${host}/api/files/${id}/stream/${encodeURIComponent(
-    name
-  )}?hash=${hash}${download ? "&d=1" : ""}`
-}
-
-export default function textToSvgURL(text: string) {
-  const blob = new Blob([text], { type: "image/svg+xml;charset=utf-8" })
-  return new Promise((resolve) => {
-    const reader = new FileReader()
-    reader.onload = (e) => {
-      resolve(e.target?.result)
-    }
-    reader.readAsDataURL(blob)
-  })
-}
-
-export const splitFileSizes = [
-  { value: 500 * 1024 * 1024, label: "500MB" },
-  { value: 1000 * 1024 * 1024, label: "1GB" },
-  { value: 2 * 1000 * 1024 * 1024, label: "2GB" },
-]
-
 export const copyDataToClipboard = (data: string[]) => {
   return new Promise((resolve, reject) => {
     const textToCopy = data.join("\n")

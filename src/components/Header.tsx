@@ -6,6 +6,7 @@ import {
   useMemo,
   useState,
 } from "react"
+import provider from "@/providers"
 import { Icon } from "@iconify/react"
 import { Link, useRouterState } from "@tanstack/react-router"
 import { Input } from "@tw-material/react"
@@ -81,8 +82,8 @@ export default memo(function Header({ auth }: { auth: boolean }) {
     <header className="flex items-center area-[header] px-4">
       <div className="flex-1 flex gap-2 items-center">
         <Link to="/" className="flex gap-2 items-center cursor-pointer">
-          <Icon className="size-6 text-inherit " icon="ph:telegram-logo-fill" />
-          <p className="text-headline-small">Drive</p>
+          <Icon className="size-6 text-inherit " icon={provider.headerIcon} />
+          <p className="text-headline-small">{provider.heading}</p>
         </Link>
       </div>
       <div className="flex-1 flex justify-end items-center gap-4">

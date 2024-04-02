@@ -1,4 +1,4 @@
-import { signOut } from "@hono/auth-js/react"
+import provider from "@/providers"
 import { Icon } from "@iconify/react"
 import { useQuery } from "@tanstack/react-query"
 import {
@@ -24,7 +24,7 @@ export function ProfileDropDown() {
           as="button"
           size="sm"
           className="outline-none shrink-0"
-          src={`/api/users/profile?photo=1&hash=${session?.hash}`}
+          src={provider.profileUrl(session!)}
         />
       </DropdownTrigger>
       <DropdownMenu
@@ -48,7 +48,7 @@ export function ProfileDropDown() {
         <DropdownItem
           key="logout"
           endIcon={<Icon className="size-6" icon="ic:baseline-logout" />}
-          onPress={() => signOut({ callbackUrl: "/login" })}
+          onPress={() => provider.signOut({ callbackUrl: "/login" })}
         >
           Logout
         </DropdownItem>
