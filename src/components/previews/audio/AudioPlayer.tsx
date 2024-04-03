@@ -167,13 +167,13 @@ const TopControls = memo(({ nextItem, prevItem }: TopControlsProps) => {
   )
 
   const handleNext = useCallback(() => {
-    nextItem("audio")
     actions.set({ seekPosition: 0, delay: 0 })
+    nextItem("audio")
   }, [nextItem])
 
   const handlePrev = useCallback(() => {
-    prevItem("audio")
     actions.set({ seekPosition: 0, delay: 0 })
+    prevItem("audio")
   }, [prevItem])
 
   return (
