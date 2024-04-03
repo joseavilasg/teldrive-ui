@@ -20,7 +20,7 @@ export const SideNav = memo(() => {
   const preloadFiles = usePreloadFiles()
   return (
     <aside className="area-[nav]">
-      <ul className="size-full flex-wrap flex flex-row md:flex-col items-center list-none gap-4 px-3 overflow-auto">
+      <ul className="size-full flex-wrap flex flex-row md:flex-col items-center list-none gap-4 px-3 pt-2 overflow-auto">
         {categories.map(({ id, icon: Icon }) => (
           <Button
             as={ForwardLink}
