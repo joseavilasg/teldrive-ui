@@ -69,7 +69,6 @@ const SearchBar = memo(({ className }: SearchBarProps) => {
 })
 
 export default memo(function Header({ auth }: { auth: boolean }) {
-  const [showSearch, setShowSearch] = useState(false)
   return (
     <header className="flex items-center area-[header] px-4">
       <div className="flex-1 flex gap-2 items-center">
