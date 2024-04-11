@@ -1,4 +1,4 @@
-import { BrowseView } from "@/types"
+import { BrowseView, Session } from "@/types"
 
 export const navigateToExternalUrl = (url: string, shouldOpenNewTab = true) =>
   shouldOpenNewTab ? window.open(url, "_blank") : (window.location.href = url)
@@ -97,3 +97,20 @@ export function extractPathParts(path: string): {
     path: restOfPath ? "/" + restOfPath : "",
   }
 }
+
+export const mediaUrl = (
+  id: string,
+  name: string,
+  sessionHash: string,
+  download = false
+) => {
+  const host = window.location.origin
+  return `${host}/api/files/${id}/stream/${encodeURIComponent(
+    name
+  )}?hash=${sessionHash}${download ? "&d=1" : ""}`
+}
+
+export const profileUrl = (session: Session) =>
+  `/api/users/profile?photo=1&hash=${session.hash}`
+
+export const profileName = (session: Session) => session.userName

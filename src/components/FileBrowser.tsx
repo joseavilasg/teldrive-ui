@@ -1,5 +1,5 @@
 import { memo, useEffect, useMemo, useRef } from "react"
-import { useSuspenseInfiniteQuery } from "@tanstack/react-query"
+import { useQuery, useSuspenseInfiniteQuery } from "@tanstack/react-query"
 import { getRouteApi } from "@tanstack/react-router"
 import {
   ChonkyActions,
@@ -24,7 +24,7 @@ import {
   defaultViewId,
   sortViewMap,
 } from "@/utils/defaults"
-import { filesQueryOptions } from "@/utils/queryOptions"
+import { filesQueryOptions, sessionQueryOptions } from "@/utils/queryOptions"
 import { useModalStore } from "@/utils/store"
 
 import { FileOperationModal } from "./modals/FileOperation"
@@ -59,6 +59,8 @@ export const DriveFileBrowser = memo(() => {
 
   const { breakpoint } = useBreakpoint(BREAKPOINTS)
 
+  const { data: session } = useQuery(sessionQueryOptions)
+
   const {
     data: files,
     fetchNextPage,
@@ -66,7 +68,7 @@ export const DriveFileBrowser = memo(() => {
     isFetchingNextPage,
   } = useSuspenseInfiniteQuery(queryOptions)
 
-  const actionHandler = useFileAction(params)
+  const actionHandler = useFileAction(params, session!)
 
   const folderChain = useMemo(() => {
     if (params.type === "my-drive") {
@@ -106,7 +108,7 @@ export const DriveFileBrowser = memo(() => {
   // const thumbnailGenerator = useCallback(
   //   (file: FileData) => {
   //     if (file.previewType === "image") {
-  //       const mediaUrl = provider.mediaUrl(file.id, file.name)
+  //       const mediaUrl = mediaUrl(file.id, file.name,session.hash)
   //       const url = new URL(mediaUrl)
   //       url.searchParams.set("w", "360")
   //       return settings.resizerHost
@@ -155,7 +157,7 @@ export const DriveFileBrowser = memo(() => {
       )}
 
       {modalOperation === ChonkyActions.OpenFiles.id && modalOpen && (
-        <PreviewModal files={files!} />
+        <PreviewModal session={session!} files={files} />
       )}
     </div>
   )

@@ -15,7 +15,7 @@ const ImagePreview = ({ name, assetUrl }: ImagePreviewProps) => {
   }
 
   return (
-    <div className="max-w-[64rem] max-h-[calc(100vh-4rem)] m-auto p-4 relative">
+    <div className="max-w-[64rem] m-auto relative">
       {!isLoaded && (
         <IconSvgSpinnerTadpole className="size-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2" />
       )}
@@ -23,7 +23,7 @@ const ImagePreview = ({ name, assetUrl }: ImagePreviewProps) => {
       <img
         onLoad={handleImageOnLoad}
         className={cn(
-          "max-w-full opacity-0 transition-opacity duration-300 ease-in-out",
+          "opacity-0 max-h-[calc(100vh-4rem)] pt-8 mx-auto object-contain transition-opacity duration-300 ease-in-out",
           isLoaded && "opacity-100"
         )}
         src={assetUrl}

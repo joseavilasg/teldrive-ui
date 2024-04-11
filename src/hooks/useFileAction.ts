@@ -1,6 +1,5 @@
 import { useCallback } from "react"
-import provider from "@/providers"
-import type { QueryParams } from "@/types"
+import type { QueryParams, Session } from "@/types"
 import { useQueryClient } from "@tanstack/react-query"
 import {
   ChonkyActions,
@@ -14,7 +13,7 @@ import {
 import IconFlatColorIconsVlc from "~icons/flat-color-icons/vlc"
 import IconLetsIconsViewAltFill from "~icons/lets-icons/view-alt-fill"
 
-import { navigateToExternalUrl } from "@/utils/common"
+import { mediaUrl, navigateToExternalUrl } from "@/utils/common"
 import { getSortState, SortOrder } from "@/utils/defaults"
 import http from "@/utils/http"
 import { usePreloadFiles } from "@/utils/queryOptions"
@@ -60,7 +59,7 @@ type ChonkyActionFullUnion =
   | (typeof CustomActions)[keyof typeof CustomActions]
   | ChonkyActionUnion
 
-export const useFileAction = (params: QueryParams) => {
+export const useFileAction = (params: QueryParams, session: Session) => {
   const queryClient = useQueryClient()
 
   const preloadFiles = usePreloadFiles()
@@ -92,7 +91,7 @@ export const useFileAction = (params: QueryParams) => {
           for (const file of selectedFiles) {
             if (!FileHelper.isDirectory(file)) {
               const { id, name } = file
-              const url = provider.mediaUrl(id, name, true)
+              const url = mediaUrl(id, name, session.hash, true)
               navigateToExternalUrl(url, false)
             }
           }
@@ -102,7 +101,7 @@ export const useFileAction = (params: QueryParams) => {
           const { selectedFiles } = data.state
           const fileToOpen = selectedFiles[0]
           const { id, name } = fileToOpen
-          const url = `vlc://${provider.mediaUrl(id, name)}`
+          const url = `vlc://${mediaUrl(id, name, session.hash)}`
           navigateToExternalUrl(url, false)
           break
         }
@@ -136,7 +135,7 @@ export const useFileAction = (params: QueryParams) => {
           selections.forEach((element) => {
             if (!FileHelper.isDirectory(element)) {
               const { id, name } = element
-              clipboardText = `${clipboardText}${provider.mediaUrl(id, name)}\n`
+              clipboardText = `${clipboardText}${mediaUrl(id, name, session.hash)}\n`
             }
           })
           navigator.clipboard.writeText(clipboardText)

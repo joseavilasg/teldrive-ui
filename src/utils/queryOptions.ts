@@ -4,6 +4,7 @@ import {
   FilePayload,
   FileResponse,
   QueryParams,
+  Session,
   SingleFile,
 } from "@/types"
 import {
@@ -114,7 +115,7 @@ export const usePreloadFiles = () => {
 }
 
 async function fetchSession() {
-  const res = await http.get("/api/auth/session")
+  const res = await http.get<Session>("/api/auth/session")
   const contentType = res.headers.get("content-type")
   if (contentType && contentType.includes("application/json")) {
     return res.data

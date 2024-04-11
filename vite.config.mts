@@ -1,6 +1,5 @@
 import { existsSync } from "fs"
 import { resolve } from "path"
-import { faviconsPlugin } from "@darkobits/vite-plugin-favicons"
 import { TanStackRouterVite } from "@tanstack/router-vite-plugin"
 import react from "@vitejs/plugin-react"
 import AdmZip from "adm-zip"
@@ -46,13 +45,6 @@ export default defineConfig(({ mode }) => {
         iconCustomizer(_1, _2, props) {
           props.width = "1.5rem"
           props.height = "1.5rem"
-        },
-      }),
-      faviconsPlugin({
-        icons: {
-          favicons: {
-            source: `./logos/${env.VITE_DRIVE_PROVIDER}.svg`,
-          },
         },
       }),
     ],

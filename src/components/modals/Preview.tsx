@@ -1,6 +1,5 @@
 import { lazy, memo, Suspense, useCallback } from "react"
-import provider from "@/providers"
-import { useQuery } from "@tanstack/react-query"
+import { Session } from "@/types"
 import {
   ChonkyIcon,
   ColorsLight,
@@ -18,8 +17,8 @@ import DocPreview from "@/components/previews/DocPreview"
 import ImagePreview from "@/components/previews/ImagePreview"
 import PDFPreview from "@/components/previews/PdfPreview"
 import { WideScreen } from "@/components/previews/WideScreen"
+import { mediaUrl } from "@/utils/common"
 import { preview } from "@/utils/getPreviewType"
-import { sessionQueryOptions } from "@/utils/queryOptions"
 import { useModalStore } from "@/utils/store"
 
 import CodePreview from "../previews/CodePreview"
@@ -111,9 +110,13 @@ const ControlButton = ({ type, onPress }: ControlButtonProps) => {
   )
 }
 
-export default memo(function PreviewModal({ files }: { files: FileData[] }) {
-  const { data: session } = useQuery(sessionQueryOptions)
-
+export default memo(function PreviewModal({
+  files,
+  session,
+}: {
+  files: FileData[]
+  session: Session
+}) {
   const modalActions = useModalStore((state) => state.actions)
 
   const previewFile = useModalStore((state) => state.currentFile)
@@ -146,7 +149,7 @@ export default memo(function PreviewModal({ files }: { files: FileData[] }) {
 
   const handleClose = useCallback(() => modalActions.setOpen(false), [])
 
-  const assetUrl = provider.mediaUrl(id, name)
+  const assetUrl = mediaUrl(id, name, session.hash)
 
   const renderPreview = useCallback(() => {
     if (previewType) {

@@ -55,21 +55,11 @@ export type Settings = {
   bots?: string
 }
 
-export type TeldriveSession = {
+export type Session = {
   name: string
   userName: string
   isPremium: boolean
   hash: string
-  expires: string
-}
-
-export interface DriveSession {
-  user?: {
-    id?: string
-    name?: string | null
-    email?: string | null
-    image?: string | null
-  }
   expires: string
 }
 

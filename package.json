@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@hono/auth-js": "^1.0.3",
     "@monaco-editor/react": "^4.6.0",
     "@tanstack/react-query": "^5.29.0",
     "@tanstack/react-router": "^1.26.19",
@@ -25,7 +24,6 @@
     "react-error-boundary": "^4.0.13",
     "react-hook-form": "^7.51.2",
     "react-hot-toast": "^2.4.1",
-    "react-intl": "^6.6.5",
     "react-reader": "^2.0.9",
     "react-top-loading-bar": "^2.3.1",
     "react-use-websocket": "^4.8.1",
@@ -34,7 +32,6 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
-    "@darkobits/vite-plugin-favicons": "^0.3.2",
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "@iconify/json": "^2.2.199",
     "@svgr/core": "^8.1.0",

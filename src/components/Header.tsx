@@ -1,8 +1,8 @@
 import { ChangeEvent, memo, useCallback, useState } from "react"
-import provider from "@/providers"
 import { Link } from "@tanstack/react-router"
 import { Input } from "@tw-material/react"
 import IconBiSearch from "~icons/bi/search"
+import PhTelegramLogoFill from "~icons/ph/telegram-logo-fill"
 import clsx from "clsx"
 import debounce from "lodash.debounce"
 
@@ -64,10 +64,8 @@ export default memo(function Header({ auth }: { auth: boolean }) {
     <header className="flex items-center area-[header] px-4">
       <div className="flex-1 flex gap-2 items-center">
         <Link to="/" className="flex gap-2 items-center cursor-pointer">
-          <provider.headerIcon className="size-6 text-inherit" />
-          <p className="text-headline-small hidden sm:block">
-            {provider.heading}
-          </p>
+          <PhTelegramLogoFill className="size-6 text-inherit" />
+          <p className="text-headline-small hidden sm:block">Teldrive</p>
         </Link>
       </div>
       <div className="flex-1 flex justify-end items-center gap-4">
