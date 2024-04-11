@@ -59,8 +59,6 @@ export const DriveFileBrowser = memo(() => {
 
   const { breakpoint } = useBreakpoint(BREAKPOINTS)
 
-  const { data: session } = useQuery(sessionQueryOptions)
-
   const {
     data: files,
     fetchNextPage,
@@ -68,7 +66,7 @@ export const DriveFileBrowser = memo(() => {
     isFetchingNextPage,
   } = useSuspenseInfiniteQuery(queryOptions)
 
-  const actionHandler = useFileAction(params, session!)
+  const actionHandler = useFileAction(params)
 
   const folderChain = useMemo(() => {
     if (params.type === "my-drive") {
@@ -108,7 +106,7 @@ export const DriveFileBrowser = memo(() => {
   // const thumbnailGenerator = useCallback(
   //   (file: FileData) => {
   //     if (file.previewType === "image") {
-  //       const mediaUrl = mediaUrl(file.id, file.name,session.hash)
+  //       const mediaUrl = mediaUrl(file.id, file.name)
   //       const url = new URL(mediaUrl)
   //       url.searchParams.set("w", "360")
   //       return settings.resizerHost
@@ -157,7 +155,7 @@ export const DriveFileBrowser = memo(() => {
       )}
 
       {modalOperation === ChonkyActions.OpenFiles.id && modalOpen && (
-        <PreviewModal session={session!} files={files} />
+        <PreviewModal files={files} />
       )}
     </div>
   )

@@ -56,10 +56,12 @@ export type Settings = {
 }
 
 export type Session = {
-  name: string
-  userName: string
-  isPremium: boolean
-  hash: string
+  user: {
+    id: string
+    name?: string | null
+    email: string | null
+    image?: string | null
+  }
   expires: string
 }
 

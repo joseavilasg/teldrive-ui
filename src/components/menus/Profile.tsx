@@ -1,6 +1,5 @@
-import { useCallback } from "react"
-import { useQuery, useQueryClient } from "@tanstack/react-query"
-import { useNavigate } from "@tanstack/react-router"
+import { signOut } from "@hono/auth-js/react"
+import { useQuery } from "@tanstack/react-query"
 import {
   Avatar,
   Dropdown,
@@ -12,23 +11,10 @@ import IconBaselineLogout from "~icons/ic/baseline-logout"
 import IconOutlineSettings from "~icons/ic/outline-settings"
 
 import { profileName, profileUrl } from "@/utils/common"
-import http from "@/utils/http"
 import { sessionQueryOptions } from "@/utils/queryOptions"
 
 export function ProfileDropDown() {
-  const { data: session, refetch } = useQuery(sessionQueryOptions)
-  const navigate = useNavigate()
-
-  const queryClient = useQueryClient()
-
-  const signOut = useCallback(async () => {
-    const res = await http.post("/api/auth/logout")
-    refetch()
-    if (res.status === 200) {
-      queryClient.removeQueries()
-      navigate({ to: "/login", replace: true })
-    }
-  }, [])
+  const { data: session } = useQuery(sessionQueryOptions)
 
   return (
     <Dropdown
@@ -66,7 +52,7 @@ export function ProfileDropDown() {
         <DropdownItem
           key="logout"
           endContent={<IconBaselineLogout className="size-6" />}
-          onPress={signOut}
+          onPress={() => signOut({ callbackUrl: "/login" })}
         >
           Logout
         </DropdownItem>

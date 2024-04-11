@@ -59,7 +59,7 @@ type ChonkyActionFullUnion =
   | (typeof CustomActions)[keyof typeof CustomActions]
   | ChonkyActionUnion
 
-export const useFileAction = (params: QueryParams, session: Session) => {
+export const useFileAction = (params: QueryParams) => {
   const queryClient = useQueryClient()
 
   const preloadFiles = usePreloadFiles()
@@ -91,7 +91,7 @@ export const useFileAction = (params: QueryParams, session: Session) => {
           for (const file of selectedFiles) {
             if (!FileHelper.isDirectory(file)) {
               const { id, name } = file
-              const url = mediaUrl(id, name, session.hash, true)
+              const url = mediaUrl(id, name, true)
               navigateToExternalUrl(url, false)
             }
           }
@@ -101,7 +101,7 @@ export const useFileAction = (params: QueryParams, session: Session) => {
           const { selectedFiles } = data.state
           const fileToOpen = selectedFiles[0]
           const { id, name } = fileToOpen
-          const url = `vlc://${mediaUrl(id, name, session.hash)}`
+          const url = `vlc://${mediaUrl(id, name)}`
           navigateToExternalUrl(url, false)
           break
         }
@@ -135,7 +135,7 @@ export const useFileAction = (params: QueryParams, session: Session) => {
           selections.forEach((element) => {
             if (!FileHelper.isDirectory(element)) {
               const { id, name } = element
-              clipboardText = `${clipboardText}${mediaUrl(id, name, session.hash)}\n`
+              clipboardText = `${clipboardText}${mediaUrl(id, name)}\n`
             }
           })
           navigator.clipboard.writeText(clipboardText)
