@@ -1,15 +1,14 @@
-import { ChangeEvent, memo, useCallback, useMemo, useState } from "react"
+import { ChangeEvent, memo, useCallback, useState } from "react"
 import provider from "@/providers"
-import { Link, useRouterState } from "@tanstack/react-router"
+import { Link } from "@tanstack/react-router"
 import { Input } from "@tw-material/react"
 import IconBiSearch from "~icons/bi/search"
 import clsx from "clsx"
 import debounce from "lodash.debounce"
 
-import usePrevious from "@/hooks/usePrevious"
 import { usePreloadFiles } from "@/utils/queryOptions"
 
-import { ColorPicker } from "./menus/ColorPicker"
+import { ColorPickerMenu } from "./menus/color-picker"
 import { ProfileDropDown } from "./menus/Profile"
 import { ThemeToggle } from "./menus/ThemeToggle"
 
@@ -20,14 +19,6 @@ interface SearchBarProps {
 }
 
 const SearchBar = memo(({ className }: SearchBarProps) => {
-  const [pathname] = useRouterState({ select: (s) => [s.location.pathname] })
-  const [type, search] = useMemo(() => {
-    const parts = pathname.split("/")
-    return [parts[1], parts.length > 2 ? decodeURIComponent(parts[2]) : ""]
-  }, [pathname])
-
-  const prevType = usePrevious(type)
-
   const [query, setQuery] = useState("")
 
   const preloadFiles = usePreloadFiles()
@@ -81,7 +72,7 @@ export default memo(function Header({ auth }: { auth: boolean }) {
       </div>
       <div className="flex-1 flex justify-end items-center gap-4">
         {auth && <SearchBar className="hidden xs:block" />}
-        <ColorPicker />
+        <ColorPickerMenu />
         <ThemeToggle />
         {auth && <ProfileDropDown />}
       </div>

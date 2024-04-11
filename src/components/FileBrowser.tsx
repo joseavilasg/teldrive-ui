@@ -15,11 +15,15 @@ import type {
   VirtuosoHandle,
 } from "react-virtuoso"
 import useBreakpoint from "use-breakpoint"
-import { useLocalStorage } from "usehooks-ts"
 
 import { fileActions, useFileAction } from "@/hooks/useFileAction"
-import { defaultSortState } from "@/hooks/useSortFilter"
 import { chainLinks } from "@/utils/common"
+import {
+  BREAKPOINTS,
+  defaultSortState,
+  defaultViewId,
+  sortViewMap,
+} from "@/utils/defaults"
 import { filesQueryOptions } from "@/utils/queryOptions"
 import { useModalStore } from "@/utils/store"
 
@@ -32,40 +36,22 @@ function isVirtuosoList(value: any): value is VirtuosoHandle {
   return (value as VirtuosoHandle).getState !== undefined
 }
 
-const sortMap = {
-  name: ChonkyActions.SortFilesByName.id,
-  updatedAt: ChonkyActions.SortFilesByDate.id,
-  size: ChonkyActions.SortFilesBySize.id,
-} as const
-
-const viewMap = {
-  list: ChonkyActions.EnableListView.id,
-  grid: ChonkyActions.EnableGridView.id,
-  tile: ChonkyActions.EnableTileView.id,
-} as const
-
-const fileRoute = getRouteApi("/_authenticated/$")
-
-const BREAKPOINTS = { xs: 0, sm: 476, md: 576, lg: 992 }
-
 const modalFileActions = [
   ChonkyActions.RenameFile.id,
   ChonkyActions.CreateFolder.id,
   ChonkyActions.DeleteFiles.id,
 ]
 
-export const DriveFileBrowser = memo(() => {
-  const positions = useRef<Map<string, StateSnapshot>>(new Map()).current
+const fileRoute = getRouteApi("/_authenticated/$")
 
+const positions = new Map<string, StateSnapshot>()
+
+export const DriveFileBrowser = memo(() => {
   const { queryParams: params } = fileRoute.useRouteContext()
 
   const listRef = useRef<VirtuosoHandle | VirtuosoGridHandle>(null)
 
   const queryOptions = filesQueryOptions(params)
-
-  const [view, setView] = useLocalStorage("view", "list")
-
-  const viewRef = useRef(viewMap[view])
 
   const modalOpen = useModalStore((state) => state.open)
 
@@ -78,10 +64,9 @@ export const DriveFileBrowser = memo(() => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-    isLoading,
   } = useSuspenseInfiniteQuery(queryOptions)
 
-  const { chonkyActionHandler } = useFileAction(params, setView)
+  const actionHandler = useFileAction(params)
 
   const folderChain = useMemo(() => {
     if (params.type === "my-drive") {
@@ -139,11 +124,19 @@ export const DriveFileBrowser = memo(() => {
       <FileBrowser
         files={files}
         folderChain={folderChain}
-        onFileAction={chonkyActionHandler()}
+        onFileAction={actionHandler()}
         fileActions={fileActions}
-        defaultFileViewActionId={viewRef.current}
-        defaultSortActionId={sortMap[defaultSortState[params.type].sort]}
-        defaultSortOrder={defaultSortState[params.type].order}
+        defaultFileViewActionId={defaultViewId}
+        defaultSortActionId={
+          params.type === "my-drive"
+            ? defaultSortState.sortId
+            : sortViewMap[params.type].sortId
+        }
+        defaultSortOrder={
+          params.type === "my-drive"
+            ? defaultSortState.order
+            : sortViewMap[params.type].order
+        }
         breakpoint={breakpoint}
       >
         {params.type === "my-drive" && <FileNavbar breakpoint={breakpoint} />}

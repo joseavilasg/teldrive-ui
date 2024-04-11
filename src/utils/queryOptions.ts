@@ -16,10 +16,10 @@ import {
 import { NavigateOptions, useRouter } from "@tanstack/react-router"
 import type { FileData } from "@tw-material/file-browser"
 
-import { defaultSortState } from "@/hooks/useSortFilter"
 import { useProgress } from "@/components/TopProgress"
 
 import { getExtension } from "./common"
+import { defaultSortState, sortIdsMap, sortViewMap } from "./defaults"
 import { getPreviewType, preview } from "./getPreviewType"
 import http from "./http"
 
@@ -100,10 +100,8 @@ export const usePreloadFiles = () => {
       if (!queryState?.data) {
         try {
           if (showProgress) startProgress()
-          await queryClient.fetchInfiniteQuery(filesQueryOptions(newParams))
+          await router.preloadRoute(nextRoute)
           router.navigate(nextRoute)
-        } catch (e) {
-          throw e
         } finally {
           if (showProgress) stopProgress()
         }
@@ -132,8 +130,12 @@ export const fetchFiles =
     const query: Record<string, string | number | boolean> = {
       nextPageToken: pageParam,
       perPage: 500,
-      order: defaultSortState[params.type].order,
-      sort: defaultSortState[params.type].sort,
+      order:
+        type === "my-drive" ? defaultSortState.order : sortViewMap[type].order,
+      sort:
+        type === "my-drive"
+          ? sortIdsMap[defaultSortState.sortId]
+          : sortIdsMap[sortViewMap[type].sortId],
     }
 
     if (type === "my-drive") {

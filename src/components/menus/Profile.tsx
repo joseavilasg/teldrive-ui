@@ -34,8 +34,8 @@ export function ProfileDropDown() {
         itemClasses={{
           base: "bg-surface-container-low",
           title: "text-medium",
-          startIcon: "text-on-surface",
-          endIcon: "text-on-surface",
+          startContent: "text-on-surface",
+          endContent: "text-on-surface",
         }}
       >
         <DropdownItem key="profile" className="pointer-events-none">
@@ -43,13 +43,13 @@ export function ProfileDropDown() {
         </DropdownItem>
         <DropdownItem
           key="settings"
-          endIcon={<IconOutlineSettings className="size-6" />}
+          endContent={<IconOutlineSettings className="size-6" />}
         >
           Settings
         </DropdownItem>
         <DropdownItem
           key="logout"
-          endIcon={<IconBaselineLogout className="size-6" />}
+          endContent={<IconBaselineLogout className="size-6" />}
           onPress={() => provider.signOut({ callbackUrl: "/login" })}
         >
           Logout

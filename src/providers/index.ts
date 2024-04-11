@@ -1,19 +1,11 @@
 import IconLucideGithub from "~icons/lucide/github"
 
-import {
-  Login,
-  mediaUrl,
-  profileName,
-  profileUrl,
-  signIn,
-  signOut,
-} from "./drive"
+import { mediaUrl, profileName, profileUrl, signIn, signOut } from "./drive"
 
 type Providers = keyof typeof providers
 
 const providers = {
   drive: {
-    LoginComponent: Login,
     mediaUrl,
     profileUrl,
     signIn,

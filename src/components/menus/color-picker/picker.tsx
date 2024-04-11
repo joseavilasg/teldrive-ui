@@ -1,19 +1,11 @@
 import { memo, useEffect, useState } from "react"
-import {
-  Button,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@tw-material/react"
 import { genThemeConfig } from "@tw-material/theme/config"
-import IconIcOutlineColorLens from "~icons/ic/outline-color-lens"
 import { HexColorPicker } from "react-colorful"
 
 import { useIsFirstRender } from "@/hooks/useFirstRender"
+import { useTheme } from "@/components/ThemeProvider"
 
-import { useTheme } from "../ThemeProvider"
-
-export const ColorPicker = memo(() => {
+const ColorPicker = memo(() => {
   const { colorScheme, setColorScheme } = useTheme()
 
   const [color, setColor] = useState(colorScheme.color)
@@ -45,16 +37,7 @@ export const ColorPicker = memo(() => {
     document.adoptedStyleSheets = [sheet]
   }, [color, firstRender])
 
-  return (
-    <Popover>
-      <PopoverTrigger>
-        <Button className="text-inherit" variant="text" isIconOnly>
-          <IconIcOutlineColorLens className="pointer-events-none size-6" />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="flex flex-col gap-2 p-2.5">
-        <HexColorPicker color={color} onChange={setColor} />
-      </PopoverContent>
-    </Popover>
-  )
+  return <HexColorPicker color={color} onChange={setColor} />
 })
+
+export default ColorPicker

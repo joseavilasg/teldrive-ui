@@ -21,26 +21,33 @@ export const SideNav = memo(() => {
   return (
     <aside className="area-[nav]">
       <ul className="size-full flex-wrap flex flex-row md:flex-col items-center list-none gap-4 px-3 pt-0 md:pt-2 overflow-auto">
-        {categories.map(({ id, icon: Icon }) => (
-          <Button
-            as={ForwardLink}
-            variant="text"
-            onClick={(e) => e.preventDefault()}
-            onPress={() => preloadFiles("", id as any)}
-            key={id}
-            to="/$"
-            isIconOnly
-            params={{ _splat: id }}
-            className={cn(
+        {categories.map(({ id, icon: Icon }) => {
+          const linkProps = {
+            variant: "text",
+            onClick:
+              id !== "storage" ? (e: any) => e.preventDefault() : undefined,
+            onPress:
+              id !== "storage" ? () => preloadFiles("", id as any) : undefined,
+            isIconOnly: true,
+            className: cn(
               "h-8 w-full max-w-14 rounded-3xl px-0 mx-auto",
               "text-on-surface-variant",
               "data-[status=active]:bg-secondary-container data-[status=active]:text-on-secondary-container",
               "[&>svg]:data-[status=active]:scale-110 [&>svg]:transition-transform"
-            )}
-          >
-            <Icon className="size-6 text-inherit pointer-events-none" />
-          </Button>
-        ))}
+            ),
+          } as const
+          return (
+            <Button
+              as={ForwardLink}
+              key={id}
+              to="/$"
+              params={{ _splat: id }}
+              {...linkProps}
+            >
+              <Icon className="size-6 text-inherit pointer-events-none" />
+            </Button>
+          )
+        })}
       </ul>
     </aside>
   )

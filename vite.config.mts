@@ -43,6 +43,10 @@ export default defineConfig(({ mode }) => {
       Icons({
         compiler: "jsx",
         jsx: "react",
+        iconCustomizer(_1, _2, props) {
+          props.width = "1.5rem"
+          props.height = "1.5rem"
+        },
       }),
       faviconsPlugin({
         icons: {

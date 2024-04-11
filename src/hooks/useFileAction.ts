@@ -1,6 +1,6 @@
 import { useCallback } from "react"
 import provider from "@/providers"
-import type { QueryParams, SetValue } from "@/types"
+import type { QueryParams } from "@/types"
 import { useQueryClient } from "@tanstack/react-query"
 import {
   ChonkyActions,
@@ -15,6 +15,7 @@ import IconFlatColorIconsVlc from "~icons/flat-color-icons/vlc"
 import IconLetsIconsViewAltFill from "~icons/lets-icons/view-alt-fill"
 
 import { navigateToExternalUrl } from "@/utils/common"
+import { getSortState, SortOrder } from "@/utils/defaults"
 import http from "@/utils/http"
 import { usePreloadFiles } from "@/utils/queryOptions"
 import { useModalStore } from "@/utils/store"
@@ -59,17 +60,14 @@ type ChonkyActionFullUnion =
   | (typeof CustomActions)[keyof typeof CustomActions]
   | ChonkyActionUnion
 
-export const useFileAction = (
-  params: QueryParams,
-  setView: SetValue<string>
-) => {
+export const useFileAction = (params: QueryParams) => {
   const queryClient = useQueryClient()
 
   const preloadFiles = usePreloadFiles()
 
   const actions = useModalStore((state) => state.actions)
 
-  const chonkyActionHandler = useCallback(() => {
+  return useCallback(() => {
     return async (data: MapFileActionsToData<ChonkyActionFullUnion>) => {
       switch (data.id) {
         case ChonkyActions.OpenFiles.id: {
@@ -161,7 +159,23 @@ export const useFileAction = (
         case ChonkyActions.EnableListView.id:
         case ChonkyActions.EnableGridView.id:
         case ChonkyActions.EnableTileView.id: {
-          setView(data.id.split("_")[1])
+          localStorage.setItem("viewId", data.id)
+          break
+        }
+        case ChonkyActions.SortFilesByName.id:
+        case ChonkyActions.SortFilesBySize.id:
+        case ChonkyActions.SortFilesByDate.id: {
+          if (params.type === "my-drive") {
+            const currentSortState = getSortState()
+            const order =
+              currentSortState.order === SortOrder.ASC
+                ? SortOrder.DESC
+                : SortOrder.ASC
+            localStorage.setItem(
+              "sort",
+              JSON.stringify({ sortId: data.id, order })
+            )
+          }
           break
         }
         default:
@@ -169,8 +183,6 @@ export const useFileAction = (
       }
     }
   }, [params.type])
-
-  return { chonkyActionHandler }
 }
 
 export const fileActions = Object.keys(CustomActions).map(

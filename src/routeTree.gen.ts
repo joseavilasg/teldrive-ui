@@ -14,6 +14,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as AuthenticatedImport } from './routes/_authenticated'
 import { Route as AuthImport } from './routes/_auth'
 import { Route as AuthenticatedIndexImport } from './routes/_authenticated.index'
+import { Route as AuthenticatedStorageImport } from './routes/_authenticated.storage'
 import { Route as AuthenticatedSplatImport } from './routes/_authenticated.$'
 import { Route as AuthLoginImport } from './routes/_auth.login'
 
@@ -34,6 +35,11 @@ const AuthenticatedIndexRoute = AuthenticatedIndexImport.update({
   getParentRoute: () => AuthenticatedRoute,
 } as any)
 
+const AuthenticatedStorageRoute = AuthenticatedStorageImport.update({
+  path: '/storage',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+
 const AuthenticatedSplatRoute = AuthenticatedSplatImport.update({
   path: '/$',
   getParentRoute: () => AuthenticatedRoute,
@@ -44,7 +50,7 @@ const AuthenticatedSplatRoute = AuthenticatedSplatImport.update({
 const AuthLoginRoute = AuthLoginImport.update({
   path: '/login',
   getParentRoute: () => AuthRoute,
-} as any)
+} as any).lazy(() => import('./routes/_auth.login.lazy').then((d) => d.Route))
 
 // Populate the FileRoutesByPath interface
 
@@ -66,6 +72,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSplatImport
       parentRoute: typeof AuthenticatedImport
     }
+    '/_authenticated/storage': {
+      preLoaderRoute: typeof AuthenticatedStorageImport
+      parentRoute: typeof AuthenticatedImport
+    }
     '/_authenticated/': {
       preLoaderRoute: typeof AuthenticatedIndexImport
       parentRoute: typeof AuthenticatedImport
@@ -79,6 +89,7 @@ export const routeTree = rootRoute.addChildren([
   AuthRoute.addChildren([AuthLoginRoute]),
   AuthenticatedRoute.addChildren([
     AuthenticatedSplatRoute,
+    AuthenticatedStorageRoute,
     AuthenticatedIndexRoute,
   ]),
 ])

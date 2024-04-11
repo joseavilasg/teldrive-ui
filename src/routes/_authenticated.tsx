@@ -29,6 +29,6 @@ const checkAuth = async (
 
 export const Route = createFileRoute("/_authenticated")({
   component: AuthLayout,
-  beforeLoad: async ({ location, context: { queryClient }, preload }) =>
-    await checkAuth(queryClient, location, preload),
+  beforeLoad: ({ location, context: { queryClient }, preload }) =>
+    checkAuth(queryClient, location, preload),
 })

@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction } from "react"
-import type { FileData, SortOrder } from "@tw-material/file-browser"
 
 export type FileResponse = { results: SingleFile[]; nextPageToken?: string }
 
@@ -102,12 +101,6 @@ export type AudioMetadata = {
   cover: string
 }
 
-export type SortField = "name" | "size" | "updatedAt"
-
-export type SortState = {
-  [key in BrowseView]: { sort: SortField; order: SortOrder }
-}
-
 export type SetValue<T> = Dispatch<SetStateAction<T>>
 
 export type PreviewFile = {
@@ -119,9 +112,4 @@ export type PreviewFile = {
 }
 export type BrowseView = "my-drive" | "search" | "starred" | "recent"
 
-export type FileQueryKey = (string | QueryParams | SortState[BrowseView])[]
-
-export type FileSearch = {
-  sort?: SortField
-  order?: SortOrder
-}
+export type FileQueryKey = (string | QueryParams)[]

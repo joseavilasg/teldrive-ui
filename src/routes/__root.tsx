@@ -5,5 +5,4 @@ export const Route = createRootRouteWithContext<{
   queryClient: QueryClient
 }>()({
   component: () => <Outlet />,
-  wrapInSuspense: true,
 })
