@@ -15,5 +15,5 @@
 @tailwind utilities;
 
 .art-video-player {
-  --art-theme: hsl(var(--m3-primary)) !important;
+  --art-theme: oklch(var(--m3-primary)) !important;
 }
