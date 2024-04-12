@@ -110,9 +110,6 @@ devDependencies:
   '@tanstack/router-vite-plugin':
     specifier: ^1.26.16
     version: 1.26.16(vite@5.2.8)
-  '@types/adm-zip':
-    specifier: ^0.5.5
-    version: 0.5.5
   '@types/lodash.debounce':
     specifier: ^4.0.9
     version: 4.0.9
@@ -128,9 +125,6 @@ devDependencies:
   '@vitejs/plugin-react':
     specifier: ^4.2.1
     version: 4.2.1(vite@5.2.8)
-  adm-zip:
-    specifier: ^0.5.12
-    version: 0.5.12
   autoprefixer:
     specifier: ^10.4.19
     version: 10.4.19(postcss@8.4.38)
@@ -2877,12 +2871,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@types/adm-zip@0.5.5:
-    resolution: {integrity: sha512-YCGstVMjc4LTY5uK9/obvxBya93axZOVOyf2GSUulADzmLhYE45u2nAssCs/fWBs1Ifq5Vat75JTPwd5XZoPJw==}
-    dependencies:
-      '@types/node': 20.12.7
-    dev: true
-
   /@types/babel__core@7.20.5:
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
     dependencies:
@@ -3013,11 +3001,6 @@ packages:
     resolution: {integrity: sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==}
     engines: {node: '>=0.4.0'}
     hasBin: true
-    dev: true
-
-  /adm-zip@0.5.12:
-    resolution: {integrity: sha512-6TVU49mK6KZb4qG6xWaaM4C7sA/sgUMLy/JYMOzkcp3BvVLpW0fXDFQiIzAuxFCt/2+xD7fNIiPFAoLZPhVNLQ==}
-    engines: {node: '>=6.0'}
     dev: true
 
   /ajv@6.12.6:

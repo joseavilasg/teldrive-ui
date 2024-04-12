@@ -1,7 +1,7 @@
 import { memo } from "react"
 
 const PDFEmbedPreview = ({ assetUrl }: { assetUrl: string }) => {
-  const url = `/pdf.js/web/viewer.html?file=${assetUrl}`
+  const url = `https://pdfview.pages.dev/web/viewer.html?file=${assetUrl}`
   return (
     <iframe
       title="PdfView"
