@@ -24,6 +24,8 @@ jobs:
         run: pnpm install
 
       - name: Build
+        env:
+          VITE_RESIZER_HOST: ${{ secrets.VITE_RESIZER_HOST }}
         run: pnpm run build
 
       - name: Zip release

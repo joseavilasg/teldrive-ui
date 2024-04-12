@@ -2,10 +2,10 @@ import { useCallback } from "react"
 import type { QueryParams, Session } from "@/types"
 import { useQueryClient } from "@tanstack/react-query"
 import {
-  ChonkyActions,
-  ChonkyActionUnion,
-  ChonkyIconName,
   defineFileAction,
+  FbActions,
+  FbActionUnion,
+  FbIconName,
   FileHelper,
   MapFileActionsToData,
   type FileData,
@@ -50,14 +50,14 @@ const CustomActions = {
     button: {
       name: "Copy Link",
       contextMenu: true,
-      icon: ChonkyIconName.copy,
+      icon: FbIconName.copy,
     },
   } as const),
 }
 
-type ChonkyActionFullUnion =
+type FbActionFullUnion =
   | (typeof CustomActions)[keyof typeof CustomActions]
-  | ChonkyActionUnion
+  | FbActionUnion
 
 export const useFileAction = (params: QueryParams) => {
   const queryClient = useQueryClient()
@@ -67,9 +67,9 @@ export const useFileAction = (params: QueryParams) => {
   const actions = useModalStore((state) => state.actions)
 
   return useCallback(() => {
-    return async (data: MapFileActionsToData<ChonkyActionFullUnion>) => {
+    return async (data: MapFileActionsToData<FbActionFullUnion>) => {
       switch (data.id) {
-        case ChonkyActions.OpenFiles.id: {
+        case FbActions.OpenFiles.id: {
           const { targetFile, files } = data.payload
 
           const fileToOpen = targetFile ?? files[0]
@@ -80,13 +80,13 @@ export const useFileAction = (params: QueryParams) => {
             actions.set({
               open: true,
               currentFile: fileToOpen,
-              operation: ChonkyActions.OpenFiles.id,
+              operation: FbActions.OpenFiles.id,
             })
           }
 
           break
         }
-        case ChonkyActions.DownloadFiles.id: {
+        case FbActions.DownloadFiles.id: {
           const { selectedFiles } = data.state
           for (const file of selectedFiles) {
             if (!FileHelper.isDirectory(file)) {
@@ -105,26 +105,26 @@ export const useFileAction = (params: QueryParams) => {
           navigateToExternalUrl(url, false)
           break
         }
-        case ChonkyActions.RenameFile.id: {
+        case FbActions.RenameFile.id: {
           actions.set({
             open: true,
             currentFile: data.state.selectedFiles[0],
-            operation: ChonkyActions.RenameFile.id,
+            operation: FbActions.RenameFile.id,
           })
           break
         }
-        case ChonkyActions.DeleteFiles.id: {
+        case FbActions.DeleteFiles.id: {
           actions.set({
             open: true,
             selectedFiles: data.state.selectedFiles.map((item) => item.id),
-            operation: ChonkyActions.DeleteFiles.id,
+            operation: FbActions.DeleteFiles.id,
           })
           break
         }
-        case ChonkyActions.CreateFolder.id: {
+        case FbActions.CreateFolder.id: {
           actions.set({
             open: true,
-            operation: ChonkyActions.CreateFolder.id,
+            operation: FbActions.CreateFolder.id,
             currentFile: {} as FileData,
           })
           break
@@ -141,7 +141,7 @@ export const useFileAction = (params: QueryParams) => {
           navigator.clipboard.writeText(clipboardText)
           break
         }
-        case ChonkyActions.MoveFiles.id: {
+        case FbActions.MoveFiles.id: {
           const { files, target } = data.payload
           const res = await http.post("/api/files/move", {
             files: files.map((file) => file?.id),
@@ -155,15 +155,15 @@ export const useFileAction = (params: QueryParams) => {
           break
         }
 
-        case ChonkyActions.EnableListView.id:
-        case ChonkyActions.EnableGridView.id:
-        case ChonkyActions.EnableTileView.id: {
+        case FbActions.EnableListView.id:
+        case FbActions.EnableGridView.id:
+        case FbActions.EnableTileView.id: {
           localStorage.setItem("viewId", data.id)
           break
         }
-        case ChonkyActions.SortFilesByName.id:
-        case ChonkyActions.SortFilesBySize.id:
-        case ChonkyActions.SortFilesByDate.id: {
+        case FbActions.SortFilesByName.id:
+        case FbActions.SortFilesBySize.id:
+        case FbActions.SortFilesByDate.id: {
           if (params.type === "my-drive") {
             const currentSortState = getSortState()
             const order =

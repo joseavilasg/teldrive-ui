@@ -1,7 +1,7 @@
 import { lazy, memo, Suspense, useCallback } from "react"
 import {
-  ChonkyIcon,
   ColorsLight,
+  FbIcon,
   FileData,
   useIconData,
 } from "@tw-material/file-browser"
@@ -231,7 +231,7 @@ export default memo(function PreviewModal({ files }: { files: FileData[] }) {
                 >
                   <IconIcRoundArrowBack className="size-6" />
                 </Button>
-                <ChonkyIcon
+                <FbIcon
                   icon={icon}
                   className={clsx(ColorsLight[colorCode], "size-6 min-w-6")}
                 />
