@@ -1,8 +1,8 @@
 import { memo } from "react"
 import { Button } from "@tw-material/react"
-import { cn } from "@tw-material/theme"
 import IconIcRoundFullscreen from "~icons/ic/round-fullscreen"
 import IconIcRoundFullscreenExit from "~icons/ic/round-fullscreen-exit"
+import clsx from "clsx"
 import { useToggle } from "usehooks-ts"
 
 interface WideScreenProps {
@@ -11,9 +11,9 @@ interface WideScreenProps {
 export const WideScreen = memo(({ children }: WideScreenProps) => {
   const [fullscreen, toggle] = useToggle(false)
   return (
-    <div className="max-w-[70%] w-full mx-auto p-4 relative h-[90vh]">
+    <div className="w-full m-auto mt-8 relative h-[calc(100vh-6rem)]">
       <div
-        className={cn(
+        className={clsx(
           "size-full",
           fullscreen ? "fixed inset-0 z-50" : "relative"
         )}
