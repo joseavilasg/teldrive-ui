@@ -1,35 +1,8 @@
-import { existsSync } from "fs"
-import { resolve } from "path"
 import { TanStackRouterVite } from "@tanstack/router-vite-plugin"
 import react from "@vitejs/plugin-react"
-import AdmZip from "adm-zip"
-import axios from "feaxios"
 import Icons from "unplugin-icons/vite"
-import { defineConfig, loadEnv, Plugin } from "vite"
+import { defineConfig, loadEnv } from "vite"
 import tsconfigPaths from "vite-tsconfig-paths"
-
-function PdfJsPlugin(): Plugin {
-  return {
-    name: "pdf-js-plugin",
-    apply: "build",
-    async buildStart() {
-      const pdfJsDir = resolve(__dirname, "public", "pdf.js")
-      if (existsSync(pdfJsDir)) {
-        return
-      }
-      const response = await axios.get(
-        "https://github.com/divyam234/pdf.js/releases/download/latest/pdfjs.zip",
-        {
-          responseType: "arrayBuffer",
-        }
-      )
-
-      const zip = new AdmZip(Buffer.from(response.data))
-
-      zip.extractAllTo(pdfJsDir, true)
-    },
-  }
-}
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
@@ -38,7 +11,6 @@ export default defineConfig(({ mode }) => {
       TanStackRouterVite(),
       react(),
       tsconfigPaths(),
-      PdfJsPlugin(),
       Icons({
         compiler: "jsx",
         jsx: "react",
