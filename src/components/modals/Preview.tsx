@@ -1,15 +1,15 @@
 import { lazy, memo, Suspense, useCallback } from "react"
-import { Session } from "@/types"
 import {
   ChonkyIcon,
   ColorsLight,
   FileData,
   useIconData,
 } from "@tw-material/file-browser"
-import { Box, Button, cn, Modal, ModalContent } from "@tw-material/react"
+import { Box, Button, Modal, ModalContent } from "@tw-material/react"
 import IconIcRoundArrowBack from "~icons/ic/round-arrow-back"
 import IconIcRoundNavigateBefore from "~icons/ic/round-navigate-before"
 import IconIcRoundNavigateNext from "~icons/ic/round-navigate-next"
+import clsx from "clsx"
 
 import Loader from "@/components/Loader"
 import AudioPreview from "@/components/previews/audio/AudioPreview"
@@ -89,7 +89,7 @@ interface ControlButtonProps {
 const ControlButton = ({ type, onPress }: ControlButtonProps) => {
   return (
     <Box
-      className={cn(
+      className={clsx(
         "w-10  opacity-0 data-[hover=true]:opacity-100 transition-opacity ease-out",
         "h-[calc(100vh-4rem)] mt-16 fixed  top-0 flex justify-center items-center",
         type === "next" ? "right-0" : "left-0"
@@ -233,7 +233,7 @@ export default memo(function PreviewModal({ files }: { files: FileData[] }) {
                 </Button>
                 <ChonkyIcon
                   icon={icon}
-                  className={cn(ColorsLight[colorCode], "size-6 min-w-6")}
+                  className={clsx(ColorsLight[colorCode], "size-6 min-w-6")}
                 />
                 <h6
                   className="truncate text-label-large font-normal text-inherit"

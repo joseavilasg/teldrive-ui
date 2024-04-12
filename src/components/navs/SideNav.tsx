@@ -1,10 +1,10 @@
 import { memo } from "react"
 import { Button } from "@tw-material/react"
-import { cn } from "@tw-material/theme"
 import IconBasilGoogleDriveOutline from "~icons/basil/google-drive-outline"
 import IconIcOutlineSdStorage from "~icons/ic/outline-sd-storage"
 import IconMdiRecent from "~icons/mdi/recent"
 import IconMdiStarOutline from "~icons/mdi/star-outline"
+import clsx from "clsx"
 
 import { ForwardLink } from "@/components/ForwardLink"
 import { usePreloadFiles } from "@/utils/queryOptions"
@@ -29,7 +29,7 @@ export const SideNav = memo(() => {
             onPress:
               id !== "storage" ? () => preloadFiles("", id as any) : undefined,
             isIconOnly: true,
-            className: cn(
+            className: clsx(
               "h-8 w-full max-w-14 rounded-3xl px-0 mx-auto",
               "text-on-surface-variant",
               "data-[status=active]:bg-secondary-container data-[status=active]:text-on-secondary-container",
