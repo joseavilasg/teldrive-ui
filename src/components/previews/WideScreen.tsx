@@ -11,7 +11,7 @@ interface WideScreenProps {
 export const WideScreen = memo(({ children }: WideScreenProps) => {
   const [fullscreen, toggle] = useToggle(false)
   return (
-    <div className="max-w-[70%] w-full mx-auto p-4 relative h-[90vh]">
+    <div className="w-full m-auto mt-8 relative h-[calc(100vh-6rem)]">
       <div
         className={cn(
           "size-full",
