@@ -2,7 +2,7 @@ import { memo, useEffect, useMemo, useRef } from "react"
 import { useQuery, useSuspenseInfiniteQuery } from "@tanstack/react-query"
 import { getRouteApi } from "@tanstack/react-router"
 import {
-  ChonkyActions,
+  FbActions,
   FileBrowser,
   FileContextMenu,
   FileList,
@@ -37,9 +37,9 @@ function isVirtuosoList(value: any): value is VirtuosoHandle {
 }
 
 const modalFileActions = [
-  ChonkyActions.RenameFile.id,
-  ChonkyActions.CreateFolder.id,
-  ChonkyActions.DeleteFiles.id,
+  FbActions.RenameFile.id,
+  FbActions.CreateFolder.id,
+  FbActions.DeleteFiles.id,
 ]
 
 const fileRoute = getRouteApi("/_authenticated/$")
@@ -105,22 +105,6 @@ export const DriveFileBrowser = memo(() => {
     }
   }, [params.path, params.type])
 
-  // const thumbnailGenerator = useCallback(
-  //   (file: FileData) => {
-  //     if (file.previewType === "image") {
-  //       const mediaUrl = mediaUrl(file.id, file.name,session.hash)
-  //       const url = new URL(mediaUrl)
-  //       url.searchParams.set("w", "360")
-  //       return settings.resizerHost
-  //         ? `${settings.resizerHost}/${url.host}${url.pathname}${url.search}`
-  //         : mediaUrl
-  //     }
-
-  //     return undefined
-  //   },
-  //   [settings.resizerHost]
-  // )
-
   return (
     <div className="size-full m-auto">
       <FileBrowser
@@ -156,7 +140,7 @@ export const DriveFileBrowser = memo(() => {
         <FileOperationModal queryKey={queryOptions.queryKey} />
       )}
 
-      {modalOperation === ChonkyActions.OpenFiles.id && modalOpen && (
+      {modalOperation === FbActions.OpenFiles.id && modalOpen && (
         <PreviewModal session={session!} files={files} />
       )}
     </div>

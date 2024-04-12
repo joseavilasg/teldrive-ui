@@ -1,6 +1,6 @@
 import { memo, useCallback } from "react"
 import { FileQueryKey, QueryParams } from "@/types"
-import { ChonkyActions } from "@tw-material/file-browser"
+import { FbActions } from "@tw-material/file-browser"
 import {
   Button,
   Input,
@@ -203,13 +203,13 @@ export const FileOperationModal = memo(({ queryKey }: FileModalProps) => {
 
   const renderOperation = () => {
     switch (operation) {
-      case ChonkyActions.RenameFile.id:
+      case FbActions.RenameFile.id:
         return <RenameDialog queryKey={queryKey} handleClose={handleClose} />
-      case ChonkyActions.CreateFolder.id:
+      case FbActions.CreateFolder.id:
         return (
           <FolderCreateDialog queryKey={queryKey} handleClose={handleClose} />
         )
-      case ChonkyActions.DeleteFiles.id:
+      case FbActions.DeleteFiles.id:
         return <DeleteDialog queryKey={queryKey} handleClose={handleClose} />
       default:
         return null

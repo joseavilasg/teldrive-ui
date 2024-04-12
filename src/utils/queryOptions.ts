@@ -19,12 +19,12 @@ import type { FileData } from "@tw-material/file-browser"
 
 import { useProgress } from "@/components/TopProgress"
 
-import { getExtension } from "./common"
+import { getExtension, mediaUrl } from "./common"
 import { defaultSortState, sortIdsMap, sortViewMap } from "./defaults"
 import { getPreviewType, preview } from "./getPreviewType"
 import http from "./http"
 
-const mapFilesToChonky = (files: SingleFile[]): FileData[] => {
+const mapFilesToFb = (files: SingleFile[]): FileData[] => {
   return files.map((item): FileData => {
     if (item.mimeType === "drive/folder")
       return {
@@ -42,6 +42,16 @@ const mapFilesToChonky = (files: SingleFile[]): FileData[] => {
     const previewType = getPreviewType(getExtension(item.name), {
       video: item.mimeType.includes("video"),
     })
+
+    let thumbnailUrl = ""
+    if (previewType === "image") {
+      const url = new URL(mediaUrl(item.id, item.name))
+      url.searchParams.set("w", "360")
+      const resizerHost = import.meta.env.VITE_RESIZER_HOST as string
+      thumbnailUrl = resizerHost
+        ? `${resizerHost}/${url.host}${url.pathname}${url.search}`
+        : ""
+    }
     return {
       id: item.id,
       name: item.name,
@@ -52,6 +62,7 @@ const mapFilesToChonky = (files: SingleFile[]): FileData[] => {
       previewType,
       openable: preview[previewType!] ? true : false,
       starred: item.starred,
+      thumbnailUrl,
       modDate: item.updatedAt,
     }
   })
@@ -72,7 +83,7 @@ export const filesQueryOptions = (params: QueryParams) =>
     getNextPageParam: (lastPage, _) => lastPage.nextPageToken,
     select: (data) =>
       data.pages.flatMap((page) =>
-        page.results ? mapFilesToChonky(page.results) : []
+        page.results ? mapFilesToFb(page.results) : []
       ),
   })
 
