@@ -114,3 +114,8 @@ export const profileUrl = (session: Session) =>
   `/api/users/profile?photo=1&hash=${session.hash}`
 
 export const profileName = (session: Session) => session.userName
+
+export function bytesToGB(bytes: number) {
+  let gb = bytes / Math.pow(1024, 3)
+  return Math.round(gb * 10) / 10
+}

@@ -91,6 +91,17 @@ export type AudioMetadata = {
   cover: string
 }
 
+export type UploadStats = {
+  uploadDate: string
+  totalUploaded: number
+}
+
+export type CategoryStorage = {
+  category: string
+  totalFiles: number
+  totalSize: number
+}
+
 export type SetValue<T> = Dispatch<SetStateAction<T>>
 
 export type PreviewFile = {
@@ -100,6 +111,11 @@ export type PreviewFile = {
   previewType: string
   starred: boolean
 }
-export type BrowseView = "my-drive" | "search" | "starred" | "recent"
+export type BrowseView =
+  | "my-drive"
+  | "search"
+  | "starred"
+  | "recent"
+  | "category"
 
 export type FileQueryKey = (string | QueryParams)[]

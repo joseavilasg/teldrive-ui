@@ -38,7 +38,9 @@ const AuthenticatedIndexRoute = AuthenticatedIndexImport.update({
 const AuthenticatedStorageRoute = AuthenticatedStorageImport.update({
   path: '/storage',
   getParentRoute: () => AuthenticatedRoute,
-} as any)
+} as any).lazy(() =>
+  import('./routes/_authenticated.storage.lazy').then((d) => d.Route),
+)
 
 const AuthenticatedSplatRoute = AuthenticatedSplatImport.update({
   path: '/$',

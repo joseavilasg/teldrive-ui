@@ -1,11 +1,13 @@
-import { useCallback } from "react"
+import { useCallback, useEffect } from "react"
 import {
   BrowseView,
+  CategoryStorage,
   FilePayload,
   FileResponse,
   QueryParams,
   Session,
   SingleFile,
+  UploadStats,
 } from "@/types"
 import {
   InfiniteData,
@@ -19,7 +21,7 @@ import type { FileData } from "@tw-material/file-browser"
 
 import { useProgress } from "@/components/TopProgress"
 
-import { getExtension, mediaUrl } from "./common"
+import { bytesToGB, getExtension, mediaUrl } from "./common"
 import { defaultSortState, sortIdsMap, sortViewMap } from "./defaults"
 import { getPreviewType, preview } from "./getPreviewType"
 import http from "./http"
@@ -87,7 +89,29 @@ export const filesQueryOptions = (params: QueryParams) =>
       ),
   })
 
-export const usePreloadFiles = () => {
+export const uploadStatsQueryOptions = (days: number) =>
+  queryOptions({
+    queryKey: ["uploadstats", days],
+    queryFn: async ({ signal }) => uploadStats(days, signal),
+    select: (data) =>
+      data.map((stat) => {
+        let options = { day: "numeric", month: "short" } as const
+        let formattedDate = new Intl.DateTimeFormat("en-US", options).format(
+          new Date(stat.uploadDate)
+        )
+        return {
+          totalUploaded: bytesToGB(stat.totalUploaded),
+          uploadDate: formattedDate,
+        }
+      }),
+  })
+
+export const categoryStorageQueryOptions = queryOptions({
+  queryKey: ["category-storage"],
+  queryFn: async ({ signal }) => categoryStorage(signal),
+})
+
+export const usePreload = () => {
   const queryClient = useQueryClient()
 
   const router = useRouter()
@@ -101,6 +125,7 @@ export const usePreloadFiles = () => {
         type,
       }
       const queryKey = ["files", newParams]
+
       const queryState = queryClient.getQueryState(queryKey)
 
       const nextRoute: NavigateOptions = {
@@ -121,8 +146,27 @@ export const usePreloadFiles = () => {
     },
     [queryClient]
   )
+  const preloadStorage = useCallback(async () => {
+    const queryKey = ["category-storage"]
+    const queryState = queryClient.getQueryState(queryKey)
 
-  return preloadFiles
+    const nextRoute: NavigateOptions = {
+      to: "/storage",
+    }
+    if (!queryState?.data) {
+      try {
+        startProgress()
+        await router.preloadRoute(nextRoute)
+        router.navigate(nextRoute)
+      } finally {
+        stopProgress()
+      }
+    } else router.navigate(nextRoute)
+  }, [])
+
+  useEffect(() => () => stopProgress(), [])
+
+  return { preloadFiles, preloadStorage }
 }
 
 async function fetchSession() {
@@ -133,6 +177,21 @@ async function fetchSession() {
   } else {
     return null
   }
+}
+
+async function uploadStats(days: number, signal: AbortSignal) {
+  const res = await http.get<UploadStats[]>("/api/uploads/stats", {
+    params: { days },
+    signal,
+  })
+  return res.data
+}
+
+async function categoryStorage(signal: AbortSignal) {
+  const res = await http.get<CategoryStorage[]>("/api/files/stats", {
+    signal,
+  })
+  return res.data
 }
 
 export const fetchFiles =
@@ -163,6 +222,10 @@ export const fetchFiles =
     } else if (type === "recent") {
       query.op = "find"
       query.type = "file"
+    } else if (type === "category") {
+      query.op = "find"
+      query.type = "file"
+      query.category = path.slice(1, -1)
     }
 
     return (

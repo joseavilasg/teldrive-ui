@@ -11,6 +11,7 @@ export const sortViewMap = {
   search: { sortId: "sort_files_by_name", order: SortOrder.ASC },
   starred: { sortId: "sort_files_by_date", order: SortOrder.DESC },
   recent: { sortId: "sort_files_by_date", order: SortOrder.DESC },
+  category: { sortId: "sort_files_by_name", order: SortOrder.ASC },
 }
 
 export type SortState = typeof sortViewMap

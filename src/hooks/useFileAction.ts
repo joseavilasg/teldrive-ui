@@ -16,7 +16,7 @@ import IconLetsIconsViewAltFill from "~icons/lets-icons/view-alt-fill"
 import { mediaUrl, navigateToExternalUrl } from "@/utils/common"
 import { getSortState, SortOrder } from "@/utils/defaults"
 import http from "@/utils/http"
-import { usePreloadFiles } from "@/utils/queryOptions"
+import { usePreload } from "@/utils/queryOptions"
 import { useModalStore } from "@/utils/store"
 
 const CustomActions = {
@@ -62,7 +62,7 @@ type FbActionFullUnion =
 export const useFileAction = (params: QueryParams, session: Session) => {
   const queryClient = useQueryClient()
 
-  const preloadFiles = usePreloadFiles()
+  const { preloadFiles } = usePreload()
 
   const actions = useModalStore((state) => state.actions)
 
