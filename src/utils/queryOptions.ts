@@ -164,8 +164,6 @@ export const usePreload = () => {
     } else router.navigate(nextRoute)
   }, [])
 
-  useEffect(() => () => stopProgress(), [])
-
   return { preloadFiles, preloadStorage }
 }
 
