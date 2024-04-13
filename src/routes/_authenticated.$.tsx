@@ -3,7 +3,14 @@ import { createFileRoute } from "@tanstack/react-router"
 import { extractPathParts } from "@/utils/common"
 import { filesQueryOptions } from "@/utils/queryOptions"
 
-const allowedTypes = ["my-drive", "starred", "recent", "search", "storage"]
+const allowedTypes = [
+  "my-drive",
+  "starred",
+  "recent",
+  "search",
+  "storage",
+  "category",
+]
 
 export const Route = createFileRoute("/_authenticated/$")({
   beforeLoad: ({ params }) => {
@@ -16,7 +23,7 @@ export const Route = createFileRoute("/_authenticated/$")({
   loader: async ({ context: { queryClient, queryParams }, preload }) => {
     if (preload)
       await queryClient.prefetchInfiniteQuery(filesQueryOptions(queryParams))
-    queryClient.fetchInfiniteQuery(filesQueryOptions(queryParams))
+    else queryClient.fetchInfiniteQuery(filesQueryOptions(queryParams))
   },
   wrapInSuspense: true,
 })

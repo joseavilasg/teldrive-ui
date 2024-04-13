@@ -107,3 +107,8 @@ export const mediaUrl = (id: string, name: string, download = false) => {
 export const profileUrl = (session: Session) => session.user?.image || ""
 
 export const profileName = (session: Session) => session.user?.name || ""
+
+export function bytesToGB(bytes: number) {
+  let gb = bytes / Math.pow(1024, 3)
+  return Math.round(gb * 10) / 10
+}

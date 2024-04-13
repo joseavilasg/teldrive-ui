@@ -1,20 +1,26 @@
 import { memo } from "react"
 import { Outlet } from "@tanstack/react-router"
+import clsx from "clsx"
 
 import Header from "@/components/Header"
 import { SideNav } from "@/components/navs/SideNav"
+import { scrollbarClasses } from "@/utils/classes"
 
 export const AuthLayout = memo(() => {
   return (
-    <div
-      className="grid md:grid-areas-[header_header,nav_main] md:grid-cols-[5rem_1fr] md:grid-rows-[4rem_1fr] grid-cols-[1fr] 
-      grid-areas-[header,main,nav] grid-rows-[4rem_1fr_3rem] min-h-dvh"
-    >
-      <Header auth />
+    <div className="flex flex-col-reverse md:flex-row h-dvh overflow-hidden">
       <SideNav />
-      <main className="area-[main] p-2 relative">
-        <Outlet />
-      </main>
+      <div className="relative flex flex-1 flex-col overflow-x-hidden">
+        <Header auth />
+        <main
+          className={clsx(
+            "max-w-screen-2xl flex-1 overflow-y-auto overflow-x-hidden p-4 pb-2",
+            scrollbarClasses
+          )}
+        >
+          <Outlet />
+        </main>
+      </div>
     </div>
   )
 })

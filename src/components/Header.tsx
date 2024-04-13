@@ -6,7 +6,7 @@ import TablerBrandOnedrive from "~icons/tabler/brand-onedrive"
 import clsx from "clsx"
 import debounce from "lodash.debounce"
 
-import { usePreloadFiles } from "@/utils/queryOptions"
+import { usePreload } from "@/utils/queryOptions"
 
 import { ColorPickerMenu } from "./menus/color-picker"
 import { ProfileDropDown } from "./menus/Profile"
@@ -21,7 +21,7 @@ interface SearchBarProps {
 const SearchBar = memo(({ className }: SearchBarProps) => {
   const [query, setQuery] = useState("")
 
-  const preloadFiles = usePreloadFiles()
+  const { preloadFiles } = usePreload()
 
   const debouncedSearch = useCallback(
     debounce(
@@ -61,7 +61,7 @@ const SearchBar = memo(({ className }: SearchBarProps) => {
 
 export default memo(function Header({ auth }: { auth: boolean }) {
   return (
-    <header className="flex items-center area-[header] px-4">
+    <header className="sticky top-0 z-50 flex items-center min-h-16 px-4">
       <div className="flex-1 flex gap-2 items-center">
         <Link to="/" className="flex gap-2 items-center cursor-pointer">
           <TablerBrandOnedrive className="size-6 text-inherit" />
