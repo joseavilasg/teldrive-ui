@@ -3,9 +3,9 @@ import { CategoryStorage } from "@/types"
 import { useSuspenseQueries } from "@tanstack/react-query"
 import { Link } from "@tanstack/react-router"
 import clsx from "clsx"
-import { filesize } from "filesize"
 
 import { grow } from "@/utils/classes"
+import { filesize } from "@/utils/common"
 import {
   categoryStorageQueryOptions,
   uploadStatsQueryOptions,
@@ -54,9 +54,7 @@ const CategoryStorageCard = memo(
           )}
         >
           <h2 className="text-2xl font-medium capitalize">{category + "s"}</h2>
-          <p className="text-3xl font-semibold">
-            {filesize(totalSize, { standard: "jedec" })}
-          </p>
+          <p className="text-3xl font-semibold">{filesize(totalSize)}</p>
           <p className="text-sm font-semibold">{totalFiles} files</p>
         </div>
       </Link>
@@ -88,7 +86,7 @@ export const StorageView = memo(() => {
             <div>
               <h3 className="text-lg font-semibold">Total Size</h3>
               <p className="text-3xl font-semibold">
-                {filesize(totalStats.totalSize, { standard: "jedec" })}
+                {filesize(totalStats.totalSize)}
               </p>
             </div>
             <div>

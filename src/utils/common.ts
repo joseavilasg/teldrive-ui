@@ -1,4 +1,5 @@
 import { BrowseView, Session } from "@/types"
+import { partial } from "filesize"
 
 export const navigateToExternalUrl = (url: string, shouldOpenNewTab = true) =>
   shouldOpenNewTab ? window.open(url, "_blank") : (window.location.href = url)
@@ -112,3 +113,5 @@ export function bytesToGB(bytes: number) {
   let gb = bytes / Math.pow(1024, 3)
   return Math.round(gb * 10) / 10
 }
+
+export const filesize = partial({ standard: "jedec" })

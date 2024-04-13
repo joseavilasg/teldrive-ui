@@ -22,8 +22,8 @@ dependencies:
     specifier: ^1.27.0
     version: 1.27.0(react-dom@18.2.0)(react@18.2.0)
   '@tw-material/file-browser':
-    specifier: ^1.0.13
-    version: 1.0.13(@tw-material/react@1.1.17)(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.78)(framer-motion@11.0.28)(react-dom@18.2.0)(react@18.2.0)(redux@5.0.1)(typescript@5.4.5)
+    specifier: ^1.0.14
+    version: 1.0.14(@tw-material/react@1.1.17)(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.78)(framer-motion@11.0.28)(react-dom@18.2.0)(react@18.2.0)(redux@5.0.1)(typescript@5.4.5)
   '@tw-material/framer-transitions':
     specifier: ^1.1.1
     version: 1.1.1(@tw-material/theme@1.1.8)(framer-motion@11.0.28)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
@@ -2398,8 +2398,8 @@ packages:
       - tailwindcss
     dev: false
 
-  /@tw-material/file-browser@1.0.13(@tw-material/react@1.1.17)(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.78)(framer-motion@11.0.28)(react-dom@18.2.0)(react@18.2.0)(redux@5.0.1)(typescript@5.4.5):
-    resolution: {integrity: sha512-UciJChy66dJddD1g9rAwhYfhO8qtRQYEb4tctHohXYhHWwzBc1ZaLJlKGQHgGeAb8HI8fHc66ivheh50Fgcxcw==}
+  /@tw-material/file-browser@1.0.14(@tw-material/react@1.1.17)(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.78)(framer-motion@11.0.28)(react-dom@18.2.0)(react@18.2.0)(redux@5.0.1)(typescript@5.4.5):
+    resolution: {integrity: sha512-rmAwEPNQAboGRfwXqAVhVwY1YLiGdkEiLW4gg4DXXtkBshVAuku8djTxBHGC1QG8YudgO2gxC1TmZAGG2OuyHA==}
     engines: {node: '>=18'}
     peerDependencies:
       '@tw-material/react': '>=1'
