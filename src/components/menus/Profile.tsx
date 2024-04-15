@@ -46,9 +46,8 @@ export function ProfileDropDown() {
       </DropdownTrigger>
       <DropdownMenu
         aria-label="Profile Menu"
-        className="bg-surface-container-low"
+        className="rounded-lg shadow-1"
         itemClasses={{
-          base: "bg-surface-container-low",
           title: "text-medium",
           startContent: "text-on-surface",
           endContent: "text-on-surface",

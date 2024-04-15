@@ -1,5 +1,12 @@
-import React, { memo, useMemo, useState } from "react"
-import { UploadStats } from "@/types"
+import { memo, startTransition, useMemo } from "react"
+import { SetValue, UploadStats } from "@/types"
+import {
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from "@tw-material/react"
 import { ApexOptions } from "apexcharts"
 import ReactApexChart from "react-apexcharts"
 
@@ -122,20 +129,52 @@ function getChartData(stats: UploadStats[]): ApexOptions {
   }
 }
 
-export const UploadStatsChart = memo(({ stats }: { stats: UploadStats[] }) => {
-  const chartOptions = useMemo(() => getChartData(stats), [stats])
+interface UploadStatsChartProps {
+  stats: UploadStats[]
+  days: number
+  setDays: SetValue<number>
+}
 
-  return (
-    <div className="col-span-12 rounded-lg bg-surface text-on-surface p-4 lg:col-span-8">
-      <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
-        <div className="flex w-full max-w-45 justify-end"></div>
+const allowedDays = [7, 15, 30, 60]
+
+export const UploadStatsChart = memo(
+  ({ stats, days, setDays }: UploadStatsChartProps) => {
+    const chartOptions = useMemo(() => getChartData(stats), [stats])
+
+    return (
+      <div className="col-span-12 rounded-lg bg-surface text-on-surface p-4 lg:col-span-8">
+        <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
+          <div className="flex w-full max-w-45 justify-end">
+            <Dropdown className="min-w-32" triggerScaleOnOpen={false}>
+              <DropdownTrigger>
+                <Button variant="filledTonal">{`${days} Days`}</Button>
+              </DropdownTrigger>
+              <DropdownMenu
+                classNames={{
+                  base: "rounded-lg shadow-1",
+                }}
+              >
+                {allowedDays.map((day) => (
+                  <DropdownItem
+                    key={day}
+                    onPress={() =>
+                      startTransition(() => {
+                        setDays(day)
+                      })
+                    }
+                  >{`${day} Days`}</DropdownItem>
+                ))}
+              </DropdownMenu>
+            </Dropdown>
+          </div>
+        </div>
+        <ReactApexChart
+          options={chartOptions}
+          series={chartOptions.series}
+          type="area"
+          height={350}
+        />
       </div>
-      <ReactApexChart
-        options={chartOptions}
-        series={chartOptions.series}
-        type="area"
-        height={350}
-      />
-    </div>
-  )
-})
+    )
+  }
+)
