@@ -79,7 +79,11 @@ export const StorageView = memo(() => {
         ))}
       </div>
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-        <UploadStatsChart stats={uploadStats.data} />
+        <UploadStatsChart
+          days={days}
+          setDays={setDays}
+          stats={uploadStats.data}
+        />
         <div className="col-span-12 rounded-lg bg-surface text-on-surface p-4 lg:col-span-4 max-h-56">
           <h2 className="text-2xl font-medium">Storage</h2>
           <div className="grid grid-cols-2 gap-4 mt-4">

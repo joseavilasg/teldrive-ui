@@ -31,7 +31,7 @@ export function ThemeToggle() {
       </DropdownTrigger>
       <DropdownMenu
         aria-label="Theme Menu"
-        className="bg-surface-container-low"
+        className="rounded-lg shadow-1"
         itemClasses={{
           title: "text-medium",
           startContent: "text-on-surface",
