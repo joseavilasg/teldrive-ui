@@ -5,11 +5,13 @@ import Header from "@/components/Header"
 
 export const NonAuthLayout = memo(() => {
   return (
-    <div className="grid grid-areas-[header,main] grid-rows-[4rem_1fr] min-h-dvh">
-      <Header auth={false} />
-      <main className="area-[main] container">
-        <Outlet />
-      </main>
+    <div className="flex flex-col-reverse md:flex-row h-dvh overflow-hidden">
+      <div className="relative flex flex-1 flex-col overflow-x-hidden">
+        <Header />
+        <main className="container">
+          <Outlet />
+        </main>
+      </div>
     </div>
   )
 })
