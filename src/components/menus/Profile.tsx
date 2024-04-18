@@ -1,6 +1,6 @@
 import { useCallback } from "react"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
-import { useNavigate } from "@tanstack/react-router"
+import { Link, useNavigate } from "@tanstack/react-router"
 import {
   Avatar,
   Dropdown,
@@ -56,8 +56,13 @@ export function ProfileDropDown() {
         <DropdownItem key="profile" className="pointer-events-none">
           <p className="font-semibold">{profileName(session!)}</p>
         </DropdownItem>
+
         <DropdownItem
           key="settings"
+          as={Link}
+          //@ts-ignore
+          to="/settings/$tabId"
+          params={{ tabId: "general" }}
           endContent={<IconOutlineSettings className="size-6" />}
         >
           Settings

@@ -8,7 +8,6 @@ import debounce from "lodash.debounce"
 
 import { usePreload } from "@/utils/queryOptions"
 
-import { ColorPickerMenu } from "./menus/color-picker"
 import { ProfileDropDown } from "./menus/Profile"
 import { ThemeToggle } from "./menus/ThemeToggle"
 
@@ -70,7 +69,6 @@ export default memo(function Header({ auth }: { auth?: boolean }) {
       </div>
       <div className="flex-1 flex justify-end items-center gap-4">
         {auth && <SearchBar className="hidden xs:block" />}
-        <ColorPickerMenu />
         <ThemeToggle />
         {auth && <ProfileDropDown />}
       </div>

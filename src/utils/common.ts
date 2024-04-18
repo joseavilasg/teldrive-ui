@@ -1,4 +1,5 @@
 import { BrowseView, Session } from "@/types"
+import { partial } from "filesize"
 
 export const navigateToExternalUrl = (url: string, shouldOpenNewTab = true) =>
   shouldOpenNewTab ? window.open(url, "_blank") : (window.location.href = url)
@@ -119,3 +120,29 @@ export function bytesToGB(bytes: number) {
   let gb = bytes / Math.pow(1024, 3)
   return Math.round(gb * 10) / 10
 }
+
+export const filesize = partial({ standard: "jedec" })
+
+export const splitFileSizes = [
+  { value: 100 * 1024 * 1024, label: "100MB" },
+  { value: 500 * 1024 * 1024, label: "500MB" },
+  { value: 1000 * 1024 * 1024, label: "1GB" },
+  { value: 2 * 1000 * 1024 * 1024, label: "2GB" },
+]
+
+const isMobileDevice = () => {
+  const toMatch = [
+    /Android/i,
+    /webOS/i,
+    /iPhone/i,
+    /iPad/i,
+    /iPod/i,
+    /BlackBerry/i,
+    /Windows Phone/i,
+  ]
+  return toMatch.some(function (toMatchItem) {
+    return navigator.userAgent.match(toMatchItem)
+  })
+}
+
+export const isMobile = isMobileDevice()

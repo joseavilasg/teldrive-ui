@@ -51,8 +51,6 @@ export type Settings = {
   splitFileSize: number
   uploadConcurrency: number
   encryptFiles: string
-  channel?: Channel
-  bots?: string
 }
 
 export type Session = {
@@ -69,11 +67,8 @@ export type QueryParams = {
 }
 
 export type AccountStats = {
-  totalSize: number
-  totalFiles: number
   channelId: number
-  channelName: string
-  [key: string]: number | string
+  bots: string[]
 }
 
 export type Channel = {

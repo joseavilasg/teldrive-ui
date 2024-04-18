@@ -40,7 +40,7 @@ export default {
   },
   plugins: [
     material3({
-      sourceColor: "#5278b1",
+      sourceColor: "#616200",
       customColors: [],
     }),
   ],

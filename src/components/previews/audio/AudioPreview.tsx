@@ -1,6 +1,6 @@
 import { memo, useEffect } from "react"
 
-import { audioActions, useAudioStore } from "@/utils/store"
+import { audioActions, useAudioStore } from "@/utils/stores/audio"
 
 import { AudioPlayer } from "./AudioPlayer"
 

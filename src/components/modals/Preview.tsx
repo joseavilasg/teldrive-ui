@@ -1,11 +1,6 @@
 import { lazy, memo, Suspense, useCallback } from "react"
 import { Session } from "@/types"
-import {
-  ColorsLight,
-  FbIcon,
-  FileData,
-  useIconData,
-} from "@tw-material/file-browser"
+import { FbIcon, FileData, useIconData } from "@tw-material/file-browser"
 import { Box, Button, Modal, ModalContent } from "@tw-material/react"
 import IconIcRoundArrowBack from "~icons/ic/round-arrow-back"
 import IconIcRoundNavigateBefore from "~icons/ic/round-navigate-before"
@@ -20,7 +15,7 @@ import PDFPreview from "@/components/previews/PdfPreview"
 import { WideScreen } from "@/components/previews/WideScreen"
 import { mediaUrl } from "@/utils/common"
 import { preview } from "@/utils/getPreviewType"
-import { useModalStore } from "@/utils/store"
+import { useModalStore } from "@/utils/stores"
 
 import CodePreview from "../previews/CodePreview"
 
@@ -126,7 +121,7 @@ export default memo(function PreviewModal({
 
   const { id, name, previewType } = previewFile
 
-  const { icon, colorCode } = useIconData({ id, name, isDir: false })
+  const { icon } = useIconData({ id, name, isDir: false })
 
   const nextItem = useCallback(
     (previewType = "all") => {
@@ -238,10 +233,7 @@ export default memo(function PreviewModal({
                 >
                   <IconIcRoundArrowBack className="size-6" />
                 </Button>
-                <FbIcon
-                  icon={icon}
-                  className={clsx(ColorsLight[colorCode], "size-6 min-w-6")}
-                />
+                <FbIcon icon={icon} className="size-6 min-w-6" />
                 <h6
                   className="truncate text-label-large font-normal text-inherit"
                   title={name}

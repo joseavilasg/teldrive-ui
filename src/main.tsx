@@ -37,7 +37,12 @@ if (!rootElement.innerHTML) {
     <QueryClientProvider client={queryClient}>
       <ProgressProvider>
         <ThemeProvider>
-          <Toaster position="bottom-right" />
+          <Toaster
+            toastOptions={{
+              className: "!bg-surface-container !text-on-surface",
+            }}
+            position="bottom-right"
+          />
           <RouterProvider router={router} />
         </ThemeProvider>
         <TailwindIndicator />

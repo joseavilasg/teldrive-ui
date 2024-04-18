@@ -17,7 +17,7 @@ import type {
 import useBreakpoint from "use-breakpoint"
 
 import { fileActions, useFileAction } from "@/hooks/useFileAction"
-import { chainLinks } from "@/utils/common"
+import { chainLinks, isMobile } from "@/utils/common"
 import {
   BREAKPOINTS,
   defaultSortState,
@@ -25,10 +25,11 @@ import {
   sortViewMap,
 } from "@/utils/defaults"
 import { filesQueryOptions, sessionQueryOptions } from "@/utils/queryOptions"
-import { useModalStore } from "@/utils/store"
+import { useFileUploadStore, useModalStore } from "@/utils/stores"
 
 import { FileOperationModal } from "./modals/FileOperation"
 import PreviewModal from "./modals/Preview"
+import { Upload } from "./Upload"
 
 let firstRender = true
 
@@ -51,15 +52,17 @@ export const DriveFileBrowser = memo(() => {
 
   const listRef = useRef<VirtuosoHandle | VirtuosoGridHandle>(null)
 
-  const queryOptions = filesQueryOptions(params)
+  const { data: session } = useQuery(sessionQueryOptions)
+
+  const queryOptions = filesQueryOptions(params, session?.hash!)
 
   const modalOpen = useModalStore((state) => state.open)
 
   const modalOperation = useModalStore((state) => state.operation)
 
-  const { breakpoint } = useBreakpoint(BREAKPOINTS)
+  const openUpload = useFileUploadStore((state) => state.uploadOpen)
 
-  const { data: session } = useQuery(sessionQueryOptions)
+  const { breakpoint } = useBreakpoint(BREAKPOINTS)
 
   const {
     data: files,
@@ -133,7 +136,7 @@ export const DriveFileBrowser = memo(() => {
           loadNextPage={fetchNextPage}
           ref={listRef}
         />
-        <FileContextMenu />
+        {!isMobile && <FileContextMenu />}
       </FileBrowser>
 
       {modalFileActions.find((val) => val === modalOperation) && modalOpen && (
@@ -143,6 +146,7 @@ export const DriveFileBrowser = memo(() => {
       {modalOperation === FbActions.OpenFiles.id && modalOpen && (
         <PreviewModal session={session!} files={files} />
       )}
+      {openUpload && <Upload queryKey={queryOptions.queryKey} />}
     </div>
   )
 })

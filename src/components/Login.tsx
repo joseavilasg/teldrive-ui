@@ -1,18 +1,11 @@
 import { memo, useCallback, useEffect, useRef, useState } from "react"
 import { AuthMessage } from "@/types"
-import { useQueryClient } from "@tanstack/react-query"
-import { useRouter, useSearch } from "@tanstack/react-router"
-import {
-  Autocomplete,
-  AutocompleteItem,
-  Avatar,
-  Button,
-  Input,
-  Spinner,
-} from "@tw-material/react"
-import type { CountryCode } from "libphonenumber-js"
+import { useSearch } from "@tanstack/react-router"
+import { Button, Input, Spinner } from "@tw-material/react"
+import { AsYouType, getPhoneCode, type CountryCode } from "libphonenumber-js"
 import meta from "libphonenumber-js/metadata.min.json"
 import { Controller, useForm } from "react-hook-form"
+import toast from "react-hot-toast"
 import useWebSocket from "react-use-websocket"
 
 import QrCode from "@/components/QrCode"
@@ -20,9 +13,11 @@ import { TelegramIcon } from "@/components/TelegramIcon"
 import { useProgress } from "@/components/TopProgress"
 import http from "@/utils/http"
 
+import { PhoneNoPicker } from "./menus/PhonePicker"
+
 const getKeys = Object.keys as <T>(object: T) => (keyof T)[]
 
-const displayNames = new Intl.DisplayNames(["en"], { type: "region" })
+export const displayNames = new Intl.DisplayNames(["en"], { type: "region" })
 
 function sortISOCodes(countryCodes: CountryCode[]) {
   return [...countryCodes].sort((countryCodeA, countryCodeB) => {
@@ -33,10 +28,39 @@ function sortISOCodes(countryCodes: CountryCode[]) {
   })
 }
 
-type FormState = {
-  phoneCodeHash?: string
-  phoneCode: string
+export const isoCodes = sortISOCodes(getKeys(meta.countries))
+  .filter((x) => x !== "TA" && x !== "AC")
+  .map((code) => ({
+    code,
+    country: displayNames.of(code) as string,
+    value: `+${getPhoneCode(code)}`,
+  }))
+
+export const isoCodeMap = isoCodes.reduce(
+  (acc, value) => {
+    acc[value.code] = value
+    return acc
+  },
+  {} as Record<CountryCode, (typeof isoCodes)[0]>
+)
+
+function getTypedNumber(value: string, defaultCountryCode = "IN") {
+  if (value) {
+    const phone = new AsYouType(defaultCountryCode as CountryCode)
+    phone.input(value)
+    return phone
+      .getNumber()
+      ?.formatInternational()
+      .replace(isoCodeMap[defaultCountryCode].value, "")
+  }
+  return value
+}
+
+export type FormState = {
+  otpCodeHash?: string
+  otpCode: string
   phoneNumber: string
+  phoneCode: CountryCode
   password?: string
 }
 
@@ -53,25 +77,18 @@ const initailState = {
   qrCode: "",
   step: 1,
   isLoading: false,
-  form: {} as FormState,
+  form: {
+    phoneCode: "IN",
+    phoneNumber: "",
+  } as FormState,
 }
-
-const countries = meta.countries
-
-const isoCodes = sortISOCodes(getKeys(countries))
-  .filter((x) => x !== "TA" && x !== "AC")
-  .map((code) => ({ value: code }))
 
 export const Login = memo(() => {
   const { redirect } = useSearch({ from: "/_auth/login" })
 
-  const queryClient = useQueryClient()
-
-  const router = useRouter()
-
   const [state, setState] = useState(initailState)
 
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, getValues } = useForm({
     defaultValues: initailState.form,
   })
 
@@ -87,8 +104,7 @@ export const Login = memo(() => {
       startProgress()
       const res = await http.post("/api/auth/login", payload)
       if (res.status === 200) {
-        await queryClient.invalidateQueries({ queryKey: ["session"] })
-        router.history.push(redirect || "/my-drive", { replace: true })
+        window.location.pathname = redirect || "/"
       }
       stopProgress()
     },
@@ -96,17 +112,17 @@ export const Login = memo(() => {
   )
 
   const onSubmit = useCallback(
-    ({ phoneNumber, phoneCode, password }: FormState) => {
+    ({ phoneNumber, otpCode, password, phoneCode }: FormState) => {
       if (state.step === 1 && state.loginType === "phone") {
         setState((prev) => ({
           ...prev,
           isLoading: true,
-          form: { ...prev.form, phoneNumber },
+          form: { ...prev.form, phoneNumber, phoneCode },
         }))
         sendJsonMessage({
           authType: state.loginType,
           message: "sendcode",
-          phoneNo: phoneNumber,
+          phoneNo: `+${getPhoneCode(phoneCode)}${phoneNumber}`,
         })
       } else if (state.step === 2 && state.loginType === "phone") {
         setState((prev) => ({
@@ -116,9 +132,9 @@ export const Login = memo(() => {
         sendJsonMessage({
           authType: state.loginType,
           message: "signin",
-          phoneNo: phoneNumber,
-          phoneCode,
-          phoneCodeHash: state.form.phoneCodeHash,
+          phoneNo: `+${getPhoneCode(phoneCode)}${phoneNumber}`,
+          phoneCode: otpCode,
+          phoneCodeHash: state.form.otpCodeHash,
         })
       } else if (state.step === 3) {
         setState((prev) => ({
@@ -131,7 +147,7 @@ export const Login = memo(() => {
         })
       }
     },
-    [state.form.phoneCodeHash, state.loginType, state.step]
+    [state.form.otpCodeHash, state.loginType, state.step]
   )
 
   const firstCall = useRef(false)
@@ -152,12 +168,12 @@ export const Login = memo(() => {
           isLoading: false,
         }))
       } else if (lastJsonMessage?.payload?.phoneCodeHash) {
-        const phoneCodeHash = lastJsonMessage.payload.phoneCodeHash as string
+        const otpCodeHash = lastJsonMessage.payload.phoneCodeHash as string
         setState((prev) => ({
           ...prev,
           isLoading: false,
           step: 2,
-          form: { ...prev.form, phoneCodeHash },
+          form: { ...prev.form, otpCodeHash },
         }))
       } else if (lastJsonMessage?.payload?.token) {
         setState((prev) => ({
@@ -171,18 +187,25 @@ export const Login = memo(() => {
           step: 3,
         }))
       } else if (lastJsonMessage.type === "error") {
-        //toast.error(lastJsonMessage.message)
+        toast.error(lastJsonMessage.message)
       }
     }
   }, [lastJsonMessage])
 
+  const onInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = getTypedNumber(e.target.value, getValues("phoneCode"))
+      e.target.value = value || ""
+    },
+    []
+  )
+
   return (
     <div className="m-auto flex rounded-large max-w-md flex-col justify-center items-center bg-surface mt-6 gap-4 px-4 pt-6 pb-20">
       <form
-        noValidate
         autoComplete="off"
         className="w-full flex flex-col items-center gap-8"
-        onSubmit={!state.isLoading ? handleSubmit(onSubmit) : undefined}
+        onSubmit={handleSubmit(onSubmit)}
       >
         {state.loginType === "phone" ? (
           <>
@@ -193,66 +216,44 @@ export const Login = memo(() => {
                 control={control}
                 rules={{ required: true }}
                 render={({ field, fieldState: { error } }) => (
-                  <Autocomplete
-                    classNames={{
-                      base: "max-w-xs",
-                    }}
-                    variant="bordered"
-                    label="Phone No"
-                    size="lg"
-                    labelPlacement="outside"
-                    items={isoCodes}
+                  <Input
                     isRequired
-                    menuTrigger="manual"
+                    size="lg"
+                    label="Phone Number"
+                    labelPlacement="outside"
+                    variant="bordered"
+                    className="max-w-xs"
                     isInvalid={!!error}
-                    allowsCustomValue={true}
                     errorMessage={error?.message}
-                    inputValue={field.value}
-                    onInputChange={field.onChange}
-                    // onSelectionChange={(val) => field.onChange(val)}
-                    // onInputChange={(val) => {
-                    //   if (val.startsWith("+")) field.onChange(val)
-                    //   else if (val)
-                    //     field.onChange(`+${state.countries[val]?.[0]} `)
-                    //   else field.onChange(val)
-                    // }}
                     startContent={
-                      <Avatar
-                        className="w-7 h-4 rounded-none"
-                        src={`https://flagcdn.com/in.svg`}
+                      <Controller
+                        name="phoneCode"
+                        control={control}
+                        render={({ field: innerField }) => (
+                          <PhoneNoPicker field={innerField} />
+                        )}
                       />
                     }
-                  >
-                    {(code) => {
-                      const country = displayNames.of(code.value) as string
-                      return (
-                        <AutocompleteItem
-                          key={code.value}
-                          textValue={code.value}
-                          hideSelectedIcon
-                        >
-                          <span className="flex w-full justify-between">
-                            <span>{country}</span>
-                            <span>{`+${countries?.[code.value]?.[0]}`}</span>
-                          </span>
-                        </AutocompleteItem>
-                      )
+                    {...field}
+                    onChange={(e) => {
+                      onInputChange(e)
+                      field.onChange(e)
                     }}
-                  </Autocomplete>
+                  ></Input>
                 )}
               />
             )}
             {state.step === 2 && (
               <Controller
-                name="phoneCode"
+                name="otpCode"
                 control={control}
                 rules={{ required: true }}
                 render={({ field, fieldState: { error } }) => (
                   <Input
                     isRequired
-                    label="PhoneCode"
                     size="lg"
-                    fullWidth
+                    label="OTP Code"
+                    className="max-w-xs"
                     variant="bordered"
                     isInvalid={!!error}
                     errorMessage={error?.message}
@@ -282,10 +283,9 @@ export const Login = memo(() => {
             render={({ field, fieldState: { error } }) => (
               <Input
                 isRequired
-                label="2FA password"
                 size="lg"
-                fullWidth
-                labelPlacement="outside"
+                label="2FA password"
+                className="max-w-xs"
                 variant="bordered"
                 isInvalid={!!error}
                 errorMessage={error?.message}
@@ -296,14 +296,14 @@ export const Login = memo(() => {
           />
         )}
 
-        <div className="flex flex-col gap-6 w-full items-center">
+        <div className="flex flex-col gap-6 w-full items-center mt-4">
           {(state.loginType === "phone" || state.step === 3) && (
             <Button
               type="submit"
               fullWidth
               variant="filledTonal"
               isLoading={state.isLoading}
-              className="w-[80%] text-inherit"
+              className="max-w-xs text-inherit"
             >
               {state.isLoading
                 ? "Please Wait…"
@@ -322,7 +322,7 @@ export const Login = memo(() => {
               }
               fullWidth
               variant="filledTonal"
-              className="w-[80%] text-inherit"
+              className="max-w-xs text-inherit"
             >
               {state.loginType === "qr" ? "Phone Login" : "QR Login"}
             </Button>

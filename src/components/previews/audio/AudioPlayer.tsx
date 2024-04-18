@@ -13,7 +13,7 @@ import { useEventListener, useInterval } from "usehooks-ts"
 import { useShallow } from "zustand/react/shallow"
 
 import { formatDuration } from "@/utils/common"
-import { audioActions, useAudioStore } from "@/utils/store"
+import { audioActions, useAudioStore } from "@/utils/stores"
 
 interface PlayerProps {
   nextItem: (previewType: string) => void
