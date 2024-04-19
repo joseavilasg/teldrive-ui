@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react"
+import { useCallback } from "react"
 import {
   BrowseView,
   CategoryStorage,
@@ -6,7 +6,6 @@ import {
   FileResponse,
   QueryParams,
   Session,
-  Settings,
   SingleFile,
   UploadStats,
 } from "@/types"
@@ -241,7 +240,7 @@ export const fetchFiles =
 export const useCreateFile = (queryKey: any[]) => {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: async (data: FilePayload["payload"]) =>
+    mutationFn: async (data: Record<string, any>) =>
       http.post("/api/files", data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey })

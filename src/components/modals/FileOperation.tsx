@@ -10,7 +10,6 @@ import {
   ModalFooter,
   ModalHeader,
 } from "@tw-material/react"
-import clsx from "clsx"
 import { useShallow } from "zustand/react/shallow"
 
 import {
@@ -98,13 +97,13 @@ const FolderCreateDialog = memo(
     )
 
     const onCreate = useCallback(() => {
-      createMutation.mutate({
-        payload: {
+      createMutation
+        .mutateAsync({
           name: currentFile.name,
           type: "folder",
           path: (queryKey[1] as QueryParams).path || "/",
-        },
-      })
+        })
+        .then(() => handleClose())
     }, [currentFile.name])
 
     return (
@@ -131,8 +130,10 @@ const FolderCreateDialog = memo(
             className="font-normal"
             variant="filledTonal"
             onPress={onCreate}
+            isDisabled={createMutation.isPending || !currentFile.name}
+            isLoading={createMutation.isPending}
           >
-            Create
+            {createMutation.isPending ? "Creating" : "Create"}
           </Button>
         </ModalFooter>
       </>
