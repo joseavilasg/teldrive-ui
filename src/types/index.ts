@@ -16,6 +16,7 @@ export type SingleFile = {
   id: string
   starred: boolean
   parentPath?: string
+  encrypted?: boolean
 }
 
 export type FilePayload = {
@@ -51,8 +52,6 @@ export type Settings = {
   splitFileSize: number
   uploadConcurrency: number
   encryptFiles: string
-  channel?: Channel
-  bots?: string
 }
 
 export type Session = {
@@ -68,19 +67,6 @@ export type Session = {
 export type QueryParams = {
   type: BrowseView
   path: string
-}
-
-export type AccountStats = {
-  totalSize: number
-  totalFiles: number
-  channelId: number
-  channelName: string
-  [key: string]: number | string
-}
-
-export type Channel = {
-  channelName: string
-  channelId: number
 }
 
 export type Tags = {

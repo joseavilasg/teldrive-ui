@@ -1,4 +1,4 @@
-name: Release Drive
+name: Drive UI
 
 on:
   push:

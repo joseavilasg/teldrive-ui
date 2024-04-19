@@ -1,5 +1,5 @@
 import { memo, useEffect, useMemo, useRef } from "react"
-import { useQuery, useSuspenseInfiniteQuery } from "@tanstack/react-query"
+import { useSuspenseInfiniteQuery } from "@tanstack/react-query"
 import { getRouteApi } from "@tanstack/react-router"
 import {
   FbActions,
@@ -17,15 +17,15 @@ import type {
 import useBreakpoint from "use-breakpoint"
 
 import { fileActions, useFileAction } from "@/hooks/useFileAction"
-import { chainLinks } from "@/utils/common"
+import { chainLinks, isMobile } from "@/utils/common"
 import {
   BREAKPOINTS,
   defaultSortState,
   defaultViewId,
   sortViewMap,
 } from "@/utils/defaults"
-import { filesQueryOptions, sessionQueryOptions } from "@/utils/queryOptions"
-import { useModalStore } from "@/utils/store"
+import { filesQueryOptions } from "@/utils/queryOptions"
+import { useModalStore } from "@/utils/stores"
 
 import { FileOperationModal } from "./modals/FileOperation"
 import PreviewModal from "./modals/Preview"
@@ -131,7 +131,7 @@ export const DriveFileBrowser = memo(() => {
           loadNextPage={fetchNextPage}
           ref={listRef}
         />
-        <FileContextMenu />
+        {!isMobile && <FileContextMenu />}
       </FileBrowser>
 
       {modalFileActions.find((val) => val === modalOperation) && modalOpen && (

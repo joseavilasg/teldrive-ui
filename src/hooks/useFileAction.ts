@@ -12,12 +12,13 @@ import {
 } from "@tw-material/file-browser"
 import IconFlatColorIconsVlc from "~icons/flat-color-icons/vlc"
 import IconLetsIconsViewAltFill from "~icons/lets-icons/view-alt-fill"
+import toast from "react-hot-toast"
 
 import { mediaUrl, navigateToExternalUrl } from "@/utils/common"
 import { getSortState, SortOrder } from "@/utils/defaults"
 import http from "@/utils/http"
 import { usePreload } from "@/utils/queryOptions"
-import { useModalStore } from "@/utils/store"
+import { useModalStore } from "@/utils/stores"
 
 const CustomActions = {
   Preview: defineFileAction({
@@ -148,6 +149,7 @@ export const useFileAction = (params: QueryParams) => {
             destination: target.path || "/",
           })
           if (res.status === 200) {
+            toast.success(`${files.length} files moved successfully`)
             queryClient.invalidateQueries({
               queryKey: ["files"],
             })

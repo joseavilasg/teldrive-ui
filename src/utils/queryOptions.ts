@@ -6,6 +6,7 @@ import {
   FileResponse,
   QueryParams,
   Session,
+  Settings,
   SingleFile,
   UploadStats,
 } from "@/types"
@@ -18,6 +19,7 @@ import {
 } from "@tanstack/react-query"
 import { NavigateOptions, useRouter } from "@tanstack/react-router"
 import type { FileData } from "@tw-material/file-browser"
+import toast from "react-hot-toast"
 
 import { useProgress } from "@/components/TopProgress"
 
@@ -66,6 +68,7 @@ const mapFilesToFb = (files: SingleFile[]): FileData[] => {
       starred: item.starred,
       thumbnailUrl,
       modDate: item.updatedAt,
+      isEncrypted: item.encrypted,
     }
   })
 }
@@ -186,7 +189,7 @@ async function uploadStats(days: number, signal: AbortSignal) {
 }
 
 async function categoryStorage(signal: AbortSignal) {
-  const res = await http.get<CategoryStorage[]>("/api/files/stats", {
+  const res = await http.get<CategoryStorage[]>("/api/files/category/stats", {
     signal,
   })
   return res.data
@@ -224,6 +227,10 @@ export const fetchFiles =
       query.op = "find"
       query.type = "file"
       query.category = path.slice(1, -1)
+    } else if (type === "category") {
+      query.op = "find"
+      query.type = "file"
+      query.category = path.slice(1, -1)
     }
 
     return (
@@ -234,8 +241,8 @@ export const fetchFiles =
 export const useCreateFile = (queryKey: any[]) => {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: async (data: FilePayload) =>
-      http.post("/api/files", data.payload),
+    mutationFn: async (data: FilePayload["payload"]) =>
+      http.post("/api/files", data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey })
     },
@@ -289,7 +296,7 @@ export const useDeleteFile = (queryKey: any[]) => {
     mutationFn: async (data: Record<string, any>) => {
       return (await http.post(`/api/files/delete`, { files: data.files })).data
     },
-    onMutate: async (variables) => {
+    onMutate: async (variables: { files: string[] }) => {
       await queryClient.cancelQueries({ queryKey })
       const previousFiles = queryClient.getQueryData(queryKey)
       queryClient.setQueryData<InfiniteData<FileResponse>>(queryKey, (prev) => {
@@ -297,7 +304,9 @@ export const useDeleteFile = (queryKey: any[]) => {
           ...prev,
           pages: prev?.pages.map((page) => ({
             ...page,
-            results: page.results.filter((val) => val.id !== variables.id),
+            results: page.results.filter(
+              (val) => !variables.files.includes(val.id)
+            ),
           })),
         }
       })
@@ -305,6 +314,9 @@ export const useDeleteFile = (queryKey: any[]) => {
     },
     onError: (_1, _2, context) => {
       queryClient.setQueryData(queryKey, context?.previousFiles)
+    },
+    onSuccess: () => {
+      toast.success("File deleted successfully")
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey })

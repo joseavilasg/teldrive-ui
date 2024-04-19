@@ -115,3 +115,20 @@ export function bytesToGB(bytes: number) {
 }
 
 export const filesize = partial({ standard: "jedec" })
+
+const isMobileDevice = () => {
+  const toMatch = [
+    /Android/i,
+    /webOS/i,
+    /iPhone/i,
+    /iPad/i,
+    /iPod/i,
+    /BlackBerry/i,
+    /Windows Phone/i,
+  ]
+  return toMatch.some(function (toMatchItem) {
+    return navigator.userAgent.match(toMatchItem)
+  })
+}
+
+export const isMobile = isMobileDevice()

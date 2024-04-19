@@ -18,7 +18,7 @@ import {
   useDeleteFile,
   useUpdateFile,
 } from "@/utils/queryOptions"
-import { useModalStore } from "@/utils/store"
+import { useModalStore } from "@/utils/stores"
 
 type FileModalProps = {
   queryKey: FileQueryKey
@@ -150,13 +150,11 @@ const DeleteDialog = memo(({ handleClose, queryKey }: DeleteDialogProps) => {
     (state) => state.selectedFiles
   ) as string[]
 
-  const onDelete = useCallback(
-    () =>
-      deleteMutation.mutateAsync({ files: selectedFiles }).then(handleClose),
-    []
-  )
+  const onDelete = useCallback(() => {
+    deleteMutation.mutate({ files: selectedFiles })
+    handleClose()
+  }, [])
 
-  const isLoading = !deleteMutation.isIdle && deleteMutation.isPending
   return (
     <>
       <ModalHeader className="flex flex-col gap-1">Delete Files</ModalHeader>
@@ -171,13 +169,12 @@ const DeleteDialog = memo(({ handleClose, queryKey }: DeleteDialogProps) => {
         </Button>
         <Button
           variant="filledTonal"
-          isLoading={isLoading}
           classNames={{
-            base: clsx("font-normal", isLoading && "pointer-events-none"),
+            base: "font-normal",
           }}
           onPress={onDelete}
         >
-          {!deleteMutation.isPending ? "Yes" : "Deleting"}
+          Yes
         </Button>
       </ModalFooter>
     </>
