@@ -1,10 +1,12 @@
-import { memo, useEffect, useState } from "react"
+import { memo, useCallback, useEffect, useState } from "react"
+import { Button } from "@tw-material/react"
 import { genThemeConfig } from "@tw-material/theme/config"
+import BxReset from "~icons/bx/reset"
 import clsx from "clsx"
 
 import { useIsFirstRender } from "@/hooks/useFirstRender"
 import { ColorPickerMenu } from "@/components/menus/ColorPicker"
-import { useTheme } from "@/components/ThemeProvider"
+import { defaultColorScheme, useTheme } from "@/components/ThemeProvider"
 
 const swatches = [
   "#ff8a80",
@@ -58,6 +60,12 @@ export const ApperanceTab = memo(() => {
 
     document.adoptedStyleSheets = [sheet]
   }, [color, firstRender])
+
+  const handleReset = useCallback(() => {
+    setColorScheme({ cssVars: {}, color: defaultColorScheme.color })
+    document.adoptedStyleSheets = []
+  }, [])
+
   return (
     <div className="flex flex-col gap-3">
       <div className="grid grid-cols-6 gap-2 py-2 w-full">
@@ -80,6 +88,15 @@ export const ApperanceTab = memo(() => {
             />
           ))}
           <ColorPickerMenu color={color} setColor={setColor} />
+          <Button
+            title="Choose Color"
+            variant="filled"
+            isIconOnly
+            className="min-w-8 size-8"
+            onPress={handleReset}
+          >
+            <BxReset />
+          </Button>
         </div>
       </div>
     </div>
