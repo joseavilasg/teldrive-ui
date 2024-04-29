@@ -105,6 +105,14 @@ export const useFileAction = (params: QueryParams) => {
           navigateToExternalUrl(url, false)
           break
         }
+        case CustomActions.OpenInPotPlayer.id: {
+          const { selectedFiles } = data.state
+          const fileToOpen = selectedFiles[0]
+          const { id, name } = fileToOpen
+          const url = `potplayer://${mediaUrl(id, name)}`
+          navigateToExternalUrl(url, false)
+          break
+        }
         case FbActions.RenameFile.id: {
           actions.set({
             open: true,
