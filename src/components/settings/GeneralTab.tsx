@@ -24,13 +24,13 @@ export const GeneralTab = memo(() => {
       )}
     >
       <div className="col-span-6 xs:col-span-3">
-        <p className="text-lg font-medium">Resizer Host</p>
+        <p className="text-lg font-medium">Rclone Media Proxy</p>
         <p className="text-sm font-normal text-on-surface-variant">
-          Image Resize Url to resize images
+          Rclone HTTP Server URL
         </p>
       </div>
       <Controller
-        name="resizerHost"
+        name="rcloneMediaProxy"
         control={control}
         render={({ field, fieldState: { error } }) => (
           <Input

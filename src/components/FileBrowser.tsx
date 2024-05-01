@@ -139,7 +139,7 @@ export const DriveFileBrowser = memo(() => {
       )}
 
       {modalOperation === FbActions.OpenFiles.id && modalOpen && (
-        <PreviewModal files={files} />
+        <PreviewModal files={files} path={params.path} />
       )}
     </div>
   )

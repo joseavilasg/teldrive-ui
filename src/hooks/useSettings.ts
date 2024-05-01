@@ -2,7 +2,7 @@ import { useLocalStorage } from "usehooks-ts"
 
 const defaultSettings = {
   pageSize: "500",
-  resizerHost: "",
+  rcloneMediaProxy: "",
 }
 
 export default function useSettings() {

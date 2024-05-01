@@ -113,8 +113,10 @@ const ControlButton = ({ type, onPress }: ControlButtonProps) => {
 
 export default memo(function PreviewModal({
   files: fileProp,
+  path,
 }: {
   files: FileData[]
+  path: string
 }) {
   const [files] = useState(
     fileProp.toSorted((a, b) =>
@@ -129,7 +131,7 @@ export default memo(function PreviewModal({
 
   const modalOpen = useModalStore((state) => state.open)
 
-  const { id, name, previewType } = previewFile
+  const { id, name, previewType, path: filedir } = previewFile
 
   const { icon } = useIconData({ id, name, isDir: false })
 
@@ -155,7 +157,7 @@ export default memo(function PreviewModal({
 
   const handleClose = useCallback(() => modalActions.setOpen(false), [])
 
-  const assetUrl = mediaUrl(id, name)
+  const assetUrl = mediaUrl(id, name, path || filedir)
 
   const renderPreview = useCallback(() => {
     if (previewType) {

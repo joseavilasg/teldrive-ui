@@ -89,9 +89,9 @@ export const useFileAction = (params: QueryParams) => {
         case FbActions.DownloadFiles.id: {
           const { selectedFiles } = data.state
           for (const file of selectedFiles) {
-            if (!FileHelper.isDirectory(file)) {
-              const { id, name } = file
-              const url = mediaUrl(id, name, true)
+            if (!file.isDir) {
+              const { id, name, path } = file
+              const url = mediaUrl(id, name, params.path || path, true)
               navigateToExternalUrl(url, false)
             }
           }
@@ -100,16 +100,16 @@ export const useFileAction = (params: QueryParams) => {
         case CustomActions.OpenInVLCPlayer.id: {
           const { selectedFiles } = data.state
           const fileToOpen = selectedFiles[0]
-          const { id, name } = fileToOpen
-          const url = `vlc://${mediaUrl(id, name)}`
+          const { id, name, path } = fileToOpen
+          const url = `vlc://${mediaUrl(id, name, params.path || path)}`
           navigateToExternalUrl(url, false)
           break
         }
         case CustomActions.OpenInPotPlayer.id: {
           const { selectedFiles } = data.state
           const fileToOpen = selectedFiles[0]
-          const { id, name } = fileToOpen
-          const url = `potplayer://${mediaUrl(id, name)}`
+          const { id, name, path } = fileToOpen
+          const url = `potplayer://${mediaUrl(id, name, params.path || path)}`
           navigateToExternalUrl(url, false)
           break
         }
@@ -142,7 +142,7 @@ export const useFileAction = (params: QueryParams) => {
           let clipboardText = ""
           selections.forEach((element) => {
             if (!FileHelper.isDirectory(element)) {
-              const { id, name } = element
+              const { id, name, path } = element
               clipboardText = `${clipboardText}${mediaUrl(id, name)}\n`
             }
           })

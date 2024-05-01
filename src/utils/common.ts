@@ -1,6 +1,8 @@
 import { BrowseView, Session } from "@/types"
 import { partial } from "filesize"
 
+import { settings } from "./defaults"
+
 export const navigateToExternalUrl = (url: string, shouldOpenNewTab = true) =>
   shouldOpenNewTab ? window.open(url, "_blank") : (window.location.href = url)
 
@@ -99,7 +101,15 @@ export function extractPathParts(path: string): {
   }
 }
 
-export const mediaUrl = (id: string, name: string, download = false) => {
+export const mediaUrl = (
+  id: string,
+  name: string,
+  path = "",
+  download = false
+) => {
+  if (path && settings.rcloneMediaProxy)
+    return `${settings.rcloneMediaProxy}${path}/${encodeURIComponent(name)}`
+
   const host = window.location.origin
   const mediaPath = `${id}/${encodeURIComponent(name)}${download ? "?d=1" : ""}`
   return `${host}/api/files/stream/${mediaPath}`

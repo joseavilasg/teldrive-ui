@@ -48,10 +48,7 @@ export type Message = {
 
 export type Settings = {
   pageSize: number
-  resizerHost: string
-  splitFileSize: number
-  uploadConcurrency: number
-  encryptFiles: string
+  rcloneMediaProxy: string
 }
 
 export type Session = {

@@ -60,7 +60,7 @@ const mapFilesToFb = (files: SingleFile[]): FileData[] => {
       name: item.name,
       type: item.type,
       mimeType: item.mimeType,
-      location: item.parentPath,
+      path: item.parentPath,
       size: item.size ? Number(item.size) : 0,
       previewType,
       openable: preview[previewType!] ? true : false,
