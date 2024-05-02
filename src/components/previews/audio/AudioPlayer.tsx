@@ -273,6 +273,10 @@ export const AudioPlayer = memo(({ nextItem, prevItem }: PlayerProps) => {
     audio
   )
 
+  useEventListener("play", () => actions.set({ isPlaying: true }), audio)
+
+  useEventListener("pause", () => actions.set({ isPlaying: false }), audio)
+
   useEventListener(
     "ended",
     () => {
