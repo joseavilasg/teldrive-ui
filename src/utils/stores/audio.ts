@@ -3,10 +3,10 @@ import { create } from "zustand"
 
 import parseAudioMetadata from "../tagparser"
 
-type AudioRef = HTMLAudioElement | null
+type AudioElem = HTMLAudioElement | null
 
 const defaultState = {
-  audio: null as AudioRef,
+  audio: null as AudioElem,
   isPlaying: false,
   currentTime: 0,
   duration: 0,
@@ -32,7 +32,7 @@ type PlayerState = typeof defaultState & {
     toggleLooping: () => void
     setDuration: (value: number) => void
     setEnded: () => void
-    setAudioRef: (ref: AudioRef) => void
+    setAudioElem: (elem: AudioElem) => void
     loadAudio: (url: string, name: string) => void
     setSeekPosition: (value: number) => void
     set: (payload: Partial<PlayerState>) => void
@@ -45,9 +45,12 @@ export const useAudioStore = create<PlayerState>((set, get) => ({
   actions: {
     loadAudio: async (url, name) => {
       const state = get()
-      const audio = state.audio
+      let audio = state.audio
+
+      if (!audio) audio = new Audio()
+
       if (audio instanceof HTMLAudioElement) {
-        const tags = await parseAudioMetadata(url)
+        let tags = await parseAudioMetadata(url)
         let { artist, title, picture } = tags as Tags
         let cover = ""
         if (picture) cover = URL.createObjectURL(picture as unknown as Blob)
@@ -61,6 +64,7 @@ export const useAudioStore = create<PlayerState>((set, get) => ({
         audio.load()
         set({
           ...state,
+          audio,
           isPlaying: true,
           isEnded: false,
           metadata,
@@ -121,7 +125,7 @@ export const useAudioStore = create<PlayerState>((set, get) => ({
       }),
     setDuration: (value) => set((state) => ({ ...state, duration: value })),
     setEnded: () => set((state) => ({ ...state, isEnded: true })),
-    setAudioRef: (ref: AudioRef) => set({ audio: ref }),
+    setAudioElem: (ref: AudioElem) => set({ audio: ref }),
     set: (payload) => set((state) => ({ ...state, ...payload })),
     reset: () => set(() => ({ ...defaultState })),
   },

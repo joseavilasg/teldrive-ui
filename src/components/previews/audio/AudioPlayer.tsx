@@ -11,7 +11,7 @@ import IconRepeatOneFill from "~icons/ri/repeat-one-fill"
 import IconSkipNextBold from "~icons/solar/skip-next-bold"
 import IconSkipPreviousBold from "~icons/solar/skip-previous-bold"
 import clsx from "clsx"
-import { useEventListener, useInterval } from "usehooks-ts"
+import { useInterval } from "usehooks-ts"
 import { useShallow } from "zustand/react/shallow"
 
 import { formatDuration } from "@/utils/common"
@@ -257,44 +257,7 @@ const BottomControls = memo(() => {
 })
 
 export const AudioPlayer = memo(({ nextItem, prevItem }: PlayerProps) => {
-  const audio = useRef(new Audio())
-
-  const actions = useAudioStore(audioActions)
-
   const isEnded = useAudioStore((state) => state.isEnded)
-
-  useEffect(() => {
-    if (audio.current !== null) actions.setAudioRef(audio.current)
-  }, [audio.current])
-
-  useEventListener(
-    "loadedmetadata",
-    () => actions.setDuration(audio.current.duration),
-    audio
-  )
-
-  useEventListener("play", () => actions.set({ isPlaying: true }), audio)
-
-  useEventListener("pause", () => actions.set({ isPlaying: false }), audio)
-
-  useEventListener(
-    "ended",
-    () => {
-      actions.set({ seekPosition: 0, delay: 0, isEnded: true })
-    },
-    audio
-  )
-
-  useEffect(() => {
-    return () => {
-      if (audio.current) {
-        actions.reset()
-        audio.current.pause()
-        audio.current.src = ""
-        audio.current.load()
-      }
-    }
-  }, [])
 
   useEffect(() => {
     if (isEnded) nextItem("audio")

@@ -11,6 +11,13 @@ interface AudioPreviewProps {
   name: string
 }
 
+const unloadAudio = (audio: HTMLAudioElement) => {
+  audio.pause()
+  audio.src = ""
+  audio.load()
+  audio.remove()
+}
+
 const AudioPreview = ({
   assetUrl,
   name,
@@ -19,9 +26,29 @@ const AudioPreview = ({
 }: AudioPreviewProps) => {
   const actions = useAudioStore(audioActions)
 
+  const audio = useAudioStore((state) => state.audio)
+
+  useEffect(() => {
+    if (audio) {
+      audio.addEventListener("ended", () => actions.set({ isEnded: true }))
+      audio.addEventListener("loadedmetadata", () =>
+        actions.setDuration(audio.duration)
+      )
+      audio.addEventListener("play", () => actions.set({ isPlaying: true }))
+
+      audio.addEventListener("pause", () => actions.set({ isPlaying: false }))
+    }
+    return () => {
+      if (audio) {
+        unloadAudio(audio)
+        actions.reset()
+      }
+    }
+  }, [audio])
+
   useEffect(() => {
     if (assetUrl) actions.loadAudio(assetUrl, name)
-  }, [assetUrl])
+  }, [assetUrl, audio])
 
   return <AudioPlayer nextItem={nextItem} prevItem={prevItem} />
 }
