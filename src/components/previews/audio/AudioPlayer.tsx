@@ -1,4 +1,5 @@
 import { memo, useCallback, useEffect, useRef } from "react"
+import { FbIcon, FbIconName } from "@tw-material/file-browser"
 import { Button, Slider } from "@tw-material/react"
 import IconPauseCircle from "~icons/ic/round-pause-circle"
 import IconPlayCircle from "~icons/ic/round-play-circle"
@@ -9,6 +10,7 @@ import IconRepeat2Fill from "~icons/ri/repeat-2-fill"
 import IconRepeatOneFill from "~icons/ri/repeat-one-fill"
 import IconSkipNextBold from "~icons/solar/skip-next-bold"
 import IconSkipPreviousBold from "~icons/solar/skip-previous-bold"
+import clsx from "clsx"
 import { useEventListener, useInterval } from "usehooks-ts"
 import { useShallow } from "zustand/react/shallow"
 
@@ -30,10 +32,21 @@ const getVolumeIcon = (volume: number, muted: boolean) => {
 const AudioCover = memo(() => {
   const metadata = useAudioStore((state) => state.metadata)
   return (
-    <div className="relative col-span-6 md:col-span-5">
+    <div className="relative col-span-6 md:col-span-5 grid">
+      <div
+        className={clsx(
+          "bg-neutral-400 flex justify-center items-center rounded-large aspect-[1/1] row-span-full col-span-full",
+          metadata.cover ? "-z-[1]" : "z-10"
+        )}
+      >
+        <FbIcon icon={FbIconName.music} className="size-16" />
+      </div>
       <img
         alt="Album cover"
-        className="object-cover rounded-large"
+        className={clsx(
+          "object-cover rounded-large row-span-full col-span-full transition",
+          metadata.cover ? "z-10 opacity-100" : "-z-[1] opacity-0"
+        )}
         height={200}
         src={metadata.cover}
         width="100%"
