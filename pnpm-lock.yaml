@@ -17,25 +17,25 @@ importers:
         version: 1.0.3(@auth/core@0.30.0)(hono@4.2.5)(react@18.2.0)
       '@monaco-editor/react':
         specifier: ^4.6.0
-        version: 4.6.0(monaco-editor@0.47.0)(react-dom@18.2.0)(react@18.2.0)
+        version: 4.6.0(monaco-editor@0.47.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@tanstack/react-query':
         specifier: ^5.29.2
         version: 5.29.2(react@18.2.0)
       '@tanstack/react-router':
-        specifier: ^1.27.0
-        version: 1.27.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: 1.27.0
+        version: 1.27.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@tw-material/file-browser':
         specifier: ^1.0.16
-        version: 1.0.16(@tw-material/react@1.1.17)(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(redux@5.0.1)(typescript@5.4.5)
+        version: 1.0.16(@tw-material/react@1.1.17(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3))(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@5.0.1)(typescript@5.4.5)
       '@tw-material/framer-transitions':
         specifier: ^1.1.1
-        version: 1.1.1(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+        version: 1.1.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/react':
         specifier: ^1.1.17
-        version: 1.1.17(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+        version: 1.1.17(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)
       '@tw-material/system':
         specifier: ^1.1.0
-        version: 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+        version: 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme':
         specifier: ^1.1.8
         version: 1.1.8(tailwindcss@3.4.3)
@@ -59,7 +59,7 @@ importers:
         version: 10.1.1
       framer-motion:
         specifier: ^11.1.5
-        version: 11.1.5(react-dom@18.2.0)(react@18.2.0)
+        version: 11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       lodash.debounce:
         specifier: ^4.0.8
         version: 4.0.8
@@ -80,7 +80,7 @@ importers:
         version: 1.4.1(apexcharts@3.48.0)(react@18.2.0)
       react-colorful:
         specifier: ^5.6.1
-        version: 5.6.1(react-dom@18.2.0)(react@18.2.0)
+        version: 5.6.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-error-boundary:
         specifier: ^4.0.13
         version: 4.0.13(react@18.2.0)
@@ -89,7 +89,7 @@ importers:
         version: 7.51.3(react@18.2.0)
       react-hot-toast:
         specifier: ^2.4.1
-        version: 2.4.1(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0)
+        version: 2.4.1(csstype@3.1.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-reader:
         specifier: ^2.0.9
         version: 2.0.9(react@18.2.0)
@@ -98,13 +98,13 @@ importers:
         version: 2.3.1(react@18.2.0)
       use-breakpoint:
         specifier: ^4.0.1
-        version: 4.0.1(react-dom@18.2.0)(react@18.2.0)
+        version: 4.0.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       usehooks-ts:
         specifier: ^3.1.0
         version: 3.1.0(react@18.2.0)
       zustand:
         specifier: ^4.5.2
-        version: 4.5.2(@types/react@18.2.79)(react@18.2.0)
+        version: 4.5.2(@types/react@18.2.79)(immer@10.0.4)(react@18.2.0)
     devDependencies:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.2.1
@@ -117,13 +117,13 @@ importers:
         version: 8.1.0(typescript@5.4.5)
       '@svgr/plugin-jsx':
         specifier: ^8.1.0
-        version: 8.1.0(@svgr/core@8.1.0)
+        version: 8.1.0(@svgr/core@8.1.0(typescript@5.4.5))
       '@tanstack/react-query-devtools':
         specifier: ^5.29.2
-        version: 5.29.2(@tanstack/react-query@5.29.2)(react@18.2.0)
+        version: 5.29.2(@tanstack/react-query@5.29.2(react@18.2.0))(react@18.2.0)
       '@tanstack/router-vite-plugin':
         specifier: ^1.28.2
-        version: 1.28.2(vite@5.2.9)
+        version: 1.28.2(vite@5.2.9(@types/node@20.12.7)(terser@5.30.3))
       '@types/lodash.debounce':
         specifier: ^4.0.9
         version: 4.0.9
@@ -141,7 +141,7 @@ importers:
         version: 18.2.25
       '@vitejs/plugin-react':
         specifier: ^4.2.1
-        version: 4.2.1(vite@5.2.9)
+        version: 4.2.1(vite@5.2.9(@types/node@20.12.7)(terser@5.30.3))
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.38)
@@ -180,7 +180,7 @@ importers:
         version: 18.2.0(react@18.2.0)
       react-virtuoso:
         specifier: ^4.7.9
-        version: 4.7.9(react-dom@18.2.0)(react@18.2.0)
+        version: 4.7.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       tailwindcss:
         specifier: ^3.4.3
         version: 3.4.3
@@ -192,7 +192,7 @@ importers:
         version: 5.4.5
       unplugin-icons:
         specifier: ^0.18.5
-        version: 0.18.5(@svgr/core@8.1.0)
+        version: 0.18.5(@svgr/core@8.1.0(typescript@5.4.5))
       vite:
         specifier: ^5.2.9
         version: 5.2.9(@types/node@20.12.7)(terser@5.30.3)
@@ -201,10 +201,10 @@ importers:
         version: 0.9.4
       vite-plugin-eslint:
         specifier: ^1.8.1
-        version: 1.8.1(eslint@9.0.0)(vite@5.2.9)
+        version: 1.8.1(eslint@9.0.0)(vite@5.2.9(@types/node@20.12.7)(terser@5.30.3))
       vite-tsconfig-paths:
         specifier: ^4.3.2
-        version: 4.3.2(typescript@5.4.5)(vite@5.2.9)
+        version: 4.3.2(typescript@5.4.5)(vite@5.2.9(@types/node@20.12.7)(terser@5.30.3))
 
 packages:
 
@@ -3860,15 +3860,15 @@ snapshots:
       '@floating-ui/core': 1.6.0
       '@floating-ui/utils': 0.2.1
 
-  '@floating-ui/react-dom@2.0.8(react-dom@18.2.0)(react@18.2.0)':
+  '@floating-ui/react-dom@2.0.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@floating-ui/dom': 1.6.3
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  '@floating-ui/react@0.26.12(react-dom@18.2.0)(react@18.2.0)':
+  '@floating-ui/react@0.26.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@floating-ui/react-dom': 2.0.8(react-dom@18.2.0)(react@18.2.0)
+      '@floating-ui/react-dom': 2.0.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@floating-ui/utils': 0.2.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -3921,6 +3921,7 @@ snapshots:
       '@formatjs/intl-listformat': 7.5.5
       intl-messageformat: 10.5.11
       tslib: 2.6.2
+    optionalDependencies:
       typescript: 5.4.5
 
   '@hono/auth-js@1.0.3(@auth/core@0.30.0)(hono@4.2.5)(react@18.2.0)':
@@ -4027,7 +4028,7 @@ snapshots:
       monaco-editor: 0.47.0
       state-local: 1.0.7
 
-  '@monaco-editor/react@4.6.0(monaco-editor@0.47.0)(react-dom@18.2.0)(react@18.2.0)':
+  '@monaco-editor/react@4.6.0(monaco-editor@0.47.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@monaco-editor/loader': 1.4.0(monaco-editor@0.47.0)
       monaco-editor: 0.47.0
@@ -4049,9 +4050,9 @@ snapshots:
       '@react-types/shared': 3.22.1(react@18.2.0)
       react: 18.2.0
 
-  '@nextui-org/use-aria-modal-overlay@2.0.8(react-dom@18.2.0)(react@18.2.0)':
+  '@nextui-org/use-aria-modal-overlay@2.0.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@react-aria/overlays': 3.21.1(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/overlays': 3.21.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@react-stately/overlays': 3.6.5(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
@@ -4116,14 +4117,14 @@ snapshots:
       '@swc/helpers': 0.5.10
       react: 18.2.0
 
-  '@react-aria/combobox@3.8.4(react-dom@18.2.0)(react@18.2.0)':
+  '@react-aria/combobox@3.8.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@react-aria/i18n': 3.10.2(react@18.2.0)
-      '@react-aria/listbox': 3.11.5(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/listbox': 3.11.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/live-announcer': 3.3.2
-      '@react-aria/menu': 3.13.1(react-dom@18.2.0)(react@18.2.0)
-      '@react-aria/overlays': 3.21.1(react-dom@18.2.0)(react@18.2.0)
-      '@react-aria/selection': 3.17.5(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/menu': 3.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@react-aria/overlays': 3.21.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@react-aria/selection': 3.17.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/textfield': 3.14.3(react@18.2.0)
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@react-stately/collections': 3.10.5(react@18.2.0)
@@ -4136,10 +4137,10 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  '@react-aria/dialog@3.5.12(react-dom@18.2.0)(react@18.2.0)':
+  '@react-aria/dialog@3.5.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@react-aria/focus': 3.16.2(react@18.2.0)
-      '@react-aria/overlays': 3.21.1(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/overlays': 3.21.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@react-types/dialog': 3.5.8(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
@@ -4202,11 +4203,11 @@ snapshots:
       '@swc/helpers': 0.5.10
       react: 18.2.0
 
-  '@react-aria/listbox@3.11.5(react-dom@18.2.0)(react@18.2.0)':
+  '@react-aria/listbox@3.11.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@react-aria/interactions': 3.21.1(react@18.2.0)
       '@react-aria/label': 3.7.6(react@18.2.0)
-      '@react-aria/selection': 3.17.5(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/selection': 3.17.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@react-stately/collections': 3.10.5(react@18.2.0)
       '@react-stately/list': 3.10.3(react@18.2.0)
@@ -4220,13 +4221,13 @@ snapshots:
     dependencies:
       '@swc/helpers': 0.5.10
 
-  '@react-aria/menu@3.13.1(react-dom@18.2.0)(react@18.2.0)':
+  '@react-aria/menu@3.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@react-aria/focus': 3.16.2(react@18.2.0)
       '@react-aria/i18n': 3.10.2(react@18.2.0)
       '@react-aria/interactions': 3.21.1(react@18.2.0)
-      '@react-aria/overlays': 3.21.1(react-dom@18.2.0)(react@18.2.0)
-      '@react-aria/selection': 3.17.5(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/overlays': 3.21.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@react-aria/selection': 3.17.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@react-stately/collections': 3.10.5(react@18.2.0)
       '@react-stately/menu': 3.6.1(react@18.2.0)
@@ -4238,7 +4239,7 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  '@react-aria/overlays@3.21.1(react-dom@18.2.0)(react@18.2.0)':
+  '@react-aria/overlays@3.21.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@react-aria/focus': 3.16.2(react@18.2.0)
       '@react-aria/i18n': 3.10.2(react@18.2.0)
@@ -4254,7 +4255,7 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  '@react-aria/selection@3.17.5(react-dom@18.2.0)(react@18.2.0)':
+  '@react-aria/selection@3.17.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@react-aria/focus': 3.16.2(react@18.2.0)
       '@react-aria/i18n': 3.10.2(react@18.2.0)
@@ -4489,14 +4490,15 @@ snapshots:
       '@react-types/shared': 3.22.1(react@18.2.0)
       react: 18.2.0
 
-  '@reduxjs/toolkit@2.2.3(react-redux@9.1.1)(react@18.2.0)':
+  '@reduxjs/toolkit@2.2.3(react-redux@9.1.1(@types/react@18.2.79)(react@18.2.0)(redux@5.0.1))(react@18.2.0)':
     dependencies:
       immer: 10.0.4
-      react: 18.2.0
-      react-redux: 9.1.1(@types/react@18.2.79)(react@18.2.0)(redux@5.0.1)
       redux: 5.0.1
       redux-thunk: 3.1.0(redux@5.0.1)
       reselect: 5.1.0
+    optionalDependencies:
+      react: 18.2.0
+      react-redux: 9.1.1(@types/react@18.2.79)(react@18.2.0)(redux@5.0.1)
 
   '@rollup/pluginutils@4.2.1':
     dependencies:
@@ -4611,7 +4613,7 @@ snapshots:
       '@babel/types': 7.24.0
       entities: 4.5.0
 
-  '@svgr/plugin-jsx@8.1.0(@svgr/core@8.1.0)':
+  '@svgr/plugin-jsx@8.1.0(@svgr/core@8.1.0(typescript@5.4.5))':
     dependencies:
       '@babel/core': 7.24.4
       '@svgr/babel-preset': 8.1.0(@babel/core@7.24.4)
@@ -4631,7 +4633,7 @@ snapshots:
 
   '@tanstack/query-devtools@5.28.10': {}
 
-  '@tanstack/react-query-devtools@5.29.2(@tanstack/react-query@5.29.2)(react@18.2.0)':
+  '@tanstack/react-query-devtools@5.29.2(@tanstack/react-query@5.29.2(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@tanstack/query-devtools': 5.28.10
       '@tanstack/react-query': 5.29.2(react@18.2.0)
@@ -4642,16 +4644,16 @@ snapshots:
       '@tanstack/query-core': 5.29.0
       react: 18.2.0
 
-  '@tanstack/react-router@1.27.0(react-dom@18.2.0)(react@18.2.0)':
+  '@tanstack/react-router@1.27.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@tanstack/history': 1.26.10
-      '@tanstack/react-store': 0.2.1(react-dom@18.2.0)(react@18.2.0)
+      '@tanstack/react-store': 0.2.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       tiny-invariant: 1.3.3
       tiny-warning: 1.0.3
 
-  '@tanstack/react-store@0.2.1(react-dom@18.2.0)(react@18.2.0)':
+  '@tanstack/react-store@0.2.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@tanstack/store': 0.1.3
       react: 18.2.0
@@ -4663,7 +4665,7 @@ snapshots:
       prettier: 3.2.5
       zod: 3.22.5
 
-  '@tanstack/router-vite-plugin@1.28.2(vite@5.2.9)':
+  '@tanstack/router-vite-plugin@1.28.2(vite@5.2.9(@types/node@20.12.7)(terser@5.30.3))':
     dependencies:
       '@babel/core': 7.24.4
       '@babel/generator': 7.24.4
@@ -4679,7 +4681,7 @@ snapshots:
       '@types/babel__generator': 7.6.8
       '@types/babel__template': 7.4.4
       '@types/babel__traverse': 7.20.5
-      '@vitejs/plugin-react': 4.2.1(vite@5.2.9)
+      '@vitejs/plugin-react': 4.2.1(vite@5.2.9(@types/node@20.12.7)(terser@5.30.3))
       zod: 3.22.5
     transitivePeerDependencies:
       - supports-color
@@ -4687,7 +4689,7 @@ snapshots:
 
   '@tanstack/store@0.1.3': {}
 
-  '@tw-material/aria-utils@1.1.1(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)':
+  '@tw-material/aria-utils@1.1.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))':
     dependencies:
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@react-stately/collections': 3.10.5(react@18.2.0)
@@ -4695,18 +4697,18 @@ snapshots:
       '@react-types/shared': 3.22.1(react@18.2.0)
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
       - '@tw-material/theme'
       - tailwind-variants
 
-  '@tw-material/autocomplete@1.0.2(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)':
+  '@tw-material/autocomplete@1.0.2(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)':
     dependencies:
       '@nextui-org/shared-icons': 2.0.7(react@18.2.0)
       '@nextui-org/use-aria-button': 2.0.7(react@18.2.0)
-      '@react-aria/combobox': 3.8.4(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/combobox': 3.8.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/focus': 3.16.2(react@18.2.0)
       '@react-aria/i18n': 3.10.2(react@18.2.0)
       '@react-aria/interactions': 3.21.1(react@18.2.0)
@@ -4715,19 +4717,19 @@ snapshots:
       '@react-stately/combobox': 3.8.2(react@18.2.0)
       '@react-types/combobox': 3.10.1(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
-      '@tw-material/aria-utils': 1.1.1(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/button': 1.1.11(@tw-material/system@1.1.0)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/input': 1.0.3(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(react-dom@18.2.0)(react@18.2.0)
-      '@tw-material/listbox': 1.0.3(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/popover': 1.1.11(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+      '@tw-material/aria-utils': 1.1.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      '@tw-material/button': 1.1.11(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)
+      '@tw-material/input': 1.0.3(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@tw-material/listbox': 1.0.3(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      '@tw-material/popover': 1.1.11(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
-      '@tw-material/scroll-shadow': 1.0.0(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)
+      '@tw-material/scroll-shadow': 1.0.0(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/spinner': 1.0.1(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/spinner': 1.0.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
       clsx: 2.1.0
-      framer-motion: 11.1.5(react-dom@18.2.0)(react@18.2.0)
+      framer-motion: 11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
@@ -4735,7 +4737,7 @@ snapshots:
       - tailwind-variants
       - tailwindcss
 
-  '@tw-material/avatar@1.0.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)':
+  '@tw-material/avatar@1.0.1(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@nextui-org/use-image': 2.0.5(react@18.2.0)
       '@react-aria/focus': 3.16.2(react@18.2.0)
@@ -4743,23 +4745,23 @@ snapshots:
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
       clsx: 2.1.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  '@tw-material/box@1.1.1(@tw-material/system@1.1.0)(react-dom@18.2.0)(react@18.2.0)':
+  '@tw-material/box@1.1.1(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@react-aria/interactions': 3.21.1(react@18.2.0)
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  '@tw-material/breadcrumbs@1.1.2(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)':
+  '@tw-material/breadcrumbs@1.1.2(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@nextui-org/shared-icons': 2.0.7(react@18.2.0)
       '@react-aria/breadcrumbs': 3.5.11(react@18.2.0)
@@ -4771,14 +4773,14 @@ snapshots:
       '@react-types/shared': 3.22.1(react@18.2.0)
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
       clsx: 2.1.0
-      framer-motion: 11.1.5(react-dom@18.2.0)(react@18.2.0)
+      framer-motion: 11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  '@tw-material/button@1.1.11(@tw-material/system@1.1.0)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)':
+  '@tw-material/button@1.1.11(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)':
     dependencies:
       '@nextui-org/use-aria-button': 2.0.7(react@18.2.0)
       '@react-aria/focus': 3.16.2(react@18.2.0)
@@ -4787,51 +4789,51 @@ snapshots:
       '@react-types/button': 3.9.2(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
-      '@tw-material/ripple': 1.1.3(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)
+      '@tw-material/ripple': 1.1.3(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/spinner': 1.0.1(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/spinner': 1.0.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
       clsx: 2.1.0
-      framer-motion: 11.1.5(react-dom@18.2.0)(react@18.2.0)
+      framer-motion: 11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
       - tailwind-variants
       - tailwindcss
 
-  '@tw-material/divider@1.0.1(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)':
+  '@tw-material/divider@1.0.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))':
     dependencies:
       '@react-types/shared': 3.22.1(react@18.2.0)
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
       - tailwind-variants
 
-  '@tw-material/dropdown@1.1.13(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)':
+  '@tw-material/dropdown@1.1.13(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)':
     dependencies:
       '@nextui-org/shared-icons': 2.0.7(react@18.2.0)
       '@react-aria/focus': 3.16.2(react@18.2.0)
       '@react-aria/interactions': 3.21.1(react@18.2.0)
-      '@react-aria/menu': 3.13.1(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/menu': 3.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@react-stately/menu': 3.6.1(react@18.2.0)
       '@react-stately/tree': 3.7.6(react@18.2.0)
       '@react-types/button': 3.9.2(react@18.2.0)
       '@react-types/menu': 3.9.7(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
-      '@tw-material/menu': 1.1.12(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/popover': 1.1.11(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+      '@tw-material/menu': 1.1.12(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)
+      '@tw-material/popover': 1.1.11(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
       clsx: 2.1.0
-      framer-motion: 11.1.5(react-dom@18.2.0)(react@18.2.0)
+      framer-motion: 11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
@@ -4839,18 +4841,18 @@ snapshots:
       - tailwind-variants
       - tailwindcss
 
-  '@tw-material/file-browser@1.0.16(@tw-material/react@1.1.17)(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(redux@5.0.1)(typescript@5.4.5)':
+  '@tw-material/file-browser@1.0.16(@tw-material/react@1.1.17(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3))(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@5.0.1)(typescript@5.4.5)':
     dependencies:
-      '@floating-ui/react': 0.26.12(react-dom@18.2.0)(react@18.2.0)
+      '@floating-ui/react': 0.26.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@nextui-org/use-safe-layout-effect': 2.0.5(react@18.2.0)
       '@react-aria/focus': 3.16.2(react@18.2.0)
       '@react-aria/interactions': 3.21.1(react@18.2.0)
       '@react-aria/utils': 3.23.2(react@18.2.0)
-      '@reduxjs/toolkit': 2.2.3(react-redux@9.1.1)(react@18.2.0)
-      '@tw-material/react': 1.1.17(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+      '@reduxjs/toolkit': 2.2.3(react-redux@9.1.1(@types/react@18.2.79)(react@18.2.0)(redux@5.0.1))(react@18.2.0)
+      '@tw-material/react': 1.1.17(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
       '@tw-material/use-long-press': 1.0.0(react@18.2.0)
       '@tw-material/use-press': 1.0.0(react@18.2.0)
@@ -4859,16 +4861,16 @@ snapshots:
       exact-trie: 1.0.13
       fast-sort: 3.4.0
       filesize: 10.1.1
-      framer-motion: 11.1.5(react-dom@18.2.0)(react@18.2.0)
+      framer-motion: 11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       fuzzy-search: 3.2.1
       hotkeys-js: 3.13.7
       immer: 10.0.4
       react: 18.2.0
-      react-click-away-listener: 2.2.3(react-dom@18.2.0)(react@18.2.0)
+      react-click-away-listener: 2.2.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-dom: 18.2.0(react@18.2.0)
       react-intl: 6.6.5(react@18.2.0)(typescript@5.4.5)
       react-redux: 9.1.1(@types/react@18.2.79)(react@18.2.0)(redux@5.0.1)
-      react-virtuoso: 4.7.9(react-dom@18.2.0)(react@18.2.0)
+      react-virtuoso: 4.7.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       redux-watch: 1.2.0
       shortid: 2.2.16
       tailwind-merge: 2.2.2
@@ -4879,18 +4881,18 @@ snapshots:
       - redux
       - typescript
 
-  '@tw-material/framer-transitions@1.1.1(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)':
+  '@tw-material/framer-transitions@1.1.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))':
     dependencies:
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
-      framer-motion: 11.1.5(react-dom@18.2.0)(react@18.2.0)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      framer-motion: 11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
       - '@tw-material/theme'
       - tailwind-variants
 
-  '@tw-material/input@1.0.3(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(react-dom@18.2.0)(react@18.2.0)':
+  '@tw-material/input@1.0.3(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@nextui-org/shared-icons': 2.0.7(react@18.2.0)
       '@react-aria/focus': 3.16.2(react@18.2.0)
@@ -4902,7 +4904,7 @@ snapshots:
       '@react-types/textfield': 3.9.1(react@18.2.0)
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
       clsx: 2.1.0
       react: 18.2.0
@@ -4911,21 +4913,21 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
-  '@tw-material/listbox@1.0.3(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)':
+  '@tw-material/listbox@1.0.3(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))':
     dependencies:
       '@nextui-org/use-is-mobile': 2.0.7(react@18.2.0)
       '@react-aria/focus': 3.16.2(react@18.2.0)
       '@react-aria/interactions': 3.21.1(react@18.2.0)
-      '@react-aria/listbox': 3.11.5(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/listbox': 3.11.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@react-stately/list': 3.10.3(react@18.2.0)
       '@react-types/menu': 3.9.7(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
-      '@tw-material/aria-utils': 1.1.1(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/divider': 1.0.1(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/aria-utils': 1.1.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      '@tw-material/divider': 1.0.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
       clsx: 2.1.0
       react: 18.2.0
@@ -4933,15 +4935,15 @@ snapshots:
     transitivePeerDependencies:
       - tailwind-variants
 
-  '@tw-material/menu@1.1.12(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)':
+  '@tw-material/menu@1.1.12(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)':
     dependencies:
       '@nextui-org/use-is-mobile': 2.0.7(react@18.2.0)
       '@nextui-org/use-safe-layout-effect': 2.0.5(react@18.2.0)
-      '@react-aria/dialog': 3.5.12(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/dialog': 3.5.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/focus': 3.16.2(react@18.2.0)
       '@react-aria/interactions': 3.21.1(react@18.2.0)
-      '@react-aria/menu': 3.13.1(react-dom@18.2.0)(react@18.2.0)
-      '@react-aria/overlays': 3.21.1(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/menu': 3.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@react-aria/overlays': 3.21.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@react-stately/overlays': 3.6.5(react@18.2.0)
       '@react-stately/tree': 3.7.6(react@18.2.0)
@@ -4949,15 +4951,15 @@ snapshots:
       '@react-types/menu': 3.9.7(react@18.2.0)
       '@react-types/overlays': 3.8.5(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
-      '@tw-material/aria-utils': 1.1.1(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/button': 1.1.11(@tw-material/system@1.1.0)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/framer-transitions': 1.1.1(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/aria-utils': 1.1.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      '@tw-material/button': 1.1.11(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)
+      '@tw-material/framer-transitions': 1.1.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
       clsx: 2.1.0
-      framer-motion: 11.1.5(react-dom@18.2.0)(react@18.2.0)
+      framer-motion: 11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-remove-scroll: 2.5.9(@types/react@18.2.79)(react@18.2.0)
@@ -4966,30 +4968,30 @@ snapshots:
       - tailwind-variants
       - tailwindcss
 
-  '@tw-material/modal@1.1.6(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)':
+  '@tw-material/modal@1.1.6(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))':
     dependencies:
       '@nextui-org/shared-icons': 2.0.7(react@18.2.0)
       '@nextui-org/use-aria-button': 2.0.7(react@18.2.0)
-      '@nextui-org/use-aria-modal-overlay': 2.0.8(react-dom@18.2.0)(react@18.2.0)
+      '@nextui-org/use-aria-modal-overlay': 2.0.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@nextui-org/use-disclosure': 2.0.7(react@18.2.0)
       '@nextui-org/use-safe-layout-effect': 2.0.5(react@18.2.0)
-      '@react-aria/dialog': 3.5.12(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/dialog': 3.5.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/focus': 3.16.2(react@18.2.0)
       '@react-aria/interactions': 3.21.1(react@18.2.0)
-      '@react-aria/overlays': 3.21.1(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/overlays': 3.21.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@react-stately/overlays': 3.6.5(react@18.2.0)
       '@react-types/button': 3.9.2(react@18.2.0)
       '@react-types/overlays': 3.8.5(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
-      '@tw-material/aria-utils': 1.1.1(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/framer-transitions': 1.1.1(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/aria-utils': 1.1.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      '@tw-material/framer-transitions': 1.1.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
       clsx: 2.1.0
-      framer-motion: 11.1.5(react-dom@18.2.0)(react@18.2.0)
+      framer-motion: 11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-remove-scroll: 2.5.9(@types/react@18.2.79)(react@18.2.0)
@@ -4997,28 +4999,28 @@ snapshots:
       - '@types/react'
       - tailwind-variants
 
-  '@tw-material/popover@1.1.11(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)':
+  '@tw-material/popover@1.1.11(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)':
     dependencies:
       '@nextui-org/use-aria-button': 2.0.7(react@18.2.0)
       '@nextui-org/use-safe-layout-effect': 2.0.5(react@18.2.0)
-      '@react-aria/dialog': 3.5.12(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/dialog': 3.5.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/focus': 3.16.2(react@18.2.0)
       '@react-aria/interactions': 3.21.1(react@18.2.0)
-      '@react-aria/overlays': 3.21.1(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/overlays': 3.21.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@react-stately/overlays': 3.6.5(react@18.2.0)
       '@react-types/button': 3.9.2(react@18.2.0)
       '@react-types/overlays': 3.8.5(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
-      '@tw-material/aria-utils': 1.1.1(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/button': 1.1.11(@tw-material/system@1.1.0)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/framer-transitions': 1.1.1(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/aria-utils': 1.1.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      '@tw-material/button': 1.1.11(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)
+      '@tw-material/framer-transitions': 1.1.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
       clsx: 2.1.0
-      framer-motion: 11.1.5(react-dom@18.2.0)(react@18.2.0)
+      framer-motion: 11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-remove-scroll: 2.5.9(@types/react@18.2.79)(react@18.2.0)
@@ -5032,28 +5034,28 @@ snapshots:
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
       react: 18.2.0
 
-  '@tw-material/react@1.1.17(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)':
+  '@tw-material/react@1.1.17(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)':
     dependencies:
-      '@tw-material/autocomplete': 1.0.2(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/avatar': 1.0.1(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)
-      '@tw-material/box': 1.1.1(@tw-material/system@1.1.0)(react-dom@18.2.0)(react@18.2.0)
-      '@tw-material/breadcrumbs': 1.1.2(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)
-      '@tw-material/button': 1.1.11(@tw-material/system@1.1.0)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/divider': 1.0.1(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/dropdown': 1.1.13(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/input': 1.0.3(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(react-dom@18.2.0)(react@18.2.0)
-      '@tw-material/listbox': 1.0.3(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/menu': 1.1.12(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/modal': 1.1.6(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/popover': 1.1.11(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/ripple': 1.1.3(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)
-      '@tw-material/select': 1.0.9(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
-      '@tw-material/slider': 1.0.9(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/spinner': 1.0.1(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/autocomplete': 1.0.2(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)
+      '@tw-material/avatar': 1.0.1(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@tw-material/box': 1.1.1(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@tw-material/breadcrumbs': 1.1.2(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@tw-material/button': 1.1.11(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)
+      '@tw-material/divider': 1.0.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      '@tw-material/dropdown': 1.1.13(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)
+      '@tw-material/input': 1.0.3(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@tw-material/listbox': 1.0.3(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      '@tw-material/menu': 1.1.12(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)
+      '@tw-material/modal': 1.1.6(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      '@tw-material/popover': 1.1.11(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)
+      '@tw-material/ripple': 1.1.3(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@tw-material/select': 1.0.9(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)
+      '@tw-material/slider': 1.0.9(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      '@tw-material/spinner': 1.0.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
-      '@tw-material/tooltip': 1.0.8(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      framer-motion: 11.1.5(react-dom@18.2.0)(react@18.2.0)
+      '@tw-material/tooltip': 1.0.8(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      framer-motion: 11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
@@ -5061,50 +5063,50 @@ snapshots:
       - tailwind-variants
       - tailwindcss
 
-  '@tw-material/ripple@1.1.3(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)':
+  '@tw-material/ripple@1.1.3(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
-      framer-motion: 11.1.5(react-dom@18.2.0)(react@18.2.0)
+      framer-motion: 11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  '@tw-material/scroll-shadow@1.0.0(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)':
+  '@tw-material/scroll-shadow@1.0.0(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@nextui-org/use-data-scroll-overflow': 2.1.4(react@18.2.0)
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  '@tw-material/select@1.0.9(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)':
+  '@tw-material/select@1.0.9(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)':
     dependencies:
       '@nextui-org/use-aria-button': 2.0.7(react@18.2.0)
       '@nextui-org/use-is-mobile': 2.0.7(react@18.2.0)
       '@react-aria/focus': 3.16.2(react@18.2.0)
       '@react-aria/interactions': 3.21.1(react@18.2.0)
-      '@react-aria/listbox': 3.11.5(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/listbox': 3.11.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@react-aria/visually-hidden': 3.8.10(react@18.2.0)
       '@react-stately/list': 3.10.3(react@18.2.0)
       '@react-types/menu': 3.9.7(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
-      '@tw-material/aria-utils': 1.1.1(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/listbox': 1.0.3(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/popover': 1.1.11(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(@types/react@18.2.79)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)(tailwindcss@3.4.3)
+      '@tw-material/aria-utils': 1.1.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      '@tw-material/listbox': 1.0.3(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      '@tw-material/popover': 1.1.11(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(@types/react@18.2.79)(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))(tailwindcss@3.4.3)
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
-      '@tw-material/scroll-shadow': 1.0.0(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)
+      '@tw-material/scroll-shadow': 1.0.0(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/spinner': 1.0.1(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/spinner': 1.0.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
-      '@tw-material/use-multiselect': 1.0.0(react-dom@18.2.0)(react@18.2.0)
+      '@tw-material/use-multiselect': 1.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       clsx: 2.1.0
-      framer-motion: 11.1.5(react-dom@18.2.0)(react@18.2.0)
+      framer-motion: 11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
@@ -5116,7 +5118,7 @@ snapshots:
     dependencies:
       react: 18.2.0
 
-  '@tw-material/slider@1.0.9(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)':
+  '@tw-material/slider@1.0.9(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))':
     dependencies:
       '@react-aria/focus': 3.16.2(react@18.2.0)
       '@react-aria/i18n': 3.10.2(react@18.2.0)
@@ -5128,11 +5130,11 @@ snapshots:
       '@react-types/button': 3.9.2(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
-      '@tw-material/ripple': 1.1.3(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)
+      '@tw-material/ripple': 1.1.3(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
-      '@tw-material/tooltip': 1.0.8(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/tooltip': 1.0.8(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       clsx: 2.1.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -5140,11 +5142,11 @@ snapshots:
       - framer-motion
       - tailwind-variants
 
-  '@tw-material/spinner@1.0.1(@tw-material/theme@1.1.8)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)':
+  '@tw-material/spinner@1.0.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))':
     dependencies:
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
       clsx: 2.1.0
       react: 18.2.0
@@ -5152,7 +5154,7 @@ snapshots:
     transitivePeerDependencies:
       - tailwind-variants
 
-  '@tw-material/system@1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)':
+  '@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))':
     dependencies:
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
       react: 18.2.0
@@ -5167,22 +5169,22 @@ snapshots:
       tailwind-variants: 0.2.1(tailwindcss@3.4.3)
       tailwindcss: 3.4.3
 
-  '@tw-material/tooltip@1.0.8(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)':
+  '@tw-material/tooltip@1.0.8(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))':
     dependencies:
       '@nextui-org/use-safe-layout-effect': 2.0.5(react@18.2.0)
       '@react-aria/focus': 3.16.2(react@18.2.0)
       '@react-aria/interactions': 3.21.1(react@18.2.0)
-      '@react-aria/overlays': 3.21.1(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/overlays': 3.21.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/tooltip': 3.7.2(react@18.2.0)
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@react-stately/tooltip': 3.4.7(react@18.2.0)
       '@react-types/button': 3.9.2(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
-      '@tw-material/framer-transitions': 1.1.1(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/framer-transitions': 1.1.1(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/react-utils': 1.1.1(react@18.2.0)
-      '@tw-material/ripple': 1.1.3(@tw-material/system@1.1.0)(@tw-material/theme@1.1.8)(framer-motion@11.1.5)(react-dom@18.2.0)(react@18.2.0)
+      '@tw-material/ripple': 1.1.3(@tw-material/system@1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3)))(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@tw-material/shared-utils': 1.1.1(react@18.2.0)
-      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@tw-material/system': 1.1.0(@tw-material/theme@1.1.8(tailwindcss@3.4.3))(react@18.2.0)(tailwind-variants@0.2.1(tailwindcss@3.4.3))
       '@tw-material/theme': 1.1.8(tailwindcss@3.4.3)
       clsx: 2.1.0
       react: 18.2.0
@@ -5198,14 +5200,14 @@ snapshots:
       '@tw-material/use-press': 1.0.0(react@18.2.0)
       react: 18.2.0
 
-  '@tw-material/use-multiselect@1.0.0(react-dom@18.2.0)(react@18.2.0)':
+  '@tw-material/use-multiselect@1.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@react-aria/i18n': 3.10.2(react@18.2.0)
       '@react-aria/interactions': 3.21.1(react@18.2.0)
       '@react-aria/label': 3.7.6(react@18.2.0)
-      '@react-aria/listbox': 3.11.5(react-dom@18.2.0)(react@18.2.0)
-      '@react-aria/menu': 3.13.1(react-dom@18.2.0)(react@18.2.0)
-      '@react-aria/selection': 3.17.5(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/listbox': 3.11.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@react-aria/menu': 3.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@react-aria/selection': 3.17.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@react-aria/utils': 3.23.2(react@18.2.0)
       '@react-stately/list': 3.10.3(react@18.2.0)
       '@react-stately/menu': 3.6.1(react@18.2.0)
@@ -5292,7 +5294,7 @@ snapshots:
 
   '@types/use-sync-external-store@0.0.3': {}
 
-  '@vitejs/plugin-react@4.2.1(vite@5.2.9)':
+  '@vitejs/plugin-react@4.2.1(vite@5.2.9(@types/node@20.12.7)(terser@5.30.3))':
     dependencies:
       '@babel/core': 7.24.4
       '@babel/plugin-transform-react-jsx-self': 7.24.1(@babel/core@7.24.4)
@@ -5562,6 +5564,7 @@ snapshots:
       js-yaml: 4.1.0
       parse-json: 5.2.0
       path-type: 4.0.0
+    optionalDependencies:
       typescript: 5.4.5
 
   cross-spawn@7.0.3:
@@ -5832,7 +5835,7 @@ snapshots:
       debug: 4.3.4
       enhanced-resolve: 5.16.0
       eslint: 9.0.0
-      eslint-module-utils: 2.8.1(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@9.0.0)
+      eslint-module-utils: 2.8.1(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(eslint-plugin-import@2.29.1)(eslint@9.0.0))(eslint@9.0.0)
       eslint-plugin-import: 2.29.1(eslint-import-resolver-typescript@3.6.1)(eslint@9.0.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.3
@@ -5844,9 +5847,10 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-module-utils@2.8.1(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@9.0.0):
+  eslint-module-utils@2.8.1(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(eslint-plugin-import@2.29.1)(eslint@9.0.0))(eslint@9.0.0):
     dependencies:
       debug: 3.2.7
+    optionalDependencies:
       eslint: 9.0.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(eslint-plugin-import@2.29.1)(eslint@9.0.0)
@@ -5863,7 +5867,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 9.0.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.1(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@9.0.0)
+      eslint-module-utils: 2.8.1(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(eslint-plugin-import@2.29.1)(eslint@9.0.0))(eslint@9.0.0)
       hasown: 2.0.2
       is-core-module: 2.13.1
       is-glob: 4.0.3
@@ -6091,11 +6095,12 @@ snapshots:
 
   fraction.js@4.3.7: {}
 
-  framer-motion@11.1.5(react-dom@18.2.0)(react@18.2.0):
+  framer-motion@11.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
+      tslib: 2.6.2
+    optionalDependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      tslib: 2.6.2
 
   fsevents@2.3.3:
     optional: true
@@ -6706,8 +6711,9 @@ snapshots:
   postcss-load-config@4.0.2(postcss@8.4.38):
     dependencies:
       lilconfig: 3.1.1
-      postcss: 8.4.38
       yaml: 2.4.1
+    optionalDependencies:
+      postcss: 8.4.38
 
   postcss-nested@6.0.1(postcss@8.4.38):
     dependencies:
@@ -6764,12 +6770,12 @@ snapshots:
       prop-types: 15.8.1
       react: 18.2.0
 
-  react-click-away-listener@2.2.3(react-dom@18.2.0)(react@18.2.0):
+  react-click-away-listener@2.2.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  react-colorful@5.6.1(react-dom@18.2.0)(react@18.2.0):
+  react-colorful@5.6.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -6789,7 +6795,7 @@ snapshots:
     dependencies:
       react: 18.2.0
 
-  react-hot-toast@2.4.1(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0):
+  react-hot-toast@2.4.1(csstype@3.1.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       goober: 2.1.14(csstype@3.1.3)
       react: 18.2.0
@@ -6810,6 +6816,7 @@ snapshots:
       intl-messageformat: 10.5.11
       react: 18.2.0
       tslib: 2.6.2
+    optionalDependencies:
       typescript: 5.4.5
 
   react-is@16.13.1: {}
@@ -6823,38 +6830,42 @@ snapshots:
 
   react-redux@9.1.1(@types/react@18.2.79)(react@18.2.0)(redux@5.0.1):
     dependencies:
-      '@types/react': 18.2.79
       '@types/use-sync-external-store': 0.0.3
       react: 18.2.0
-      redux: 5.0.1
       use-sync-external-store: 1.2.0(react@18.2.0)
+    optionalDependencies:
+      '@types/react': 18.2.79
+      redux: 5.0.1
 
   react-refresh@0.14.0: {}
 
   react-remove-scroll-bar@2.3.6(@types/react@18.2.79)(react@18.2.0):
     dependencies:
-      '@types/react': 18.2.79
       react: 18.2.0
       react-style-singleton: 2.2.1(@types/react@18.2.79)(react@18.2.0)
       tslib: 2.6.2
+    optionalDependencies:
+      '@types/react': 18.2.79
 
   react-remove-scroll@2.5.9(@types/react@18.2.79)(react@18.2.0):
     dependencies:
-      '@types/react': 18.2.79
       react: 18.2.0
       react-remove-scroll-bar: 2.3.6(@types/react@18.2.79)(react@18.2.0)
       react-style-singleton: 2.2.1(@types/react@18.2.79)(react@18.2.0)
       tslib: 2.6.2
       use-callback-ref: 1.3.2(@types/react@18.2.79)(react@18.2.0)
       use-sidecar: 1.1.2(@types/react@18.2.79)(react@18.2.0)
+    optionalDependencies:
+      '@types/react': 18.2.79
 
   react-style-singleton@2.2.1(@types/react@18.2.79)(react@18.2.0):
     dependencies:
-      '@types/react': 18.2.79
       get-nonce: 1.0.1
       invariant: 2.2.4
       react: 18.2.0
       tslib: 2.6.2
+    optionalDependencies:
+      '@types/react': 18.2.79
 
   react-swipeable@7.0.1(react@18.2.0):
     dependencies:
@@ -6873,7 +6884,7 @@ snapshots:
     dependencies:
       react: 18.2.0
 
-  react-virtuoso@4.7.9(react-dom@18.2.0)(react@18.2.0):
+  react-virtuoso@4.7.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -7250,7 +7261,7 @@ snapshots:
   ts-interface-checker@0.1.13: {}
 
   tsconfck@3.0.3(typescript@5.4.5):
-    dependencies:
+    optionalDependencies:
       typescript: 5.4.5
 
   tsconfig-paths@3.15.0:
@@ -7315,16 +7326,17 @@ snapshots:
 
   undici-types@5.26.5: {}
 
-  unplugin-icons@0.18.5(@svgr/core@8.1.0):
+  unplugin-icons@0.18.5(@svgr/core@8.1.0(typescript@5.4.5)):
     dependencies:
       '@antfu/install-pkg': 0.3.2
       '@antfu/utils': 0.7.7
       '@iconify/utils': 2.1.23
-      '@svgr/core': 8.1.0(typescript@5.4.5)
       debug: 4.3.4
       kolorist: 1.8.0
       local-pkg: 0.5.0
       unplugin: 1.10.1
+    optionalDependencies:
+      '@svgr/core': 8.1.0(typescript@5.4.5)
     transitivePeerDependencies:
       - supports-color
 
@@ -7345,16 +7357,17 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  use-breakpoint@4.0.1(react-dom@18.2.0)(react@18.2.0):
+  use-breakpoint@4.0.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
   use-callback-ref@1.3.2(@types/react@18.2.79)(react@18.2.0):
     dependencies:
-      '@types/react': 18.2.79
       react: 18.2.0
       tslib: 2.6.2
+    optionalDependencies:
+      '@types/react': 18.2.79
 
   use-composed-ref@1.3.0(react@18.2.0):
     dependencies:
@@ -7362,21 +7375,24 @@ snapshots:
 
   use-isomorphic-layout-effect@1.1.2(@types/react@18.2.79)(react@18.2.0):
     dependencies:
-      '@types/react': 18.2.79
       react: 18.2.0
+    optionalDependencies:
+      '@types/react': 18.2.79
 
   use-latest@1.2.1(@types/react@18.2.79)(react@18.2.0):
     dependencies:
-      '@types/react': 18.2.79
       react: 18.2.0
       use-isomorphic-layout-effect: 1.1.2(@types/react@18.2.79)(react@18.2.0)
+    optionalDependencies:
+      '@types/react': 18.2.79
 
   use-sidecar@1.1.2(@types/react@18.2.79)(react@18.2.0):
     dependencies:
-      '@types/react': 18.2.79
       detect-node-es: 1.1.0
       react: 18.2.0
       tslib: 2.6.2
+    optionalDependencies:
+      '@types/react': 18.2.79
 
   use-sync-external-store@1.2.0(react@18.2.0):
     dependencies:
@@ -7394,7 +7410,7 @@ snapshots:
       picocolors: 1.0.0
       source-map: 0.7.4
 
-  vite-plugin-eslint@1.8.1(eslint@9.0.0)(vite@5.2.9):
+  vite-plugin-eslint@1.8.1(eslint@9.0.0)(vite@5.2.9(@types/node@20.12.7)(terser@5.30.3)):
     dependencies:
       '@rollup/pluginutils': 4.2.1
       '@types/eslint': 8.56.10
@@ -7402,11 +7418,12 @@ snapshots:
       rollup: 2.79.1
       vite: 5.2.9(@types/node@20.12.7)(terser@5.30.3)
 
-  vite-tsconfig-paths@4.3.2(typescript@5.4.5)(vite@5.2.9):
+  vite-tsconfig-paths@4.3.2(typescript@5.4.5)(vite@5.2.9(@types/node@20.12.7)(terser@5.30.3)):
     dependencies:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 3.0.3(typescript@5.4.5)
+    optionalDependencies:
       vite: 5.2.9(@types/node@20.12.7)(terser@5.30.3)
     transitivePeerDependencies:
       - supports-color
@@ -7414,13 +7431,13 @@ snapshots:
 
   vite@5.2.9(@types/node@20.12.7)(terser@5.30.3):
     dependencies:
-      '@types/node': 20.12.7
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.14.3
-      terser: 5.30.3
     optionalDependencies:
+      '@types/node': 20.12.7
       fsevents: 2.3.3
+      terser: 5.30.3
 
   webpack-sources@3.2.3: {}
 
@@ -7492,8 +7509,10 @@ snapshots:
 
   zod@3.22.5: {}
 
-  zustand@4.5.2(@types/react@18.2.79)(react@18.2.0):
+  zustand@4.5.2(@types/react@18.2.79)(immer@10.0.4)(react@18.2.0):
     dependencies:
-      '@types/react': 18.2.79
-      react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
+    optionalDependencies:
+      '@types/react': 18.2.79
+      immer: 10.0.4
+      react: 18.2.0
